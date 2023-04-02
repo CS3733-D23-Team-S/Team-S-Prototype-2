@@ -50,4 +50,9 @@ public class Node {
         + "building="
         + building;
   }
+
+  public void addLocation(Location newlocation){
+    this.locations.add(newlocation);
+
+  }
 }

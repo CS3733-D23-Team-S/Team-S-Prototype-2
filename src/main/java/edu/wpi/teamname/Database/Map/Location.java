@@ -14,13 +14,13 @@ public class Location {
     @Getter @Setter private String shortName;
     @Getter @Setter private List<Date> dates;
 
-    @Getter @Setter private Node building;
+    @Getter @Setter private Node node;
 
 
     public Location(
-        NodeType nodeType,
         String longName,
-        String shortName){
+        String shortName,
+        NodeType nodeType){
         this.nodeType = nodeType;
         this.longName = longName;
         this.shortName = shortName;
