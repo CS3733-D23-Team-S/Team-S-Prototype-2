@@ -1,14 +1,12 @@
 package edu.wpi.teamname.algorithms;
 
-/*
-import edu.wpi.teamname.FloorDatabase.DAOManager;
-import edu.wpi.teamname.FloorDatabase.Node;
+import edu.wpi.teamname.Database.DAOManager;
+import edu.wpi.teamname.Database.Map.Node;
+
 import java.util.*;
-*/
 
 public class AStar {
 
-  /*
   DAOManager dbManager;
   HashMap<String, Node> floors;
   HashMap<String, HashSet<String>> edges;
@@ -89,6 +87,4 @@ public class AStar {
       return Double.compare(o1.weight, o2.weight);
     }
   }
-
-   */
 }

@@ -1,14 +1,12 @@
 package edu.wpi.teamname.algorithms;
 
-/*
-import edu.wpi.teamname.FloorDatabase.DAOManager;
-import edu.wpi.teamname.FloorDatabase.Node;
+import edu.wpi.teamname.Database.DAOManager;
+import edu.wpi.teamname.Database.Map.Node;
+
 import java.util.*;
-*/
 
 public class BFS {
 
-  /*
   DAOManager dbManager;
   HashMap<String, Node> floors;
   HashMap<String, HashSet<String>> edges;
@@ -60,5 +58,4 @@ public class BFS {
     Collections.reverse(pathTaken);
     return pathTaken;
   }
-   */
 }
