@@ -45,9 +45,7 @@ public class DAOManager extends DAOImpl implements DAO_I {
       preparedStatement.setInt(3, thisNode.getYCoord());
       preparedStatement.setInt(4, thisNode.getFloor().ordinal());
       preparedStatement.setString(5, thisNode.getBuilding());
-      preparedStatement.setInt(6, thisNode.getNodeType().ordinal());
-      preparedStatement.setString(7, thisNode.getLongName());
-      preparedStatement.setString(8, thisNode.getShortName());
+
       preparedStatement.executeUpdate();
 
     } catch (SQLException e) {
@@ -167,10 +165,7 @@ public class DAOManager extends DAOImpl implements DAO_I {
                 xCoord,
                 yCoord,
                 Floor.values()[floor],
-                building,
-                NodeType.values()[nodeType],
-                longName,
-                shortName);
+                building);
         nodes.put(nodeID, floorNode);
       }
     } catch (SQLException e) {
