@@ -7,7 +7,7 @@ public class LocationDoaImpl implements LocationDOA_I{
     private static LocationDoaImpl single_instance;
     HashMap<String ,Location> locations;
 
-    LocationDoaImpl(){}
+    private LocationDoaImpl(){}
     public static synchronized LocationDoaImpl getInstance()
     {
         if (single_instance == null)

@@ -6,8 +6,8 @@ import java.util.List;
 
 public class MoveDaoImpl implements MoveDAO_I{
     List<Move> moves;
-    LocationDoaImpl locationDoa = new LocationDoaImpl();
-    NodeDaoImpl nodeDao = new NodeDaoImpl();
+    LocationDoaImpl locationDoa = LocationDoaImpl.getInstance();
+    NodeDaoImpl nodeDao = NodeDaoImpl.getInstance();
     @Override
     public List<Move> getAllMoves() {
         return moves;

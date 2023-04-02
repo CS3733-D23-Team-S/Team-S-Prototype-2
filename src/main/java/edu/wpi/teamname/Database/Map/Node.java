@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.util.LinkedList;
 
 public class Node {
-  @Getter @Setter private String nodeID;
+  @Getter @Setter private int nodeID;
   @Getter @Setter private int xCoord;
   @Getter @Setter private int yCoord;
   @Getter @Setter private Floor floor;
@@ -16,7 +16,7 @@ public class Node {
 
 
   public Node(
-      String nodeID,
+      int nodeID,
       int xCoord,
       int yCoord,
       Floor floor,

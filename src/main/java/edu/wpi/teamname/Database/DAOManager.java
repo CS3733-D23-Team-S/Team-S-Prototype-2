@@ -17,7 +17,7 @@ import lombok.Getter;
 public class DAOManager extends DAOImpl implements DAO_I {
 
   @Getter private HashMap<String, HashSet<String>> neighbors;
-  @Getter private HashMap<String, Node> nodes;
+  @Getter private HashMap<Integer, Node> nodes;
 
   public DAOManager() {
     neighbors = new HashMap<>();
@@ -40,7 +40,7 @@ public class DAOManager extends DAOImpl implements DAO_I {
                   + floorNodeTableName
                   + " (nodeID ,xCoord ,yCoord , Floor, Building, nodeType, longName, shortName) "
                   + " VALUES (?, ?, ? ,?, ?, ?, ?, ?)");
-      preparedStatement.setString(1, thisNode.getNodeID());
+      preparedStatement.setInt(1, thisNode.getNodeID());
       preparedStatement.setInt(2, thisNode.getXCoord());
       preparedStatement.setInt(3, thisNode.getYCoord());
       preparedStatement.setInt(4, thisNode.getFloor().ordinal());
@@ -60,26 +60,25 @@ public class DAOManager extends DAOImpl implements DAO_I {
           c.prepareStatement(
               "INSERT INTO "
                   + edgesTableName
-                  + " (startNode, endNode, edgeID) "
-                  + " VALUES (?, ?, ? )");
-      preparedStatement.setString(1, thisEdge.getStartNode().getNodeID());
-      preparedStatement.setString(2, thisEdge.getEndNode().getNodeID());
-      preparedStatement.setString(3, thisEdge.getEdgeID());
+                  + " (startNode, endNode) "
+                  + " VALUES (?, ?)");
 
+      preparedStatement.setInt(1, thisEdge.getStartNode().getNodeID());
+      preparedStatement.setInt(2, thisEdge.getEndNode().getNodeID());
       preparedStatement.executeUpdate();
+
     } catch (SQLException e) {
       e.printStackTrace();
     }
   }
-
   // Left if desired to use, but technically the above method will be faster and not rely on the
   // remote
-  public void updateLocationName(String nodeId, String longName) {
+  public void updateLocationName(int nodeId, String longName) {
     try {
       PreparedStatement preparedStatement =
           c.prepareStatement("UPDATE " + floorNodeTableName + " SET longname = ? WHERE nodeID = ?");
       preparedStatement.setString(1, longName);
-      preparedStatement.setString(2, nodeId);
+      preparedStatement.setInt(2, nodeId);
       Node temp = nodes.get(nodeId);
       if (temp == null) {
         System.out.println("This node is not in the database");
@@ -97,14 +96,14 @@ public class DAOManager extends DAOImpl implements DAO_I {
     // Handles the edge updates as well
   }
 
-  public void updateCoord(String nodeId, int xcoord, int ycoord) {
+  public void updateCoord(int nodeId, int xcoord, int ycoord) {
     try {
       PreparedStatement preparedStatement =
           c.prepareStatement(
               "UPDATE " + floorNodeTableName + " SET xcoord = ?, ycoord = ? WHERE nodeID = ?");
       preparedStatement.setInt(1, xcoord);
       preparedStatement.setInt(2, ycoord);
-      preparedStatement.setString(3, nodeId);
+      preparedStatement.setInt(3, nodeId);
       Node temp = nodes.get(nodeId);
       if (temp == null) {
         System.out.println("This node is not in the database");
@@ -151,14 +150,12 @@ public class DAOManager extends DAOImpl implements DAO_I {
     try {
       ResultSet data = stmt.executeQuery(listOfNodes);
       while (data.next()) {
-        String nodeID = data.getString("nodeID");
+        int nodeID = data.getInt("nodeID");
         int xCoord = data.getInt("xCoord");
         int yCoord = data.getInt("yCoord");
         int floor = data.getInt("Floor");
-        int nodeType = data.getInt("nodeType");
         String building = data.getString("Building");
-        String longName = data.getString("longName");
-        String shortName = data.getString("shortName");
+
         Node floorNode =
             new Node(
                 nodeID,
@@ -221,8 +218,8 @@ public class DAOManager extends DAOImpl implements DAO_I {
   }
 
   public void printLocalDatabases() {
-    for (String key : nodes.keySet()) {
-      System.out.println(nodes.get(key).toString());
+    for (int key : nodes.keySet()) {
+      System.out.println(nodes.get(key));
     }
     for (String key : neighbors.keySet()) {
       System.out.print(key + "\t");
