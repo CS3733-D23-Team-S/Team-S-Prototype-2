@@ -85,7 +85,7 @@ public class DAOManager extends DAOImpl implements DAO_I {
         System.out.println("This node is not in the database");
         return;
       }
-      temp.setLongName(longName);
+
       nodes.put(nodeId, temp);
       preparedStatement.executeUpdate();
       System.out.println("Updated Node");
