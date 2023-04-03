@@ -12,7 +12,8 @@ public class Food {
   @Getter @Setter private double FoodPrice;
   @Getter @Setter private String FoodDescription;
   @Getter private int quantity;
-  @Getter @Setter private boolean isSoldOut;
+  @Setter private boolean isSoldOut;
+  @Getter @Setter private String image;
 
   // FoodImage
 
@@ -26,6 +27,10 @@ public class Food {
     FoodDescription = fd;
     quantity = q;
     isSoldOut = false;
+  }
+
+  public boolean isSoldOut() {
+    return isSoldOut;
   }
 
   @Override
