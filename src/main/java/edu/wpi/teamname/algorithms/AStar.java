@@ -8,8 +8,8 @@ import java.util.*;
 public class AStar {
 
   DAOManager dbManager;
-  HashMap<Integer, Node> floors;
-  HashMap<Integer, HashSet<String>> edges;
+  HashMap<String, Node> floors;
+  HashMap<String, HashSet<String>> edges;
 
   public AStar(DAOManager manager) {
     dbManager = manager;
