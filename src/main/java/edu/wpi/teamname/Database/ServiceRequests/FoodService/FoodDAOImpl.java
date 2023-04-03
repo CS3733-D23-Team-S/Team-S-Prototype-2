@@ -1,4 +1,4 @@
-package edu.wpi.teamname.Database.ServiceRequests;
+package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
