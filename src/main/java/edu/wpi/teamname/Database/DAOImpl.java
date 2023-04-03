@@ -10,7 +10,6 @@ public abstract class DAOImpl {
   protected static final String schemaName = "hospitaldb";
   protected static final String nodeTable = schemaName + "." + "nodes";
   protected static final String edgesTable = schemaName + "." + "edges";
-
   protected static final String foodsTable = schemaName + "." + "foods";
   dbConnection connection;
 
@@ -21,10 +20,9 @@ public abstract class DAOImpl {
   public void initTables() throws SQLException {
     Statement stmt = connection.c.createStatement();
 
-    // This needs to be fixed in the future so that it checks if the data is still present in the
-    // table
-    resetData();
-    //
+    String dropEdgeTable = "DROP TABLE IF EXISTS " + edgesTable;
+    String dropFloorTable = "DROP TABLE IF EXISTS " + nodeTable + " CASCADE";
+    String dropFoodTable = "DROP TABLE IF EXISTS " + foodsTable;
 
     String createSchema = "CREATE SCHEMA IF NOT EXISTS " + schemaName;
     String floorTableConstruct =
@@ -47,21 +45,24 @@ public abstract class DAOImpl {
             + "edgeID Varchar(100) UNIQUE )";
 
     String foodTableConstruct =
-        "CREATE TABLE IF NOT EXISTS"
+        "CREATE TABLE IF NOT EXISTS "
             + foodsTable
             + " "
             + "(FoodID int,"
             + "Name Varchar(100),"
-            + "Type int,"
+            + "Type Varchar(100),"
             + "PrepTime int,"
-            + "Cuisine int,"
-            + "Price money,"
+            + "Cuisine Varchar(100),"
+            + "Price double precision,"
             + "Description Varchar(100),"
             + "Quantity int,"
             + "SoldOut boolean,"
             + "Image Varchar(100))";
     try {
       stmt.execute(createSchema);
+      stmt.execute(dropFloorTable);
+      stmt.execute(dropEdgeTable);
+      stmt.execute(dropFoodTable);
       stmt.execute(floorTableConstruct);
       stmt.execute(edgeTableConstruct);
       stmt.execute(foodTableConstruct);
