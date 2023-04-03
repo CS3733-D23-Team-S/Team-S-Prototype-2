@@ -2,9 +2,10 @@ package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 
 public class OrderItemDAO {
-  int cartID;
+  @Getter int cartID;
 
   List<OrderItem> cart = new ArrayList<>();
 

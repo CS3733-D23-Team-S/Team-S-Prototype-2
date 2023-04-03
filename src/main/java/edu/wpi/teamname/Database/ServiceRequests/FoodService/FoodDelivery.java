@@ -2,23 +2,25 @@ package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
 import edu.wpi.teamname.Database.ServiceRequests.Room;
 import edu.wpi.teamname.Database.ServiceRequests.Status;
+import java.time.LocalTime;
+import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
 public class FoodDelivery {
 
-  int deliveryID;
-  OrderItemDAO cart;
-  Date date;
-  Room room;
-  String user;
+  @Getter int deliveryID;
+  @Getter OrderItemDAO cart;
+  @Getter Date date;
+  @Getter @Setter LocalTime time;
+  @Getter Room room;
+  @Getter @Setter String user;
   @Getter @Setter Status orderStatus;
+  @Getter @Setter String notes = "";
 
-  public FoodDelivery(int deliveryID, int cartID, Date date, Room room, String user) {
+  public FoodDelivery(int deliveryID, OrderItemDAO cart, Date date, Room room, String user) {
     this.deliveryID = deliveryID;
-    this.cart = new OrderItemDAO(cartID);
+    this.cart = cart;
     this.date = date;
     this.room = room;
     this.user = user;
@@ -32,6 +34,4 @@ public class FoodDelivery {
     }
     return total;
   }
-
-
 }

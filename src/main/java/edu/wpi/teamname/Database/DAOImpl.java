@@ -12,7 +12,7 @@ public abstract class DAOImpl {
   protected static final String edgesTable = schemaName + "." + "edges";
   protected static final String foodsTable = schemaName + "." + "foods";
   protected static final String cartTable = schemaName + "." + "cart";
-  protected static final String ordersTable = schemaName + "." + "orders";
+  protected static final String foodRequestsTable = schemaName + "." + "foodRequests";
   dbConnection connection;
 
   public void establishConnection() {
@@ -24,8 +24,9 @@ public abstract class DAOImpl {
 
     String dropEdgeTable = "DROP TABLE IF EXISTS " + edgesTable;
     String dropFloorTable = "DROP TABLE IF EXISTS " + nodeTable + " CASCADE";
-    String dropFoodTable = "DROP TABLE IF EXISTS " + foodsTable;
-    String dropOrderItemsTable = "DROP TABLE IF EXISTS " + cartTable;
+    String dropFoodTable = "DROP TABLE IF EXISTS " + foodsTable + " CASCADE";
+    String dropCartTable = "DROP TABLE IF EXISTS " + cartTable + " CASCADE";
+    String dropFoodRequestTable = "DROP TABLE IF EXISTS " + foodRequestsTable + " CASCADE";
 
     String createSchema = "CREATE SCHEMA IF NOT EXISTS " + schemaName;
     String floorTableConstruct =
@@ -66,32 +67,40 @@ public abstract class DAOImpl {
         "CREATE TABLE IF NOT EXISTS "
             + cartTable
             + " "
-            + "(deliveryID int,"
+            + "(cartID int UNIQUE PRIMARY KEY, "
+            + " FoodID int, "
             + "Quantity int,"
             + " FOREIGN KEY (FoodID) REFERENCES hospitaldb.foods(FoodID))";
 
-    String ordersTableConstruct =
-            "CREATE TABLE IF NOT EXISTS "
-                    + ordersTable
-                    + " "
-                    + "(FoodID int,"
-                    + "Quantity int,"
-                    + " FOREIGN KEY (FoodID) REFERENCES hospitaldb.foods(FoodID))";
+    String foodOrdersTableConstruct =
+        "CREATE TABLE IF NOT EXISTS "
+            + foodRequestsTable
+            + " "
+            + "(deliveryID int UNIQUE PRIMARY KEY, "
+            + "cartID int, "
+            + "orderDate Date, "
+            + "employee Varchar(100), "
+            + "room int, "
+            + "cost int, "
+            + "notes Varchar(100), "
+            + "FOREIGN KEY (cartID) REFERENCES hospitaldb.cart(cartID))";
     try {
       stmt.execute(createSchema);
       stmt.execute(dropFloorTable);
       stmt.execute(dropEdgeTable);
       stmt.execute(dropFoodTable);
-      stmt.execute(dropOrderItemsTable);
+      stmt.execute(dropCartTable);
+      stmt.execute(dropFoodRequestTable);
       stmt.execute(floorTableConstruct);
       stmt.execute(edgeTableConstruct);
       stmt.execute(foodTableConstruct);
       stmt.execute(cartTableConstruct);
+      stmt.execute(foodOrdersTableConstruct);
       System.out.println("Loaded the tables into the database");
     } catch (SQLException e) {
       System.out.println(e.getMessage());
       System.out.println(e.getSQLState());
-      System.out.println("Database update/creation error");
+      System.out.println("Database creation error");
     }
   }
 

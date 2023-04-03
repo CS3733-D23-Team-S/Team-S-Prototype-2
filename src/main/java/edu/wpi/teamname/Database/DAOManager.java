@@ -4,6 +4,7 @@ import edu.wpi.teamname.Database.Map.Edge;
 import edu.wpi.teamname.Database.Map.Floor;
 import edu.wpi.teamname.Database.Map.Node;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDelivery;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItem;
 import java.sql.*;
 import java.sql.PreparedStatement;
@@ -61,7 +62,7 @@ public class DAOManager extends DAOImpl implements DAO_I {
           connection.c.prepareStatement(
               "INSERT INTO "
                   + foodsTable
-                  + " (FoodID ,Name ,Type , PrepTime, Cuisine, Price, Description, Quantity, SoldOut, Image) "
+                  + " (FoodID , Name ,Type , PrepTime, Cuisine, Price, Description, Quantity, SoldOut, Image) "
                   + " VALUES (?, ?, ? ,?, ?, ?, ?, ?, ?, ?)");
       preparedStatement.setInt(1, thisFood.getFoodID());
       preparedStatement.setString(2, thisFood.getFoodName());
@@ -82,13 +83,43 @@ public class DAOManager extends DAOImpl implements DAO_I {
     }
   }
 
-  public void addOrderItem(OrderItem orderItem) {
+  public void addOrderItem(OrderItem orderItem, int cartID) {
     try {
       PreparedStatement preparedStatement =
           connection.c.prepareStatement(
-              "INSERT INTO " + cartTable + " (FoodID ,quantity) " + " VALUES (?, ?)");
-      preparedStatement.setInt(1, orderItem.getItem().getFoodID());
-      preparedStatement.setInt(2, orderItem.getQuantity());
+              "INSERT INTO " + cartTable + " (CartID, FoodID ,quantity) " + " VALUES (?, ?, ?)");
+      preparedStatement.setInt(1, cartID);
+      preparedStatement.setInt(2, orderItem.getItem().getFoodID());
+      preparedStatement.setInt(3, orderItem.getQuantity());
+
+      preparedStatement.executeUpdate();
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
+  }
+  //  (deliveryID int UNIQUE PRIMARY KEY, "
+  //          + "int cartID, "
+  //          + "Date orderDate, "
+  //          + "String user, "
+  //          + "String room,
+
+  public void addfoodRequest(FoodDelivery request) {
+    try {
+      PreparedStatement preparedStatement =
+          connection.c.prepareStatement(
+              "INSERT INTO "
+                  + foodRequestsTable
+                  + " (deliveryID, CartID, orderDate , employee, room, cost, notes) "
+                  + " VALUES (?, ?, ?, ?, ?, ?, ?)");
+      preparedStatement.setInt(1, request.getDeliveryID());
+      preparedStatement.setInt(2, request.getCart().getCartID());
+      preparedStatement.setDate(3, null);
+      preparedStatement.setString(4, request.getUser());
+      preparedStatement.setInt(5, request.getRoom().getNodeID());
+      preparedStatement.setDouble(6, request.orderTotal());
+      preparedStatement.setString(7, request.getNotes());
 
       preparedStatement.executeUpdate();
 

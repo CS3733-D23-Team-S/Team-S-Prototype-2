@@ -1,39 +1,34 @@
 package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
-import edu.wpi.teamname.Database.Map.Node;
-import edu.wpi.teamname.Database.Map.NodeDaoImpl;
-
 import java.util.HashMap;
 import java.util.List;
 
-public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I{
-    HashMap<Integer, FoodDelivery> requests = new HashMap<>();
-    static FoodDeliveryDAOImp single_instance;
-    private FoodDeliveryDAOImp() {}
+public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
+  HashMap<Integer, FoodDelivery> requests = new HashMap<>();
+  static FoodDeliveryDAOImp single_instance;
 
-    public static synchronized FoodDeliveryDAOImp getInstance() {
+  private FoodDeliveryDAOImp() {}
 
-        if (single_instance == null) single_instance = new FoodDeliveryDAOImp();
+  public static synchronized FoodDeliveryDAOImp getInstance() {
 
-        return single_instance;
-    }
-    @Override
-    public List<FoodDelivery> getAllRequests() {
-        return null;
-    }
+    if (single_instance == null) single_instance = new FoodDeliveryDAOImp();
 
-    @Override
-    public FoodDelivery getRequest(int requestID) {
-        return null;
-    }
+    return single_instance;
+  }
 
-    @Override
-    public void addRequest(FoodDelivery request) {
+  @Override
+  public List<FoodDelivery> getAllRequests() {
+    return null;
+  }
 
-    }
+  @Override
+  public FoodDelivery getRequest(int requestID) {
+    return null;
+  }
 
-    @Override
-    public void deleteRequest(FoodDelivery request) {
+  @Override
+  public void addRequest(FoodDelivery request) {}
 
-    }
+  @Override
+  public void deleteRequest(FoodDelivery request) {}
 }
