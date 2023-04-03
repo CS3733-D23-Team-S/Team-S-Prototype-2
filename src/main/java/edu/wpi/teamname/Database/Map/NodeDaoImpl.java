@@ -3,6 +3,7 @@ package edu.wpi.teamname.Database.Map;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class NodeDaoImpl implements NodeDOA_I {
 
   @Override
   public List<Node> getAllNodes() {
-    return null;
+    return new ArrayList<>(this.nodes.values());
   }
 
   @Override
@@ -48,7 +49,7 @@ public class NodeDaoImpl implements NodeDOA_I {
                 Integer.parseInt(fields[0]),
                 Integer.parseInt(fields[1]),
                 Integer.parseInt(fields[2]),
-                Floor.valueOf((String) fields[3]),
+                Floor.valueOf("Floor" + fields[3]),
                 fields[4]);
         nodes.put(Integer.valueOf(fields[0]), thisNode);
       }

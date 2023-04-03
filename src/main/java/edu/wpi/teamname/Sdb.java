@@ -9,47 +9,47 @@ import java.sql.SQLException;
 import java.util.NoSuchElementException;
 
 public class Sdb {
-//  public static void main(String[] args) throws SQLException, NoSuchElementException {
-//
-//    String floorPath = "src/main/java/edu/wpi/teamname/Node.csv";
-//    String edgePath = "src/main/java/edu/wpi/teamname/Edge.csv";
-//
-//    NodeDaoImpl nodeDao = NodeDaoImpl.getInstance();
-//    EdgeDaoImpl edgeDao = EdgeDaoImpl.getInstance();
-//    nodeDao.csvToNode(floorPath);
-//    edgeDao.csvToEdges(edgePath);
-//
-//    //    for (Edge thisEdge : converter.getEdges()) {
-//    //      System.out.println(thisEdge.toString());
-//    //    }
-//
-//    DAOManager dbManager = new DAOManager();
-//    // Establish connection to database
-//    dbManager.establishConnection();
-//
-//    // Create Empty Table
-//    dbManager.initTables();
-//
-//    // Inputing Nodes into Data base
-//    for (Node thisNode : nodeDao.getAllNodes()) {
-//      dbManager.addNode(thisNode);
-//    }
-//
-//    // Inputting Edges into Database
-//    for (Edge thisEdge : edgeDao.getAllEdges()) {
-//      dbManager.addEdge(thisEdge);
-//    }
-//    dbManager.constructLocalDataBase();
-//    //    dbManager.printLocalDatabases();
-//    //    dbManager.updateLocationName("CLABS002L1", "White House");
-//    //    dbManager.updateCoord("CLABS002L1", 200, 300);
-//    //    dbManager.retrieveRow("CLABS002L1");
-//    //    dbManager.deleteNode("CSERV001L2");
-//
-//    //    dbManager.printLocalDatabases();
-//
-//    // App.launch(App.class, args);
-//  }
+  public static void main(String[] args) throws SQLException, NoSuchElementException {
+
+    String floorPath = "src/main/java/edu/wpi/teamname/Node.csv";
+    String edgePath = "src/main/java/edu/wpi/teamname/Edge.csv";
+
+    NodeDaoImpl nodeDao = NodeDaoImpl.getInstance();
+    EdgeDaoImpl edgeDao = EdgeDaoImpl.getInstance();
+    nodeDao.csvToNode(floorPath);
+    edgeDao.csvToEdges(edgePath);
+
+    //    for (Edge thisEdge : converter.getEdges()) {
+    //      System.out.println(thisEdge.toString());
+    //    }
+
+    DAOManager dbManager = new DAOManager();
+    // Establish connection to database
+    dbManager.establishConnection();
+
+    // Create Empty Table
+    dbManager.initTables();
+
+    // Inputing Nodes into Data base
+    for (Node thisNode : nodeDao.getAllNodes()) {
+      dbManager.addNode(thisNode);
+    }
+
+    // Inputting Edges into Database
+    for (Edge thisEdge : edgeDao.getAllEdges()) {
+      dbManager.addEdge(thisEdge);
+    }
+    dbManager.constructLocalDataBase();
+    //    dbManager.printLocalDatabases();
+    //    dbManager.updateLocationName("CLABS002L1", "White House");
+    //    dbManager.updateCoord("CLABS002L1", 200, 300);
+    //    dbManager.retrieveRow("CLABS002L1");
+    //    dbManager.deleteNode("CSERV001L2");
+
+    //    dbManager.printLocalDatabases();
+
+    // App.launch(App.class, args);
+  }
 
   public static void help() {
     System.out.println("HELP------------");

@@ -3,12 +3,13 @@ package edu.wpi.teamname.Database.Map;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EdgeDaoImpl implements EdgeDoa_I {
   private static EdgeDaoImpl single_instance;
   NodeDaoImpl nodeDao = NodeDaoImpl.getInstance();
-  List<Edge> edges;
+  List<Edge> edges = new ArrayList<>();
 
   private EdgeDaoImpl() {}
 
@@ -41,8 +42,8 @@ public class EdgeDaoImpl implements EdgeDoa_I {
         //
         Edge thisEdge =
             new Edge(
-                nodeDao.nodes.get(Integer.parseInt(fields[1])),
-                nodeDao.nodes.get(Integer.parseInt(fields[2])));
+                nodeDao.nodes.get(Integer.parseInt(fields[0])),
+                nodeDao.nodes.get(Integer.parseInt(fields[1])));
         edges.add(thisEdge);
       }
     } catch (IOException e) {
