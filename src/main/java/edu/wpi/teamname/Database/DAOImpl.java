@@ -1,7 +1,5 @@
 package edu.wpi.teamname.Database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -10,24 +8,16 @@ public abstract class DAOImpl {
   private static final String user = "teams";
   private static final String password = "teams160";
   protected static final String schemaName = "hospitaldb";
-  protected static final String floorNodeTableName = schemaName + "." + "nodes";
-  protected static final String edgesTableName = schemaName + "." + "edges";
-  Connection c;
+  protected static final String nodeTable = schemaName + "." + "nodes";
+  protected static final String edgesTable = schemaName + "." + "edges";
+  dbConnection connection;
 
   public void establishConnection() {
-    try {
-      Class.forName("org.postgresql.Driver");
-      c = DriverManager.getConnection(url, user, password);
-    } catch (Exception e) {
-      e.printStackTrace();
-      System.err.println(e.getClass().getName() + ": " + e.getMessage());
-      System.exit(0);
-    }
-    System.out.println("Opened database successfully");
+    connection = dbConnection.getInstance();
   }
 
   public void initTables() throws SQLException {
-    Statement stmt = c.createStatement();
+    Statement stmt = connection.c.createStatement();
 
     // This needs to be fixed in the future so that it checks if the data is still present in the
     // table
@@ -37,7 +27,7 @@ public abstract class DAOImpl {
     String createSchema = "CREATE SCHEMA IF NOT EXISTS " + schemaName;
     String floorTableConstruct =
         "CREATE TABLE IF NOT EXISTS "
-            + floorNodeTableName
+            + nodeTable
             + " (nodeID Varchar(100) UNIQUE PRIMARY KEY,"
             + "xcoord int,"
             + "ycoord int,"
@@ -48,7 +38,7 @@ public abstract class DAOImpl {
             + "shortName Varchar(100))";
     String edgeTableConstruct =
         "CREATE TABLE IF NOT EXISTS "
-            + edgesTableName
+            + edgesTable
             + " "
             + "(startNode Varchar(100),"
             + "endNode Varchar(100),"
@@ -66,7 +56,7 @@ public abstract class DAOImpl {
   }
 
   public void resetData() throws SQLException {
-    Statement stmt = c.createStatement();
+    Statement stmt = connection.c.createStatement();
     String resetCommand = "DROP SCHEMA IF EXISTS " + schemaName + " CASCADE";
     try {
       stmt.executeUpdate(resetCommand);

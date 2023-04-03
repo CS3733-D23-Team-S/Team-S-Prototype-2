@@ -1,23 +1,19 @@
 package edu.wpi.teamname.Database;
 
+import edu.wpi.teamname.Database.Map.Edge;
+import edu.wpi.teamname.Database.Map.Floor;
+import edu.wpi.teamname.Database.Map.Node;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.HashSet;
-
-import edu.wpi.teamname.Database.DAOImpl;
-import edu.wpi.teamname.Database.DAO_I;
-import edu.wpi.teamname.Database.Map.Edge;
-import edu.wpi.teamname.Database.Map.Floor;
-import edu.wpi.teamname.Database.Map.Node;
-import edu.wpi.teamname.Database.Map.NodeType;
 import lombok.Getter;
 
 public class DAOManager extends DAOImpl implements DAO_I {
 
   @Getter private HashMap<String, HashSet<String>> neighbors;
-  @Getter private HashMap<String, Node> nodes;
+  @Getter private HashMap<Integer, Node> nodes;
 
   public DAOManager() {
     neighbors = new HashMap<>();
@@ -35,12 +31,12 @@ public class DAOManager extends DAOImpl implements DAO_I {
   public void addNode(Node thisNode) {
     try {
       PreparedStatement preparedStatement =
-          c.prepareStatement(
+          connection.c.prepareStatement(
               "INSERT INTO "
-                  + floorNodeTableName
-                  + " (nodeID ,xCoord ,yCoord , Floor, Building, nodeType, longName, shortName) "
-                  + " VALUES (?, ?, ? ,?, ?, ?, ?, ?)");
-      preparedStatement.setString(1, thisNode.getNodeID());
+                  + nodeTable
+                  + " (nodeID ,xCoord ,yCoord , Floor, Building) "
+                  + " VALUES (?, ?, ? ,?, ?)");
+      preparedStatement.setInt(1, thisNode.getNodeID());
       preparedStatement.setInt(2, thisNode.getXCoord());
       preparedStatement.setInt(3, thisNode.getYCoord());
       preparedStatement.setInt(4, thisNode.getFloor().ordinal());
@@ -57,29 +53,26 @@ public class DAOManager extends DAOImpl implements DAO_I {
   public void addEdge(Edge thisEdge) {
     try {
       PreparedStatement preparedStatement =
-          c.prepareStatement(
-              "INSERT INTO "
-                  + edgesTableName
-                  + " (startNode, endNode, edgeID) "
-                  + " VALUES (?, ?, ? )");
-      preparedStatement.setString(1, thisEdge.getStartNode().getNodeID());
-      preparedStatement.setString(2, thisEdge.getEndNode().getNodeID());
-      preparedStatement.setString(3, thisEdge.getEdgeID());
+          connection.c.prepareStatement(
+              "INSERT INTO " + edgesTable + " (startNode, endNode) " + " VALUES (?, ?)");
 
+      preparedStatement.setInt(1, thisEdge.getStartNode().getNodeID());
+      preparedStatement.setInt(2, thisEdge.getEndNode().getNodeID());
       preparedStatement.executeUpdate();
+
     } catch (SQLException e) {
       e.printStackTrace();
     }
   }
-
   // Left if desired to use, but technically the above method will be faster and not rely on the
   // remote
-  public void updateLocationName(String nodeId, String longName) {
+  public void updateLocationName(int nodeId, String longName) {
     try {
       PreparedStatement preparedStatement =
-          c.prepareStatement("UPDATE " + floorNodeTableName + " SET longname = ? WHERE nodeID = ?");
+          connection.c.prepareStatement(
+              "UPDATE " + nodeTable + " SET longname = ? WHERE nodeID = ?");
       preparedStatement.setString(1, longName);
-      preparedStatement.setString(2, nodeId);
+      preparedStatement.setInt(2, nodeId);
       Node temp = nodes.get(nodeId);
       if (temp == null) {
         System.out.println("This node is not in the database");
@@ -97,14 +90,14 @@ public class DAOManager extends DAOImpl implements DAO_I {
     // Handles the edge updates as well
   }
 
-  public void updateCoord(String nodeId, int xcoord, int ycoord) {
+  public void updateCoord(int nodeId, int xcoord, int ycoord) {
     try {
       PreparedStatement preparedStatement =
-          c.prepareStatement(
-              "UPDATE " + floorNodeTableName + " SET xcoord = ?, ycoord = ? WHERE nodeID = ?");
+          connection.c.prepareStatement(
+              "UPDATE " + nodeTable + " SET xcoord = ?, ycoord = ? WHERE nodeID = ?");
       preparedStatement.setInt(1, xcoord);
       preparedStatement.setInt(2, ycoord);
-      preparedStatement.setString(3, nodeId);
+      preparedStatement.setInt(3, nodeId);
       Node temp = nodes.get(nodeId);
       if (temp == null) {
         System.out.println("This node is not in the database");
@@ -124,7 +117,7 @@ public class DAOManager extends DAOImpl implements DAO_I {
 
   public void deleteNode(String target) throws SQLException {
     PreparedStatement deleteNode =
-        c.prepareStatement("DELETE FROM " + floorNodeTableName + " WHERE nodeID = ?");
+        connection.c.prepareStatement("DELETE FROM " + nodeTable + " WHERE nodeID = ?");
     try {
       deleteNode.setString(1, target);
       deleteNode.execute();
@@ -146,26 +139,18 @@ public class DAOManager extends DAOImpl implements DAO_I {
   //	}
 
   private void constructLocalFloorDataBase() throws SQLException {
-    Statement stmt = c.createStatement();
-    String listOfNodes = "SELECT * FROM " + floorNodeTableName;
+    Statement stmt = connection.c.createStatement();
+    String listOfNodes = "SELECT * FROM " + nodeTable;
     try {
       ResultSet data = stmt.executeQuery(listOfNodes);
       while (data.next()) {
-        String nodeID = data.getString("nodeID");
+        int nodeID = data.getInt("nodeID");
         int xCoord = data.getInt("xCoord");
         int yCoord = data.getInt("yCoord");
         int floor = data.getInt("Floor");
-        int nodeType = data.getInt("nodeType");
         String building = data.getString("Building");
-        String longName = data.getString("longName");
-        String shortName = data.getString("shortName");
-        Node floorNode =
-            new Node(
-                nodeID,
-                xCoord,
-                yCoord,
-                Floor.values()[floor],
-                building);
+
+        Node floorNode = new Node(nodeID, xCoord, yCoord, Floor.values()[floor], building);
         nodes.put(nodeID, floorNode);
       }
     } catch (SQLException e) {
@@ -176,11 +161,11 @@ public class DAOManager extends DAOImpl implements DAO_I {
   }
 
   private void constructLocalNeighborsDB() throws SQLException {
-    Statement stmt = c.createStatement();
-    String getNodes = "SELECT nodeID FROM " + floorNodeTableName;
+    Statement stmt = connection.c.createStatement();
+    String getNodes = "SELECT nodeID FROM " + nodeTable;
     PreparedStatement getNeighbors =
-        c.prepareStatement(
-            "SELECT * FROM " + edgesTableName + " WHERE startNode = ? OR endnode = ?");
+        connection.c.prepareStatement(
+            "SELECT * FROM " + edgesTable + " WHERE startNode = ? OR endnode = ?");
     try {
       ResultSet listOfNodes = stmt.executeQuery(getNodes);
       while (listOfNodes.next()) {
@@ -221,8 +206,8 @@ public class DAOManager extends DAOImpl implements DAO_I {
   }
 
   public void printLocalDatabases() {
-    for (String key : nodes.keySet()) {
-      System.out.println(nodes.get(key).toString());
+    for (int key : nodes.keySet()) {
+      System.out.println(nodes.get(key));
     }
     for (String key : neighbors.keySet()) {
       System.out.print(key + "\t");
