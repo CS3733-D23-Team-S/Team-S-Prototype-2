@@ -3,6 +3,7 @@ package edu.wpi.teamname.Database;
 import edu.wpi.teamname.Database.Map.Edge;
 import edu.wpi.teamname.Database.Map.Floor;
 import edu.wpi.teamname.Database.Map.Node;
+import edu.wpi.teamname.Database.ServiceRequests.Food;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -14,16 +15,19 @@ public class DAOManager extends DAOImpl implements DAO_I {
 
   @Getter private HashMap<String, HashSet<String>> neighbors;
   @Getter private HashMap<Integer, Node> nodes;
+  @Getter private HashMap<Integer, Food> foods;
 
   public DAOManager() {
     neighbors = new HashMap<>();
     nodes = new HashMap<>();
+    foods = new HashMap<>();
   }
 
   @Override
   public void constructLocalDataBase() throws SQLException {
     if (!nodes.isEmpty()) nodes.clear();
     if (!neighbors.isEmpty()) neighbors.clear();
+    if (!foods.isEmpty()) foods.clear();
     constructLocalFloorDataBase();
     constructLocalNeighborsDB();
   }

@@ -13,6 +13,7 @@ public class dbConnection {
   protected static final String schemaName = "hospitaldb";
   protected static final String nodeTable = schemaName + "." + "nodes";
   protected static final String edgesTable = schemaName + "." + "edges";
+  protected static final String foodTable = schemaName + "." + "foods";
 
   private dbConnection() {
     try {

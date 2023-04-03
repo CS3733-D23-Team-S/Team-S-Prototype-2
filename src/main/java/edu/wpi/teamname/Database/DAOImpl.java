@@ -10,6 +10,8 @@ public abstract class DAOImpl {
   protected static final String schemaName = "hospitaldb";
   protected static final String nodeTable = schemaName + "." + "nodes";
   protected static final String edgesTable = schemaName + "." + "edges";
+
+  protected static final String foodsTable = schemaName + "." + "foods";
   dbConnection connection;
 
   public void establishConnection() {
@@ -43,11 +45,27 @@ public abstract class DAOImpl {
             + "(startNode Varchar(100),"
             + "endNode Varchar(100),"
             + "edgeID Varchar(100) UNIQUE )";
+
+    String foodTableConstruct =
+        "CREATE TABLE IF NOT EXISTS"
+            + foodsTable
+            + " "
+            + "(FoodID int,"
+            + "Name Varchar(100),"
+            + "Type int,"
+            + "PrepTime int,"
+            + "Cuisine int,"
+            + "Price money,"
+            + "Description Varchar(100),"
+            + "Quantity int,"
+            + "SoldOut boolean,"
+            + "Image Varchar(100))";
     try {
       stmt.execute(createSchema);
       stmt.execute(floorTableConstruct);
       stmt.execute(edgeTableConstruct);
-      System.out.println("Loaded the edges and floor tables into the database");
+      stmt.execute(foodTableConstruct);
+      System.out.println("Loaded the tables into the database");
     } catch (SQLException e) {
       System.out.println(e.getMessage());
       System.out.println(e.getSQLState());
