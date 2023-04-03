@@ -32,17 +32,13 @@ public abstract class DAOImpl {
             + "xcoord int,"
             + "ycoord int,"
             + "Floor int,"
-            + "Building Varchar(100),"
-            + "nodeType int,"
-            + "longName Varchar(100),"
-            + "shortName Varchar(100))";
+            + "Building Varchar(100))";
     String edgeTableConstruct =
         "CREATE TABLE IF NOT EXISTS "
             + edgesTable
             + " "
             + "(startNode Varchar(100),"
-            + "endNode Varchar(100),"
-            + "edgeID Varchar(100) UNIQUE )";
+            + "endNode Varchar(100))";
     try {
       stmt.execute(createSchema);
       stmt.execute(floorTableConstruct);
