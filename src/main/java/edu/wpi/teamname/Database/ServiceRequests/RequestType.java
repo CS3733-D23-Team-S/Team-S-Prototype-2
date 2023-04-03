@@ -1,4 +1,4 @@
-package edu.wpi.teamname.ServiceRequests;
+package edu.wpi.teamname.Database.ServiceRequests;
 
 public enum RequestType
 {
