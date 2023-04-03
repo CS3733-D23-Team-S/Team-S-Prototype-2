@@ -4,5 +4,5 @@ public enum Status {
   Complete,
 
   InProgress,
-  Recieved
+  Received
 }

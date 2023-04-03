@@ -3,7 +3,8 @@ package edu.wpi.teamname.Database;
 import edu.wpi.teamname.Database.Map.Edge;
 import edu.wpi.teamname.Database.Map.Floor;
 import edu.wpi.teamname.Database.Map.Node;
-import edu.wpi.teamname.Database.ServiceRequests.Food;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItem;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -72,6 +73,22 @@ public class DAOManager extends DAOImpl implements DAO_I {
       preparedStatement.setInt(8, thisFood.getQuantity());
       preparedStatement.setBoolean(9, thisFood.isSoldOut());
       preparedStatement.setString(10, thisFood.getImage());
+
+      preparedStatement.executeUpdate();
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
+  }
+
+  public void addOrderItem(OrderItem orderItem) {
+    try {
+      PreparedStatement preparedStatement =
+          connection.c.prepareStatement(
+              "INSERT INTO " + cartTable + " (FoodID ,quantity) " + " VALUES (?, ?)");
+      preparedStatement.setInt(1, orderItem.getItem().getFoodID());
+      preparedStatement.setInt(2, orderItem.getQuantity());
 
       preparedStatement.executeUpdate();
 

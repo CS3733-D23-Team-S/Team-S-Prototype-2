@@ -1,9 +1,14 @@
 package edu.wpi.teamname;
 
 import edu.wpi.teamname.Database.DAOManager;
-import edu.wpi.teamname.Database.ServiceRequests.Food;
-import edu.wpi.teamname.Database.ServiceRequests.FoodDAOImpl;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDAOImpl;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDelivery;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItem;
+import edu.wpi.teamname.Database.ServiceRequests.Room;
+
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 public class Sdb {
@@ -20,7 +25,10 @@ public class Sdb {
     dbManager.initTables();
 
     Food newFood = new Food(5, "Pizza", "Hello", 4, "String fc", 3.99, "String fd", 100);
+    OrderItem orderItem = new OrderItem(1, newFood, 3);
+    FoodDelivery newRequest = new FoodDelivery(1, 1, new Date("12/05/2003"), new Room(1,3), "admin");
     dbManager.addFood(newFood);
+    dbManager.addOrderItem(orderItem);
   }
   //
   //    String floorPath = "src/main/java/edu/wpi/teamname/Node.csv";

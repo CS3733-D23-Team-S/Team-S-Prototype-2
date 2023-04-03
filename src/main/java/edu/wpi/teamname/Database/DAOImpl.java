@@ -11,6 +11,8 @@ public abstract class DAOImpl {
   protected static final String nodeTable = schemaName + "." + "nodes";
   protected static final String edgesTable = schemaName + "." + "edges";
   protected static final String foodsTable = schemaName + "." + "foods";
+  protected static final String cartTable = schemaName + "." + "cart";
+  protected static final String ordersTable = schemaName + "." + "orders";
   dbConnection connection;
 
   public void establishConnection() {
@@ -23,6 +25,7 @@ public abstract class DAOImpl {
     String dropEdgeTable = "DROP TABLE IF EXISTS " + edgesTable;
     String dropFloorTable = "DROP TABLE IF EXISTS " + nodeTable + " CASCADE";
     String dropFoodTable = "DROP TABLE IF EXISTS " + foodsTable;
+    String dropOrderItemsTable = "DROP TABLE IF EXISTS " + cartTable;
 
     String createSchema = "CREATE SCHEMA IF NOT EXISTS " + schemaName;
     String floorTableConstruct =
@@ -48,7 +51,7 @@ public abstract class DAOImpl {
         "CREATE TABLE IF NOT EXISTS "
             + foodsTable
             + " "
-            + "(FoodID int,"
+            + "(FoodID int UNIQUE PRIMARY KEY,"
             + "Name Varchar(100),"
             + "Type Varchar(100),"
             + "PrepTime int,"
@@ -58,14 +61,32 @@ public abstract class DAOImpl {
             + "Quantity int,"
             + "SoldOut boolean,"
             + "Image Varchar(100))";
+
+    String cartTableConstruct =
+        "CREATE TABLE IF NOT EXISTS "
+            + cartTable
+            + " "
+            + "(deliveryID int,"
+            + "Quantity int,"
+            + " FOREIGN KEY (FoodID) REFERENCES hospitaldb.foods(FoodID))";
+
+    String ordersTableConstruct =
+            "CREATE TABLE IF NOT EXISTS "
+                    + ordersTable
+                    + " "
+                    + "(FoodID int,"
+                    + "Quantity int,"
+                    + " FOREIGN KEY (FoodID) REFERENCES hospitaldb.foods(FoodID))";
     try {
       stmt.execute(createSchema);
       stmt.execute(dropFloorTable);
       stmt.execute(dropEdgeTable);
       stmt.execute(dropFoodTable);
+      stmt.execute(dropOrderItemsTable);
       stmt.execute(floorTableConstruct);
       stmt.execute(edgeTableConstruct);
       stmt.execute(foodTableConstruct);
+      stmt.execute(cartTableConstruct);
       System.out.println("Loaded the tables into the database");
     } catch (SQLException e) {
       System.out.println(e.getMessage());

@@ -1,15 +1,18 @@
 package edu.wpi.teamname.Database.ServiceRequests;
 
+import edu.wpi.teamname.Database.Map.Node;
+
 import java.util.ArrayList;
 
 public class Room {
-  private int RoomSize;
-  private int RoomCap;
-  private ArrayList<RoomFeatures> RoomFeats;
+  private int nodeID;
+  private int roomSize;
 
-  public Room(int rs, int rc, ArrayList<RoomFeatures> rf) {
-    RoomSize = rs;
-    RoomCap = rc;
-    RoomFeats = rf;
+  private ArrayList<RoomFeatures> roomFeatures;
+
+  public Room(int nodeID, int roomSize) {
+    this.roomSize = roomSize;
+    this.nodeID = nodeID;
+
   }
 }

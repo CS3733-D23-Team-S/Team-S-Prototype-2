@@ -1,4 +1,4 @@
-package edu.wpi.teamname.Database.ServiceRequests;
+package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
 import lombok.Getter;
 import lombok.Setter;
