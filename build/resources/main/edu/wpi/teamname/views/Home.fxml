@@ -15,6 +15,12 @@
       <MFXButton fx:id="mealdelivery1Button" text="Meal Delivery Button">
          <StackPane.margin>
             <Insets top="80.0" />
+      <MFXButton fx:id="roomBookingButton" text="Room Booking">
+         <font>
+            <Font name="Nunito Sans Regular" size="16.0" />
+         </font>
+         <StackPane.margin>
+            <Insets top="100.0" />
          </StackPane.margin>
       </MFXButton>
    </children>
