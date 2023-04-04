@@ -112,16 +112,20 @@
          </children>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="850.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
             <MFXButton fx:id="backButton1" prefHeight="73.0" prefWidth="106.0" style="-fx-border-width: 9; -fx-border-color: F8BC54;" text="&lt;">
                <font>
                   <Font size="40.0" />
                </font>
             </MFXButton>
+            <MFXButton fx:id="backButton11" prefHeight="102.0" prefWidth="304.0" style="-fx-border-width: 9; -fx-border-color: F8BC54;" text="Submit   &gt;">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </MFXButton>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" GridPane.columnIndex="1" />
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" GridPane.columnIndex="2" />
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" />
