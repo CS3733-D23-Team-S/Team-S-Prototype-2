@@ -137,13 +137,13 @@ check.dependsOn jacocoTestCoverageVerification
 jacocoTestCoverageVerification.dependsOn jacocoTestReport
 compileJava.dependsOn 'spotlessApply'
 
-/*
+
 spotless {
     java {
         googleJavaFormat()
     }
 }
-*/
+
 
 
 tasks.withType(Jar).all {
