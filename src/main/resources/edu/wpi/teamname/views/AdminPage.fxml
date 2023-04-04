@@ -19,7 +19,7 @@
          <children>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="1600.0" style="-fx-background-color: D9D9D9;" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="80.0" prefWidth="1580.0" text="Brigham and Women's Hospital - Founding Member, Mass Brigham General" translateX="20.0" translateY="20.0">
+                  <Label alignment="TOP_LEFT" prefHeight="80.0" prefWidth="1581.0" text="Brigham and Women's Hospital - Founding Member, Mass Brigham General" translateX="20.0" translateY="20.0">
                      <font>
                         <Font name="Open Sans Regular" size="36.0" />
                      </font>
