@@ -78,7 +78,7 @@ public class Sdb {
     // foodDao.deleteFood(5);
     // dbManager.addOrderItem(orderItem, 1);
     // dbManager.addfoodRequest(newRequest);
-    foodDao.addFood(newFood);
+    // foodDao.addFood(newFood);
     OrderItemDAO cart = new OrderItemDAO(1);
     cart.addOrderItem(newFood, 3);
     cart.addOrderItemToDb(cart.getOrderItem("Pizza"));
