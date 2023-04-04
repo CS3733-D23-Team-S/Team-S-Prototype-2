@@ -22,7 +22,7 @@
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="2.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="155.39048767089844" minHeight="10.0" percentHeight="20.0" prefHeight="83.30475616455078" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="286.5475311279297" minHeight="10.0" percentHeight="10.0" prefHeight="261.1952438354492" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="286.5475311279297" minHeight="10.0" percentHeight="70.0" prefHeight="261.1952438354492" vgrow="SOMETIMES" />
@@ -66,7 +66,10 @@
       <SplitMenuButton mnemonicParsing="false" text="Filter" GridPane.columnIndex="2" GridPane.rowIndex="1">
         <items>
           <MenuItem mnemonicParsing="false" text="Vegetarian" />
-          <MenuItem mnemonicParsing="false" text="Gluten Free" />
+          <MenuItem mnemonicParsing="false" text="Halal" />
+            <MenuItem mnemonicParsing="false" text="Vegan" />
+            <MenuItem mnemonicParsing="false" text="Gluten Free" />
+            <MenuItem mnemonicParsing="false" text="Kosher" />
         </items>
          <font>
             <Font size="24.0" />
@@ -83,13 +86,14 @@
                   </Text>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" style="-fx-background-color: d9d9d9;">
                <children>
                   <ImageView fx:id="mcheese" fitHeight="87.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../../../../../Desktop/maccheese.png" />
                      </image>
                   </ImageView>
+                  <MFXButton alignment="CENTER" prefHeight="87.0" prefWidth="118.0" />
                </children></HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                <children>
@@ -100,7 +104,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" />
+            <HBox fx:id="wf" prefHeight="100.0" prefWidth="200.0" spacing="100.0" style="-fx-background-color: d9d9d9;" />
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Most Popular">
@@ -114,15 +118,23 @@
          </children>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="900.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <MFXButton fx:id="backButton1"  prefHeight="73.0" prefWidth="106.0" style="-fx-border-width: 9; -fx-border-color: F8BC54;" text="&lt;">
+            <MFXButton fx:id="backButton1" prefHeight="73.0" prefWidth="106.0" style="-fx-border-width: 9; -fx-border-color: F8BC54;" text="&lt;">
                <font>
                   <Font size="40.0" />
                </font>
             </MFXButton>
+            <MFXButton fx:id="backButton11" prefHeight="102.0" prefWidth="245.0" style="-fx-border-width: 9; -fx-border-color: F8BC54;" text="Submit &gt;">
+               <font>
+                  <Font name="Open Sans Regular" size="24.0" />
+               </font>
+            </MFXButton>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #d9d9d9;" GridPane.columnIndex="1" />
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" />
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" GridPane.columnIndex="2" />
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" GridPane.columnIndex="3" />
    </children>
 </GridPane>
