@@ -6,7 +6,6 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.List;
 
-
 public class LoginDAOImpl implements LoginDAOI
 {
     private dbConnection connection;
