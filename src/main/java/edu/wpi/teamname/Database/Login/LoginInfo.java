@@ -1,17 +1,24 @@
 package edu.wpi.teamname.Database.Login;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class LoginInfo
 {
+    @Setter @Getter
     private String username;
+    @Setter @Getter
     private String password;
-    private Permission permissionLevel;
+    //@Setter @Getter
+    //private Permission permission;
 
-    public LoginInfo(String username, String password, Permission permissionLevel)
+    public LoginInfo(String username, String password)
     {
         this.username = username;
         this.password = password;
-        this.permissionLevel = permissionLevel;
+        //this.permission = permission;
     }
+
 
 
 
