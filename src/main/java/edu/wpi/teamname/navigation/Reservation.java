@@ -3,7 +3,17 @@ package edu.wpi.teamname.navigation;
 public class Reservation {
 
     int startTime, endTime;
-    String name, floor, eventName, eventDescription, reservedBy;    // TODO reservedBy user, name+floor -> roomLocation
+    String eventName, eventDescription, reservedBy;    // TODO reservedBy user, name+floor -> roomLocation
+    Room room;
+
+    public Reservation(int startTime, int endTime, Room room, String eventName, String eventDescription, String reservedBy) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.room = room;
+        this.eventName = eventName;
+        this.eventDescription = eventDescription;
+        this.reservedBy = reservedBy;
+    }
 
     // CONSTRUCTORS
     public int startTime() {
@@ -18,18 +28,10 @@ public class Reservation {
     public void setEndTime(String endTime) {
         endTime = endTime;
     }
-    public String name() {
-        return name;
+    public Room room() {
+        return room;
     }
-    public void setName(String name) {
-        name = name;
-    }
-    public String floor() {
-        return floor;
-    }
-    public void setFloor(String floor) {
-        floor = floor;
-    }
+    public void setRoom(Room room) { this.room = room; };
     public String eventName() {
         return eventName;
     }
@@ -48,6 +50,7 @@ public class Reservation {
     public void setReservedBy(String reservedBy) {
         reservedBy = reservedBy;
     }
+
 
 
 }

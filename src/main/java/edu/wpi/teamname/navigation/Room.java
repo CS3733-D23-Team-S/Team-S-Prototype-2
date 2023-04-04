@@ -3,19 +3,23 @@ package edu.wpi.teamname.navigation;
 import java.util.ArrayList;
 
 public class Room {         // TODO name + floor -> roomLocation, features -> list(?)
+    int id;                 // TODO can be replaced if too complex!
     String name;
     String floor;
     int cap;
     String features;
     ArrayList<Reservation> reservationsList = new ArrayList<Reservation>();
 
-    public Room(String name, String floor, int cap, String features) {
+    public Room(int id, String name, String floor, int cap, String features) {
+        this.id = id;
         this.name = name;
         this.floor = floor;
         this.cap = cap;
         this.features = features;
     }
 
+    public int id() { return id; }
+    public void setId(int id) { this.id = id; }
     public String name() {
         return name;
     }
@@ -42,6 +46,7 @@ public class Room {         // TODO name + floor -> roomLocation, features -> li
                 return false;
             } else {
                 reservationsList.add(r);
+                System.out.println("ERROR: Time is already booked.");
                 return true;
             }
         }
