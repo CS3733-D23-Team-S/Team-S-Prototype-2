@@ -11,9 +11,9 @@ public class Location {
   @Getter @Setter private String shortName;
   @Getter @Setter private List<Date> dates;
 
-  @Getter @Setter private Node building;
+  @Getter @Setter private Node node;
 
-  public Location(NodeType nodeType, String longName, String shortName) {
+  public Location(String longName, String shortName, NodeType nodeType) {
     this.nodeType = nodeType;
     this.longName = longName;
     this.shortName = shortName;

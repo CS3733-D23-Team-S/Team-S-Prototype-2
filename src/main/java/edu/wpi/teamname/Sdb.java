@@ -1,10 +1,73 @@
 package edu.wpi.teamname;
 
-import java.sql.SQLException;
-import java.util.NoSuchElementException;
+import edu.wpi.teamname.Database.DAOManager;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.*;
+import edu.wpi.teamname.Database.ServiceRequests.Room;
 
 public class Sdb {
-  public static void main(String[] args) throws SQLException, NoSuchElementException {}
+  public static void main(String[] args) throws Exception {
+    // String foodPath = "";
+    FoodDAOImpl foodDao = FoodDAOImpl.getInstance();
+    // foodDao.csvToFood(foodPath);
+
+    DAOManager dbManager = new DAOManager();
+    // Establish connection to database
+    dbManager.establishConnection();
+
+    // Create Empty Table
+    dbManager.initTables();
+
+    Food newFood = new Food(5, "Pizza", "Hello", 4, "String fc", 3.99, "String fd", 100);
+
+    foodDao.addFood(newFood);
+    OrderItemDAO cart = new OrderItemDAO(1);
+    cart.addOrderItem(newFood, 3);
+    cart.addOrderItemToDb(cart.getOrderItem("Pizza"));
+    FoodDelivery newRequest = new FoodDelivery(1, cart, null, new Room(1, 3), "admin");
+
+    FoodDeliveryDAOImp foodRequest = FoodDeliveryDAOImp.getInstance();
+    foodRequest.addfoodRequest(newRequest);
+  }
+  //
+  //    String floorPath = "src/main/java/edu/wpi/teamname/Node.csv";
+  //    String edgePath = "src/main/java/edu/wpi/teamname/Edge.csv";
+  //
+  //    NodeDaoImpl nodeDao = NodeDaoImpl.getInstance();
+  //    EdgeDaoImpl edgeDao = EdgeDaoImpl.getInstance();
+  //    nodeDao.csvToNode(floorPath);
+  //    edgeDao.csvToEdges(edgePath);
+  //
+  //    //    for (Edge thisEdge : converter.getEdges()) {
+  //    //      System.out.println(thisEdge.toString());
+  //    //    }
+  //
+  //    DAOManager dbManager = new DAOManager();
+  //    // Establish connection to database
+  //    dbManager.establishConnection();
+  //
+  //    // Create Empty Table
+  //    dbManager.initTables();
+  //
+  //    // Inputing Nodes into Data base
+  //    for (Node thisNode : nodeDao.getAllNodes()) {
+  //      dbManager.addNode(thisNode);
+  //    }
+  //
+  //    // Inputting Edges into Database
+  //    for (Edge thisEdge : edgeDao.getAllEdges()) {
+  //      dbManager.addEdge(thisEdge);
+  //    }
+  //    dbManager.constructLocalDataBase();
+  //    //    dbManager.printLocalDatabases();
+  //    //    dbManager.updateLocationName("CLABS002L1", "White House");
+  //    //    dbManager.updateCoord("CLABS002L1", 200, 300);
+  //    //    dbManager.retrieveRow("CLABS002L1");
+  //    //    dbManager.deleteNode("CSERV001L2");
+  //
+  //    //    dbManager.printLocalDatabases();
+  //
+  //    // App.launch(App.class, args);
+  //  }
 
   public static void help() {
     System.out.println("HELP------------");

@@ -3,7 +3,7 @@ package edu.wpi.teamname.Database.Map;
 import java.util.List;
 
 public interface NodeDOA_I {
-  public List<Node> getAllStudents();
+  public List<Node> getAllNodes();
 
   public Node getNode(int nodeID);
 
