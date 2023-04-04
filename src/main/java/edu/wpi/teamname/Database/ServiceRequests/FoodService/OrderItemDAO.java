@@ -1,11 +1,10 @@
 package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
+import edu.wpi.teamname.Database.dbConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import edu.wpi.teamname.Database.dbConnection;
 import lombok.Getter;
 
 public class OrderItemDAO {
@@ -34,11 +33,16 @@ public class OrderItemDAO {
     cart.add(new OrderItem(this.cartID, item, quantity));
   }
 
-  public void addOrderItemToDb(OrderItem orderItem, int cartID) {
+  public void addOrderItemToDb(OrderItem orderItem) {
     try {
       PreparedStatement preparedStatement =
-              connection.c.prepareStatement(
-                      "INSERT INTO " + cartTable + " (CartID, FoodID ,quantity) " + " VALUES (?, ?, ?)");
+          connection
+              .getC()
+              .prepareStatement(
+                  "INSERT INTO "
+                      + cartTable
+                      + " (CartID, FoodID ,quantity) "
+                      + " VALUES (?, ?, ?)");
       preparedStatement.setInt(1, cartID);
       preparedStatement.setInt(2, orderItem.getItem().getFoodID());
       preparedStatement.setInt(3, orderItem.getQuantity());

@@ -1,7 +1,6 @@
 package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
 import edu.wpi.teamname.Database.dbConnection;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -24,13 +23,16 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
   }
 
   public void addfoodRequest(FoodDelivery request) {
+    requests.put(request.deliveryID, request);
     try {
       PreparedStatement preparedStatement =
-              connection.c.prepareStatement(
-                      "INSERT INTO "
-                              + foodRequestsTable
-                              + " (deliveryID, CartID, orderDate , employee, room, cost, notes) "
-                              + " VALUES (?, ?, ?, ?, ?, ?, ?)");
+          connection
+              .getC()
+              .prepareStatement(
+                  "INSERT INTO "
+                      + foodRequestsTable
+                      + " (deliveryID, CartID, orderDate , employee, room, cost, notes) "
+                      + " VALUES (?, ?, ?, ?, ?, ?, ?)");
       preparedStatement.setInt(1, request.getDeliveryID());
       preparedStatement.setInt(2, request.getCart().getCartID());
       preparedStatement.setDate(3, null);

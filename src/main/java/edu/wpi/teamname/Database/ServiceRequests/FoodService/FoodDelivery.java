@@ -11,7 +11,7 @@ public class FoodDelivery {
 
   @Getter int deliveryID;
   @Getter OrderItemDAO cart;
-  @Getter Date date;
+  @Getter @Setter Date date;
   @Getter @Setter LocalTime time;
   @Getter Room room;
   @Getter @Setter String user;

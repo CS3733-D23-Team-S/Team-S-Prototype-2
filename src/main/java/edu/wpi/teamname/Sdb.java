@@ -2,6 +2,7 @@ package edu.wpi.teamname;
 
 import edu.wpi.teamname.Database.DAOManager;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.*;
+import edu.wpi.teamname.Database.ServiceRequests.Room;
 
 public class Sdb {
   public static void main(String[] args) throws Exception {
@@ -17,14 +18,15 @@ public class Sdb {
     dbManager.initTables();
 
     Food newFood = new Food(5, "Pizza", "Hello", 4, "String fc", 3.99, "String fd", 100);
-    // OrderItem orderItem = new OrderItem(1, newFood, 3);
-    // OrderItemDAO cart = new OrderItemDAO(1);
-    // cart.addOrderItem(newFood, 3);
-    // FoodDelivery newRequest = new FoodDelivery(1, cart, new Date(), new Room(1, 3), "admin");
 
-    //foodDao.addFood(newFood);
-    // dbManager.addOrderItem(orderItem, 1);
-    // dbManager.addfoodRequest(newRequest);
+    foodDao.addFood(newFood);
+    OrderItemDAO cart = new OrderItemDAO(1);
+    cart.addOrderItem(newFood, 3);
+    cart.addOrderItemToDb(cart.getOrderItem("Pizza"));
+    FoodDelivery newRequest = new FoodDelivery(1, cart, null, new Room(1, 3), "admin");
+
+    FoodDeliveryDAOImp foodRequest = FoodDeliveryDAOImp.getInstance();
+    foodRequest.addfoodRequest(newRequest);
   }
   //
   //    String floorPath = "src/main/java/edu/wpi/teamname/Node.csv";
