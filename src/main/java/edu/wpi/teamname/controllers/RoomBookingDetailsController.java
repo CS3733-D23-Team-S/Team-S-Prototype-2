@@ -9,29 +9,28 @@ import javafx.fxml.FXML;
 
 public class RoomBookingDetailsController {
 
-  @FXML MFXButton submitButton;
+  @FXML MFXButton submitDetailsButton;
   @FXML MFXTextField roomLocationText;
   @FXML MFXTextField roomTimesText;
-  @FXML MFXTextField eventNameText;
+  @FXML MFXTextField eventTitleText;
   @FXML MFXTextField eventDescriptionText;
   @FXML MFXButton backButton;
 
   String roomLocation;
   String roomTimes;
-  String eventName;
+  String eventTitle;
   String eventDescription;
 
   @FXML
   public void initialize() {
-    submitButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING));
-
+    submitDetailsButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING));
   }
 
   @FXML
   public void submitDetails(ActionEvent event) {
     roomLocation = roomLocationText.getText();
     roomTimes = roomTimesText.getText();
-    eventName = eventNameText.getText();
+    eventTitle = eventTitleText.getText();
     eventDescription = eventDescriptionText.getText();
   }
 }

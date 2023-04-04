@@ -8,9 +8,11 @@ import javafx.fxml.FXML;
 public class HomeController {
 
   @FXML MFXButton navigateButton;
+  @FXML MFXButton roomBookingButton;
 
   @FXML
   public void initialize() {
     navigateButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUEST));
+    roomBookingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING));
   }
 }
