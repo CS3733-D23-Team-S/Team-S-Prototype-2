@@ -1,10 +1,14 @@
 package edu.wpi.teamname.controllers;
 
-import java.io.IOException;
-import java.sql.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ExampleController {
   @FXML Button ClickButton; // fx:ID of the button in the ExampleFXML

@@ -2,7 +2,6 @@ package edu.wpi.teamname.algorithms;
 
 import edu.wpi.teamname.Database.DAOManager;
 import edu.wpi.teamname.Database.Map.Node;
-
 import java.util.*;
 
 public class AStar {
