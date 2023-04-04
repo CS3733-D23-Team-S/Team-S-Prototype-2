@@ -36,7 +36,7 @@ public class Node {
         + "floor = "
         + floor
         + "  "
-        + "building="
+        + "building = "
         + building
         + "}";
   }

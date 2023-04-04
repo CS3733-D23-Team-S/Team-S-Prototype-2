@@ -22,7 +22,7 @@ public class Move {
         + nodeID
         + ", location = '"
         + location
-        + ", date ="
+        + ", date = "
         + date.toString()
         + '}';
   }

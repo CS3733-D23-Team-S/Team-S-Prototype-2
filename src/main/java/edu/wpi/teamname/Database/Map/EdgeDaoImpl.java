@@ -20,7 +20,7 @@ public class EdgeDaoImpl implements EdgeDoa_I {
   dbConnection connection;
   NodeDaoImpl nodeDao = NodeDaoImpl.getInstance();
   List<Edge> edges = new ArrayList<>();
-  HashMap<Integer, HashSet<Integer>> neighbors = new HashMap<>();
+  @Getter HashMap<Integer, HashSet<Integer>> neighbors = new HashMap<>();
 
   private EdgeDaoImpl() {
     connection = dbConnection.getInstance();
