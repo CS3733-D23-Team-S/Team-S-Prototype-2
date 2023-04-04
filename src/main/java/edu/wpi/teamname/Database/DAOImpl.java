@@ -46,7 +46,13 @@ public abstract class DAOImpl {
             + " "
             + "(startNode Varchar(100),"
             + "endNode Varchar(100),"
-            + "edgeID Varchar(100) UNIQUE )";
+            + "edgeID Varchar(100) UNIQUE,"
+            + "foreign key (startNode) references "
+            + nodeTable
+            + "(nodeID) ON DELETE CASCADE,"
+            + "foreign key (endNode) references "
+            + nodeTable
+            + "(nodeID) ON DELETE CASCADE)";
 
     String foodTableConstruct =
         "CREATE TABLE IF NOT EXISTS "
@@ -67,23 +73,27 @@ public abstract class DAOImpl {
         "CREATE TABLE IF NOT EXISTS "
             + cartTable
             + " "
-            + "(cartID int UNIQUE PRIMARY KEY, "
-            + " FoodID int, "
+            + "(cartID int UNIQUE PRIMARY KEY,"
+            + "FoodID int,"
             + "Quantity int,"
-            + " FOREIGN KEY (FoodID) REFERENCES hospitaldb.foods(FoodID))";
+            + "FOREIGN KEY (FoodID) REFERENCES "
+            + foodsTable
+            + "(FoodID) ON DELETE CASCADE)";
 
     String foodOrdersTableConstruct =
         "CREATE TABLE IF NOT EXISTS "
             + foodRequestsTable
             + " "
-            + "(deliveryID int UNIQUE PRIMARY KEY, "
-            + "cartID int, "
-            + "orderDate Date, "
-            + "employee Varchar(100), "
-            + "room int, "
-            + "cost int, "
-            + "notes Varchar(100), "
-            + "FOREIGN KEY (cartID) REFERENCES hospitaldb.cart(cartID))";
+            + "(deliveryID int UNIQUE PRIMARY KEY,"
+            + "cartID int,"
+            + "orderDate Date,"
+            + "employee Varchar(100),"
+            + "room int,"
+            + "cost int,"
+            + "notes Varchar(100),"
+            + "FOREIGN KEY (cartID) REFERENCES "
+            + cartTable
+            + "(cartID) ON DELETE CASCADE)";
     try {
       stmt.execute(createSchema);
       stmt.execute(dropFloorTable);
@@ -117,3 +127,7 @@ public abstract class DAOImpl {
     }
   }
 }
+
+// Have over arching load csvs
+// have overarching export csvs
+// have combo of init tables
