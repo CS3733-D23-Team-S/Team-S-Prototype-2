@@ -8,9 +8,10 @@ public interface MoveDAO_I {
 
   void initTable(String name);
 
-  List<Move> getLocationMove(String location);
+  boolean checkCanMove(String location,LocalDate date);
 
-  Move getMove(String location, LocalDate moveDate) throws Exception;
+  Move getMove(String location);
+  String processMoveRequest(int newLocNodeID, String location, LocalDate date) throws Exception;
 
   void loadToRemote(String pathToCSV);
 }
