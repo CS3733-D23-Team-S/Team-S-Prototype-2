@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 public interface DAO_I {
 
-  void establishConnection();
+
 
   void initTables() throws SQLException;
 
@@ -12,5 +12,5 @@ public interface DAO_I {
 
   void resetData() throws SQLException;
 
-  void constructLocalDataBase() throws SQLException;
+
 }

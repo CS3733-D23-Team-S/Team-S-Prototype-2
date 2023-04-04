@@ -3,11 +3,17 @@ package edu.wpi.teamname.Database.Map;
 import java.util.List;
 
 public interface NodeDOA_I {
-  public List<Node> getAllNodes();
+   List<Node> getAllNodes();
 
-  public Node getNode(int nodeID);
+   void initTable(String name);
 
-  public void updateNode(Node node);
+   Node getNode(int nodeID);
 
-  public void deleteStudent(Node node);
+   void updateNode(Node node);
+
+  void deleteNode(Node node);
+
+  void loadToRemote(String pathToCSV);
+
+  void addNode(Node thisNode);
 }

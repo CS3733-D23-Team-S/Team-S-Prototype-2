@@ -16,8 +16,8 @@ public class Sdb {
 
     NodeDaoImpl nodeDao = NodeDaoImpl.getInstance();
     EdgeDaoImpl edgeDao = EdgeDaoImpl.getInstance();
-    nodeDao.csvToNode(floorPath);
-    edgeDao.csvToEdges(edgePath);
+//    nodeDao.csvToNode(floorPath);
+//    edgeDao.csvToEdges(edgePath);
 
     //    for (Edge thisEdge : converter.getEdges()) {
     //      System.out.println(thisEdge.toString());

@@ -33,4 +33,8 @@ public class dbConnection {
 
     return single_instance;
   }
+
+  public Connection getConnection(){
+    return c;
+  }
 }
