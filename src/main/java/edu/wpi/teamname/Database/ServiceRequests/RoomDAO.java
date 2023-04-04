@@ -1,6 +1,3 @@
 package edu.wpi.teamname.Database.ServiceRequests;
 
-public class RoomDAO {
-
-
-}
+public class RoomDAO {}
