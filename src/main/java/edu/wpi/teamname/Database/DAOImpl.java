@@ -67,7 +67,17 @@ public abstract class DAOImpl {
             + "Description Varchar(100),"
             + "Quantity int,"
             + "SoldOut boolean,"
-            + "Image Varchar(100))";
+            + "Image Varchar(100),"
+            + "Calories int,"
+            + "Italian boolean,"
+            + "American boolean,"
+            + "Indian boolean,"
+            + "Mexican boolean,"
+            + "Vegetarian boolean,"
+            + "Halal boolean,"
+            + "Vegan boolean,"
+            + "GlutenFree boolean,"
+            + "Kosher boolean)";
 
     String cartTableConstruct =
         "CREATE TABLE IF NOT EXISTS "

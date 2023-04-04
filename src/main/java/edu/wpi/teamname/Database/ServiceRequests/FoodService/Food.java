@@ -5,19 +5,46 @@ import lombok.Setter;
 
 public class Food {
   @Getter private int FoodID;
-  @Getter private String FoodName;
+  @Getter @Setter private String FoodName;
   @Getter private String FoodType;
-  @Getter private int FoodPrepTime;
+  @Getter @Setter private int FoodPrepTime;
   @Getter private String FoodCuisine;
   @Getter @Setter private double FoodPrice;
   @Getter @Setter private String FoodDescription;
-  @Getter private int quantity;
   @Setter private boolean isSoldOut;
   @Getter @Setter private String image;
+  @Getter @Setter private int calories;
 
-  // FoodImage
+  @Getter @Setter private boolean isItalian;
+  @Getter @Setter private boolean isAmerican;
+  @Getter @Setter private boolean isMexican;
+  @Getter @Setter private boolean isIndian;
+  @Getter @Setter private boolean isVegetarian;
+  @Getter @Setter private boolean isHalal;
+  @Getter @Setter private boolean isVegan;
+  @Getter @Setter private boolean isGlutFree;
+  @Getter @Setter private boolean isKosher;
 
-  public Food(int fid, String fn, String ft, int fpt, String fc, double fp, String fd, int q) {
+  public Food(
+      int fid,
+      String fn,
+      String ft,
+      int fpt,
+      String fc,
+      double fp,
+      String fd,
+      boolean so,
+      String i,
+      int c,
+      boolean am,
+      boolean it,
+      boolean mex,
+      boolean in,
+      boolean vege,
+      boolean veg,
+      boolean hal,
+      boolean g,
+      boolean k) {
     FoodID = fid;
     FoodName = fn;
     FoodType = ft;
@@ -25,8 +52,19 @@ public class Food {
     FoodCuisine = fc;
     FoodPrice = fp;
     FoodDescription = fd;
-    quantity = q;
-    isSoldOut = false;
+    isSoldOut = so;
+    image = i;
+    calories = c;
+
+    isAmerican = am;
+    isItalian = it;
+    isMexican = mex;
+    isIndian = in;
+    isVegetarian = vege;
+    isVegan = veg;
+    isHalal = hal;
+    isGlutFree = g;
+    isKosher = k;
   }
 
   public boolean isSoldOut() {
@@ -52,8 +90,10 @@ public class Food {
             + FoodPrice
             + "\nDescription: "
             + FoodDescription
-            + "\nAmount in Stock: "
-            + quantity;
+            + "\nImage Path: "
+            + image
+            + "\nCalories: "
+            + calories;
 
     if (isSoldOut) theFood = theFood + "\nSOLD OUT!";
     else theFood = theFood + "\nIN STOCK";
