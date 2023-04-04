@@ -4,7 +4,6 @@ import edu.wpi.teamname.Database.Map.Edge;
 import edu.wpi.teamname.Database.Map.Floor;
 import edu.wpi.teamname.Database.Map.Node;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
-import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDelivery;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItem;
 import java.sql.*;
 import java.sql.PreparedStatement;
@@ -77,31 +76,33 @@ public class DAOManager extends DAOImpl implements DAO_I {
   //          + "Date orderDate, "
   //          + "String user, "
   //          + "String room,
+  /*
+   public void addfoodRequest(FoodDelivery request) {
+     try {
+       PreparedStatement preparedStatement =
+           connection.c.prepareStatement(
+               "INSERT INTO "
+                   + foodRequestsTable
+                   + " (deliveryID, CartID, orderDate , employee, room, cost, notes) "
+                   + " VALUES (?, ?, ?, ?, ?, ?, ?)");
+       preparedStatement.setInt(1, request.getDeliveryID());
+       preparedStatement.setInt(2, request.getCart().getCartID());
+       preparedStatement.setDate(3, null);
+       preparedStatement.setString(4, request.getUser());
+       preparedStatement.setInt(5, request.getRoom().getNodeID());
+       preparedStatement.setDouble(6, request.orderTotal());
+       preparedStatement.setString(7, request.getNotes());
 
-  public void addfoodRequest(FoodDelivery request) {
-    try {
-      PreparedStatement preparedStatement =
-          connection.c.prepareStatement(
-              "INSERT INTO "
-                  + foodRequestsTable
-                  + " (deliveryID, CartID, orderDate , employee, room, cost, notes) "
-                  + " VALUES (?, ?, ?, ?, ?, ?, ?)");
-      preparedStatement.setInt(1, request.getDeliveryID());
-      preparedStatement.setInt(2, request.getCart().getCartID());
-      preparedStatement.setDate(3, null);
-      preparedStatement.setString(4, request.getUser());
-      preparedStatement.setInt(5, request.getRoom().getNodeID());
-      preparedStatement.setDouble(6, request.orderTotal());
-      preparedStatement.setString(7, request.getNotes());
+       preparedStatement.executeUpdate();
 
-      preparedStatement.executeUpdate();
+     } catch (SQLException e) {
+       e.printStackTrace();
+       System.out.println(e.getSQLState());
+     }
+   }
 
-    } catch (SQLException e) {
-      e.printStackTrace();
-      System.out.println(e.getSQLState());
-    }
-  }
 
+  */
   public void addEdge(Edge thisEdge) {
     try {
       PreparedStatement preparedStatement =

@@ -7,6 +7,7 @@ import edu.wpi.teamname.Database.ServiceRequests.Room;
 public class Sdb {
   public static void main(String[] args) throws Exception {
     // String foodPath = "";
+    System.out.println("Here");
     FoodDAOImpl foodDao = FoodDAOImpl.getInstance();
     // foodDao.csvToFood(foodPath);
 
