@@ -35,7 +35,7 @@
                         <Font size="30.0" />
                     </font>
                 </TextField2TableCell>
-                <MFXTextField prefHeight="51.0" prefWidth="631.0" />
+                <MFXTextField fx:id="roomLocationText" prefHeight="51.0" prefWidth="631.0" />
                 <TextField2TableCell prefHeight="63.0" prefWidth="771.0" text="Booking Times" textFill="#1d3d94">
                     <font>
                         <Font size="30.0" />
@@ -47,7 +47,7 @@
                         <Font size="30.0" />
                     </font>
                 </TextField2TableCell>
-                <MFXTextField fx:id="eventTitle" prefHeight="51.0" prefWidth="631.0" />
+                <MFXTextField fx:id="eventTitleText" prefHeight="51.0" prefWidth="631.0" />
                 <TextField2TableCell prefHeight="63.0" prefWidth="771.0" text="Event Description" textFill="#1d3d94">
                     <font>
                         <Font size="30.0" />
@@ -64,5 +64,10 @@
                 </MFXButton>
             </children>
         </VBox>
+        <MFXButton fx:id="backButton" layoutX="783.0" layoutY="844.0" prefHeight="30.0" prefWidth="30.0" style="-fx-border-width: 9; -fx-border-color: F8BC54;" text="&lt;">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </MFXButton>
     </children>
 </GridPane>
