@@ -25,19 +25,20 @@ public class Node {
   public String toString() {
 
     return "Node{"
-        + "nodeID="
+        + "nodeID = "
         + nodeID
         + "  "
-        + "coords=("
+        + "coords = ("
         + xCoord
         + ", "
         + yCoord
-        + "  "
-        + "floor="
+        + ") "
+        + "floor = "
         + floor
         + "  "
         + "building="
-        + building;
+        + building
+        + "}";
   }
 
   public void addLocation(Location newlocation) {

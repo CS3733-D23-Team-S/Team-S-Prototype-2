@@ -1,7 +1,7 @@
 package edu.wpi.teamname.Database.Map;
 
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +9,7 @@ public class Location {
   @Getter @Setter private NodeType nodeType;
   @Getter @Setter private String longName;
   @Getter @Setter private String shortName;
-  @Getter @Setter private List<Date> dates;
+  @Getter @Setter private Date mostRecentMove = null;
 
   @Getter @Setter private Node node;
 
@@ -17,5 +17,24 @@ public class Location {
     this.nodeType = nodeType;
     this.longName = longName;
     this.shortName = shortName;
+  }
+
+  public void updateDate(Date date) {
+    this.mostRecentMove = date;
+  }
+
+  public boolean checkDateEquals(LocalDate date) {
+    return this.mostRecentMove.equals(date);
+  }
+
+  @Override
+  public String toString() {
+    return "Location{notetype = "
+        + this.nodeType.toString()
+        + ", longname =  "
+        + this.longName
+        + ", shortname = "
+        + this.shortName
+        + "}";
   }
 }

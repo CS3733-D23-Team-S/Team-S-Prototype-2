@@ -3,13 +3,13 @@ package edu.wpi.teamname.Database.Map;
 import java.util.List;
 
 public interface NodeDOA_I {
-   List<Node> getAllNodes();
+  List<Node> getAllNodes();
 
-   void initTable(String name);
+  void initTable(String name);
 
-   Node getNode(int nodeID);
+  Node getNode(int nodeID);
 
-   void updateNode(Node node);
+  void updateNode(Node node);
 
   void deleteNode(Node node);
 
