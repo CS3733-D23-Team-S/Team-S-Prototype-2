@@ -16,13 +16,65 @@ public class Sdb {
     // Create Empty Table
     dbManager.initTables();
 
-    Food newFood = new Food(5, "Pizza", "Hello", 4, "String fc", 3.99, "String fd", 100);
+    Food newFood =
+        new Food(
+            5,
+            "Pizza",
+            "Hello",
+            4,
+            "String fc",
+            3.99,
+            "String fd",
+            false,
+            "image",
+            69,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false);
+    Food newFoodt =
+        new Food(
+            6,
+            "za",
+            "Hello",
+            4,
+            "String fc",
+            3.99,
+            "String fd",
+            false,
+            "image",
+            420,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false);
     // OrderItem orderItem = new OrderItem(1, newFood, 3);
     // OrderItemDAO cart = new OrderItemDAO(1);
     // cart.addOrderItem(newFood, 3);
     // FoodDelivery newRequest = new FoodDelivery(1, cart, new Date(), new Room(1, 3), "admin");
 
-    //foodDao.addFood(newFood);
+    foodDao.addFood(newFood);
+    foodDao.addFood(newFoodt);
+    /*
+    System.out.println(foodDao.getFoods().get(newFood.getFoodID()));
+    newFood.setFoodDescription("I changed the description to this");
+
+    System.out.println(foodDao.getFoods().get(newFood.getFoodID()));
+
+    foodDao.updateFood(newFood.getFoodID());
+    */
+
+    // foodDao.deleteFood(5);
     // dbManager.addOrderItem(orderItem, 1);
     // dbManager.addfoodRequest(newRequest);
   }

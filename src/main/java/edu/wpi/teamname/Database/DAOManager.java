@@ -56,33 +56,6 @@ public class DAOManager extends DAOImpl implements DAO_I {
     }
   }
 
-  public void addFood(Food thisFood) {
-    try {
-      PreparedStatement preparedStatement =
-          connection.c.prepareStatement(
-              "INSERT INTO "
-                  + foodsTable
-                  + " (FoodID , Name ,Type , PrepTime, Cuisine, Price, Description, Quantity, SoldOut, Image) "
-                  + " VALUES (?, ?, ? ,?, ?, ?, ?, ?, ?, ?)");
-      preparedStatement.setInt(1, thisFood.getFoodID());
-      preparedStatement.setString(2, thisFood.getFoodName());
-      preparedStatement.setString(3, thisFood.getFoodType());
-      preparedStatement.setInt(4, thisFood.getFoodPrepTime());
-      preparedStatement.setString(5, thisFood.getFoodCuisine());
-      preparedStatement.setDouble(6, thisFood.getFoodPrice());
-      preparedStatement.setString(7, thisFood.getFoodDescription());
-      preparedStatement.setInt(8, thisFood.getQuantity());
-      preparedStatement.setBoolean(9, thisFood.isSoldOut());
-      preparedStatement.setString(10, thisFood.getImage());
-
-      preparedStatement.executeUpdate();
-
-    } catch (SQLException e) {
-      e.printStackTrace();
-      System.out.println(e.getSQLState());
-    }
-  }
-
   public void addOrderItem(OrderItem orderItem, int cartID) {
     try {
       PreparedStatement preparedStatement =
