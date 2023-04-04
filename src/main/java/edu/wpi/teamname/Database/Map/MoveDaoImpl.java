@@ -4,6 +4,7 @@ import edu.wpi.teamname.Database.dbConnection;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +18,7 @@ public class MoveDaoImpl implements MoveDAO_I {
   private static MoveDaoImpl single_instance;
   @Getter private String name;
   dbConnection connection;
-  @Getter List<Move> moves;
+  @Getter List<Move> moves = new ArrayList<>();
   @Getter HashMap<Integer, Move> movesORM = new HashMap<>();
   LocationDoaImpl locationDoa = LocationDoaImpl.getInstance();
   NodeDaoImpl nodeDao = NodeDaoImpl.getInstance();
@@ -44,7 +45,7 @@ public class MoveDaoImpl implements MoveDAO_I {
         "CREATE TABLE IF NOT EXISTS "
             + name
             + " "
-            + "(nodeID int, location varchar(100), date DATE)";
+            + "(nodeID int, location varchar(100) UNIQUE, date DATE)";
     try {
       Statement stmt = connection.getConnection().createStatement();
       stmt.execute(moveTable);
@@ -66,7 +67,7 @@ public class MoveDaoImpl implements MoveDAO_I {
   }
 
   @Override
-  public Move getMove(String location, Date moveDate) throws Exception {
+  public Move getMove(String location, LocalDate moveDate) {
     for (Move thisMove : moves) {
       if (thisMove.getLocation().equals(location) && thisMove.getDate().equals(moveDate))
         return thisMove;
@@ -88,10 +89,15 @@ public class MoveDaoImpl implements MoveDAO_I {
   public void loadToRemote(String pathToCSV) {
     try {
       Statement stmt = connection.getConnection().createStatement();
-      String checkTable = "SELECT * FROM " + name;
+      String checkTable = "SELECT * FROM " + name + " LIMIT 2";
       ResultSet check = stmt.executeQuery(checkTable);
-      if (check.next()) constructFromRemote();
-      else constructRemote(pathToCSV);
+      if (check.next()) {
+        System.out.println("Loading the moves from the server");
+        constructFromRemote();
+      } else {
+        System.out.println("Loading the moves to the server");
+        constructRemote(pathToCSV);
+      }
     } catch (SQLException e) {
       e.getMessage();
       e.printStackTrace();
@@ -104,13 +110,11 @@ public class MoveDaoImpl implements MoveDAO_I {
       String getData = "SELECT * FROM " + name;
       ResultSet data = stmt.executeQuery(getData);
       while (data.next()) {
-        LocalDate date = DateParser.parseDate(data.getString("date"));
+        LocalDate date = data.getDate("date").toLocalDate();
         Move thisMove = new Move(data.getInt("nodeID"), data.getString("location"), date);
         moves.add(thisMove);
         movesORM.put(thisMove.getNodeID(), thisMove);
       }
-      String getNodes = "SELECT nodeID FROM " + nodeDao.getName();
-
     } catch (SQLException e) {
       e.printStackTrace();
       System.out.println(e.getSQLState());
@@ -126,20 +130,18 @@ public class MoveDaoImpl implements MoveDAO_I {
         while ((line = reader.readLine()) != null) {
           String[] fields = line.split(",");
           LocalDate date = DateParser.parseDate(fields[2]);
-          System.out.println(Arrays.toString(fields));
+          //          System.out.println(Arrays.toString(fields));
           Move thisMove = new Move(Integer.parseInt(fields[0]), fields[1], date);
-          Statement stmt = connection.getConnection().createStatement();
-          String insertMove =
-              "INSERT INTO "
-                  + name
-                  + " (nodeID, location, date) VALUES ("
-                  + Integer.parseInt(fields[0])
-                  + ", "
-                  + fields[1]
-                  + ", "
-                  + date
-                  + ")";
-          stmt.executeUpdate(insertMove);
+          //          System.out.println(thisMove);
+          PreparedStatement stmt =
+              connection
+                  .getConnection()
+                  .prepareStatement(
+                      "INSERT INTO " + name + " (nodeID, location, date) VALUES (?,?,?)");
+          stmt.setInt(1, Integer.parseInt(fields[0]));
+          stmt.setString(2, fields[1]);
+          stmt.setDate(3, java.sql.Date.valueOf(date));
+          stmt.executeUpdate();
           moves.add(thisMove);
           movesORM.put(thisMove.getNodeID(), thisMove);
         }
@@ -156,18 +158,13 @@ public class MoveDaoImpl implements MoveDAO_I {
 
   private static class DateParser {
     public static LocalDate parseDate(String dateString) {
-      // Create a formatter for the input date string format
-      DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-
       // Parse the input date string into a LocalDate object
-      LocalDate date = LocalDate.parse(dateString, inputFormatter);
-
-      // Create a formatter for the output date string format
-      DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
+      LocalDate date =
+          LocalDate.parse(
+              dateString, DateTimeFormatter.ofPattern("M/d/yyyy").withLocale(Locale.US));
       // Format the LocalDate object as a string in the desired output format
-      String outputString = date.format(outputFormatter);
-
+      String outputString =
+          date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd").withLocale(Locale.US));
       // Parse the output string into a LocalDate object
       return LocalDate.parse(outputString);
     }

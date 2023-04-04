@@ -7,8 +7,8 @@ public class Main {
 
   public static void main(String[] args) throws SQLException {
     LoaderDAO loader = new LoaderDAO();
-    loader.establishConnection();
-    loader.resetData();
+    //    loader.establishConnection();
+    //    loader.resetData();
     loader.load();
     System.out.println("Loaded everything");
   }

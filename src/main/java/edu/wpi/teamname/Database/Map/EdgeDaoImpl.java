@@ -66,8 +66,13 @@ public class EdgeDaoImpl implements EdgeDoa_I {
       Statement stmt = connection.getConnection().createStatement();
       String checkTable = "SELECT * FROM " + name;
       ResultSet check = stmt.executeQuery(checkTable);
-      if (check.next()) constructFromRemote();
-      else constructRemote(pathToCSV);
+      if (check.next()) {
+        System.out.println("Loading the edges from the server");
+        constructFromRemote();
+      } else {
+        System.out.println("Loading the edges to the server");
+        constructRemote(pathToCSV);
+      }
     } catch (SQLException e) {
       e.getMessage();
       e.printStackTrace();
@@ -77,13 +82,6 @@ public class EdgeDaoImpl implements EdgeDoa_I {
   private void constructFromRemote() {
     try {
       Statement stmt = connection.getConnection().createStatement();
-      String getData = "SELECT * FROM " + name;
-      ResultSet data = stmt.executeQuery(getData);
-      while (data.next()) {
-        Edge thisEdge =
-            new Edge(
-                nodeDao.getNode(data.getInt("startNode")), nodeDao.getNode(data.getInt("endNode")));
-      }
       String getNodes = "SELECT nodeID FROM " + nodeDao.getName();
       PreparedStatement getNeighbors =
           connection
@@ -92,17 +90,17 @@ public class EdgeDaoImpl implements EdgeDoa_I {
       try {
         ResultSet listOfNodes = stmt.executeQuery(getNodes);
         while (listOfNodes.next()) {
-          int currentNode = listOfNodes.getInt("nodeID");
-          getNeighbors.setInt(1, currentNode);
-          getNeighbors.setInt(2, currentNode);
-          data = getNeighbors.executeQuery();
+          int currentNodeID = listOfNodes.getInt("nodeID");
+          getNeighbors.setInt(1, currentNodeID);
+          getNeighbors.setInt(2, currentNodeID);
+          ResultSet data = getNeighbors.executeQuery();
           HashSet<Integer> neighbors = new HashSet<>();
           while (data.next()) {
             neighbors.add(data.getInt("endNode"));
             neighbors.add(data.getInt("startNode"));
           }
-          neighbors.remove(currentNode);
-          this.neighbors.put(currentNode, neighbors);
+          neighbors.remove(currentNodeID);
+          this.neighbors.put(currentNodeID, neighbors);
         }
       } catch (SQLException e) {
         System.out.println("Error accessing the remote and constructing the list of edges");

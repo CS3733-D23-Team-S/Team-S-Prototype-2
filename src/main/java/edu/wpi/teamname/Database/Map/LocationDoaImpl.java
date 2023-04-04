@@ -66,8 +66,13 @@ public class LocationDoaImpl implements LocationDOA_I {
       Statement stmt = connection.getConnection().createStatement();
       String checkTable = "SELECT * FROM " + name;
       ResultSet check = stmt.executeQuery(checkTable);
-      if (check.next()) constructFromRemote();
-      else constructRemote(pathToCSV);
+      if (check.next()) {
+        System.out.println("Loading the locations from the server");
+        constructFromRemote();
+      } else {
+        System.out.println("Loading the locations to the server");
+        constructRemote(pathToCSV);
+      }
     } catch (SQLException e) {
       e.getMessage();
       e.printStackTrace();
