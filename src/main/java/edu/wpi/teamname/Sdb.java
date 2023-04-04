@@ -22,11 +22,10 @@ public class Sdb {
     foodDao.addFood(newFood);
     OrderItemDAO cart = new OrderItemDAO(1);
     cart.addOrderItem(newFood, 3);
-    cart.addOrderItemToDb(cart.getOrderItem("Pizza"));
     FoodDelivery newRequest = new FoodDelivery(1, cart, null, new Room(1, 3), "admin");
 
     FoodDeliveryDAOImp foodRequest = FoodDeliveryDAOImp.getInstance();
-    foodRequest.addfoodRequest(newRequest);
+    foodRequest.addFoodRequest(newRequest);
   }
   //
   //    String floorPath = "src/main/java/edu/wpi/teamname/Node.csv";

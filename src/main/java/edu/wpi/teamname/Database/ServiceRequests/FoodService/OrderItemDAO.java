@@ -30,10 +30,8 @@ public class OrderItemDAO {
   }
 
   public void addOrderItem(Food item, int quantity) throws Exception {
-    cart.add(new OrderItem(this.cartID, item, quantity));
-  }
-
-  public void addOrderItemToDb(OrderItem orderItem) {
+    OrderItem orderItem = new OrderItem(this.cartID, item, quantity);
+    cart.add(orderItem);
     try {
       PreparedStatement preparedStatement =
           connection

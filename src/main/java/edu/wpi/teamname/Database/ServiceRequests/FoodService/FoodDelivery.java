@@ -14,16 +14,17 @@ public class FoodDelivery {
   @Getter @Setter Date date;
   @Getter @Setter LocalTime time;
   @Getter Room room;
-  @Getter @Setter String user;
+  @Getter @Setter String orderer;
+  @Getter@Setter String assignedTo;
   @Getter @Setter Status orderStatus;
   @Getter @Setter String notes = "";
 
-  public FoodDelivery(int deliveryID, OrderItemDAO cart, Date date, Room room, String user) {
+  public FoodDelivery(int deliveryID, OrderItemDAO cart, Date date, Room room, String orderedBy) {
     this.deliveryID = deliveryID;
     this.cart = cart;
     this.date = date;
     this.room = room;
-    this.user = user;
+    this.orderer = orderedBy;
     this.orderStatus = Status.valueOf("Received");
   }
 
