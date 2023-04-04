@@ -1,6 +1,5 @@
 package edu.wpi.teamname.Database.Map;
 
-
 import lombok.Getter;
 import lombok.Setter;
 

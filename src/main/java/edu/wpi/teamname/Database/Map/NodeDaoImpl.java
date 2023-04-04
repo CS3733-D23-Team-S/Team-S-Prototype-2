@@ -39,12 +39,12 @@ public class NodeDaoImpl implements NodeDOA_I {
     this.name = name;
     String nodeTable =
         "CREATE TABLE IF NOT EXISTS "
-        + name
-        + " (nodeID int UNIQUE PRIMARY KEY,"
-        + "xcoord int,"
-        + "ycoord int,"
-        + "floor int,"
-        + "building varchar(100))";
+            + name
+            + " (nodeID int UNIQUE PRIMARY KEY,"
+            + "xcoord int,"
+            + "ycoord int,"
+            + "floor int,"
+            + "building varchar(100))";
     try {
       Statement stmt = connection.getConnection().createStatement();
       stmt.execute(nodeTable);
@@ -63,20 +63,25 @@ public class NodeDaoImpl implements NodeDOA_I {
 
   @Override
   public void updateNode(Node node) {
-    nodes.put(node.getNodeID(),node);
-    try{
-      PreparedStatement stmt = connection.getConnection()
-              .prepareStatement("UPDATE " + name + " SET xCoord = ?," +
-                                "yCoord = ?," +
-                                "floor = ?," +
-                                "building = ? WHERE nodeID = ?");
-      stmt.setInt(1,node.getXCoord());
-      stmt.setInt(2,node.getYCoord());
-      stmt.setInt(3,node.getFloor().ordinal());
-      stmt.setString(4,node.getBuilding());
-      stmt.setInt(5,node.getNodeID());
+    nodes.put(node.getNodeID(), node);
+    try {
+      PreparedStatement stmt =
+          connection
+              .getConnection()
+              .prepareStatement(
+                  "UPDATE "
+                      + name
+                      + " SET xCoord = ?,"
+                      + "yCoord = ?,"
+                      + "floor = ?,"
+                      + "building = ? WHERE nodeID = ?");
+      stmt.setInt(1, node.getXCoord());
+      stmt.setInt(2, node.getYCoord());
+      stmt.setInt(3, node.getFloor().ordinal());
+      stmt.setString(4, node.getBuilding());
+      stmt.setInt(5, node.getNodeID());
       stmt.executeUpdate();
-    }    catch (SQLException e){
+    } catch (SQLException e) {
       e.getMessage();
       e.printStackTrace();
     }
@@ -129,7 +134,7 @@ public class NodeDaoImpl implements NodeDOA_I {
   }
 
   private void constructFromRemote() {
-    if(!nodes.isEmpty()){
+    if (!nodes.isEmpty()) {
       System.out.println("There is already stuff in the orm database");
       return;
     }

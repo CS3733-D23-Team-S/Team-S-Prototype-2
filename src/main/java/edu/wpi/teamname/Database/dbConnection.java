@@ -11,7 +11,6 @@ public class dbConnection {
   private static final String user = "teams";
   private static final String password = "teams160";
 
-
   private dbConnection() {
     try {
       Class.forName("org.postgresql.Driver");

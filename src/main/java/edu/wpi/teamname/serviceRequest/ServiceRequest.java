@@ -1,18 +1,15 @@
 package edu.wpi.teamname.serviceRequest;
 
 public class ServiceRequest {
-    enum requestType{};
-    enum Status{};
-    String asignee;
+  enum requestType {};
 
-    public ServiceRequest() {
+  enum Status {};
 
-    }
+  String asignee;
 
-    public String toString() {
-        return null;
-    }
+  public ServiceRequest() {}
 
-
-
+  public String toString() {
+    return null;
+  }
 }
