@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="Room booking 3">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/RoomBookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/RoomBookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Room.java" afterDir="false" />
+    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="adding functions to room booking">
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/RoomBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/RoomBooking.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -279,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680635381107</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="adding functions to room booking">
+      <created>1680648669297</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680648669297</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,6 +303,7 @@
     <MESSAGE value="adding meal delivery" />
     <MESSAGE value="adding meal delivery to main" />
     <MESSAGE value="adding working meal delivery(back button doesn't work)" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding working meal delivery(back button doesn't work)" />
+    <MESSAGE value="adding functions to room booking" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding functions to room booking" />
   </component>
 </project>

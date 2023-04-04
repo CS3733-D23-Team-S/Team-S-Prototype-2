@@ -91,7 +91,7 @@ public class RoomBooking {
 
             for (int j=0; j<conferenceRoomsHBox.getChildren().size(); j++) {
                 if (conferenceRoomsHBox.getChildren().get(j).getId() == ("room" + reservationList.get(i).room().id())) {
-
+                    System.out.println("Working");
                 }
             }
 
