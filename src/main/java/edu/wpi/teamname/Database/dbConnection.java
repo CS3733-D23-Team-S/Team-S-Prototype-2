@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class dbConnection {
   private static dbConnection single_instance;
 
-  Connection c;
+  public Connection c;
   private static final String url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamsdb";
   private static final String user = "teams";
   private static final String password = "teams160";
