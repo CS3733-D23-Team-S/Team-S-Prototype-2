@@ -1,32 +1,48 @@
 package edu.wpi.teamname.Database.Login;
 
 import edu.wpi.teamname.Database.dbConnection;
+import lombok.Getter;
 
 import java.sql.*;
+import java.time.chrono.MinguoDate;
 import java.util.HashMap;
 
 public class LoginDAOImpl implements LoginDAOI {
+	private static LoginDAOImpl single_instance = null;
 	private dbConnection connection;
 
-	HashMap<String, String> loginInfo;
-	String loginTableName = "Name";
+	@Getter
+	private HashMap<String, LoginInfo> loginInfo = new HashMap<>();
+	private String name;
 
-	public LoginDAOImpl(HashMap<String, String> loginInfo) {
-		establishConnection();
-		this.loginInfo = loginInfo;
+	public static LoginDAOImpl getInstance() {
+		if (single_instance == null) single_instance = new LoginDAOImpl();
+		return single_instance;
 	}
 
-	public void establishConnection() {
+	private LoginDAOImpl() {
 		connection = dbConnection.getInstance();
 	}
 
-	public void initTables() throws SQLException {
-
-		String loginTableConstruct =
-				"CREATE TABLE IF NOT EXISTS "
-				+ loginTableName
-				+ " (username Varchar(100) UNIQUE PRIMARY KEY,"
-				+ "password Varchar(100) NOT NULL";
+	public void initTables(String loginTableName) throws SQLException {
+		this.name = loginTableName;
+		try {
+			Statement stmt = connection.getConnection().createStatement();
+			String loginTableConstruct = "CREATE TABLE IF NOT EXISTS "
+										 + loginTableName
+										 + " (username varchar(100) UNIQUE PRIMARY KEY, "
+										 + "password varchar(100) NOT NULL, " +
+										 "permission int)";
+			stmt.execute(loginTableConstruct);
+			String addAdmin = "INSERT INTO " + loginTableName + " (username, password, permission) VALUES " +
+							  "('admin','admin'," + Permission.ADMIN + ")";
+			LoginInfo admin = new LoginInfo("admin", "admin", Permission.ADMIN);
+			loginInfo.put("admin", admin);
+			stmt.executeUpdate(addAdmin);
+		} catch (SQLException e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -34,17 +50,8 @@ public class LoginDAOImpl implements LoginDAOI {
 	 * @return true if user exists, false if otherwise
 	 */
 	private boolean checkIfUserExists(String username) {
-		try {
-			PreparedStatement preparedStatement =
-					connection.getConnection().prepareStatement("SELECT * from " + loginTableName + " WHERE username = ?");
-			ResultSet rs = preparedStatement.executeQuery();
+		return loginInfo.get(username) == null;
 
-			if (rs.next()) return true;
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-		return false;
 	}
 
 	/**
@@ -60,7 +67,13 @@ public class LoginDAOImpl implements LoginDAOI {
 		try {
 			PreparedStatement preparedStatement =
 					connection.getConnection().prepareStatement(
-							"INSERT INTO " + loginTableName + " VALUES (username, password, permission)");
+							"INSERT INTO " + name + " (username, password, permission) VALUES " +
+							"(?, ?, ?)");
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			preparedStatement.setInt(3, Permission.WORKER.ordinal());
+			LoginInfo user = new LoginInfo(username, password, Permission.WORKER);
+			loginInfo.put(username, user);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -80,7 +93,7 @@ public class LoginDAOImpl implements LoginDAOI {
 		try {
 			PreparedStatement preparedStatement =
 					connection.getConnection().prepareStatement(
-							"SELECT password FROM " + loginTableName + " WHERE username = ?");
+							"SELECT password FROM " + name + " WHERE username = ?");
 
 			preparedStatement.setString(1, username);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -89,7 +102,6 @@ public class LoginDAOImpl implements LoginDAOI {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-
 		return password.equals(dbPassword);
 	}
 
