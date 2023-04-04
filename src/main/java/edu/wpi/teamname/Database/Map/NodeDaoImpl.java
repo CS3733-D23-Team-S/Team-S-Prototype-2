@@ -26,7 +26,6 @@ public class NodeDaoImpl implements NodeDOA_I {
 
   public static NodeDaoImpl getInstance() {
     if (single_instance == null) single_instance = new NodeDaoImpl();
-
     return single_instance;
   }
 
@@ -40,12 +39,12 @@ public class NodeDaoImpl implements NodeDOA_I {
     this.name = name;
     String nodeTable =
         "CREATE TABLE IF NOT EXISTS "
-            + name
-            + " (nodeID int UNIQUE PRIMARY KEY,"
-            + "xcoord int,"
-            + "ycoord int,"
-            + "floor int,"
-            + "building varchar(100))";
+        + name
+        + " (nodeID int UNIQUE PRIMARY KEY,"
+        + "xcoord int,"
+        + "ycoord int,"
+        + "floor int,"
+        + "building varchar(100))";
     try {
       Statement stmt = connection.getConnection().createStatement();
       stmt.execute(nodeTable);
@@ -63,7 +62,25 @@ public class NodeDaoImpl implements NodeDOA_I {
   }
 
   @Override
-  public void updateNode(Node node) {}
+  public void updateNode(Node node) {
+    nodes.put(node.getNodeID(),node);
+    try{
+      PreparedStatement stmt = connection.getConnection()
+              .prepareStatement("UPDATE " + name + " SET xCoord = ?," +
+                                "yCoord = ?," +
+                                "floor = ?," +
+                                "building = ? WHERE nodeID = ?");
+      stmt.setInt(1,node.getXCoord());
+      stmt.setInt(2,node.getYCoord());
+      stmt.setInt(3,node.getFloor().ordinal());
+      stmt.setString(4,node.getBuilding());
+      stmt.setInt(5,node.getNodeID());
+      stmt.executeUpdate();
+    }    catch (SQLException e){
+      e.getMessage();
+      e.printStackTrace();
+    }
+  }
 
   @Override
   public void deleteNode(Node node) {
@@ -112,6 +129,10 @@ public class NodeDaoImpl implements NodeDOA_I {
   }
 
   private void constructFromRemote() {
+    if(!nodes.isEmpty()){
+      System.out.println("There is already stuff in the orm database");
+      return;
+    }
     try {
       Statement stmt = connection.getConnection().createStatement();
       String listOfNodes = "SELECT * FROM " + name;

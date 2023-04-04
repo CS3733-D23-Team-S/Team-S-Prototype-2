@@ -10,9 +10,7 @@ public class dbConnection {
   private static final String url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamsdb";
   private static final String user = "teams";
   private static final String password = "teams160";
-  protected static final String schemaName = "hospitaldb";
-  protected static final String nodeTable = schemaName + "." + "nodes";
-  protected static final String edgesTable = schemaName + "." + "edges";
+
 
   private dbConnection() {
     try {
