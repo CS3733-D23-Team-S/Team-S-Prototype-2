@@ -7,6 +7,7 @@ public enum Screen {
   HELP_PAGE("views/HelpPage.fxml"),
 
   PATHFINDING("views/Pathfinding.fxml"),
+  SUBMITTED_REQUESTS("views/SubmittedRequests.fxml"),
   SERVICE_REQUEST("views/ServiceRequest.fxml");
 
   private final String filename;

@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
@@ -12,32 +13,58 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane style="-fx-background-color: #122E59;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: #122E59;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0">
          <children>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="1600.0" style="-fx-background-color: D9D9D9;" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label alignment="TOP_LEFT" prefHeight="80.0" prefWidth="1580.0" text="Brigham and Women's Hospital - Founding Member, Mass Brigham General" translateY="20.0">
+                  <Label alignment="TOP_LEFT" prefHeight="80.0" prefWidth="1580.0" text="Brigham and Women's Hospital - Founding Member, Mass Brigham General" translateX="20.0" translateY="20.0">
                      <font>
                         <Font name="Open Sans Regular" size="36.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="homeIcon" fitHeight="58.0" fitWidth="70.0" onMouseClicked="#goToHomePage" pickOnBounds="true" preserveRatio="true" translateX="-200.0" translateY="20.0">
+                  <ImageView fx:id="homeIcon" fitHeight="58.0" fitWidth="70.0" onMouseClicked="#goToHomePage" pickOnBounds="true" preserveRatio="true" translateX="-160.0" translateY="17.0">
                      <image>
                         <Image url="@../../../../../../../../../../../Desktop/SoftwareEngineeringCS3733/Home-icon.svg.png" />
                      </image>
                   </ImageView>
                </children>
             </HBox>
-            <Accordion layoutX="46.0" layoutY="124.0">
+            <Accordion layoutX="46.0" layoutY="124.0" prefWidth="548.0" translateX="100.0" translateY="100.0">
               <panes>
                 <TitledPane animated="false" prefWidth="500.0" text="View My Meal Requests">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="498.0">
+                    <AnchorPane prefHeight="180.0" prefWidth="498.0">
                            <children>
-                              <VBox layoutX="14.0" layoutY="2.0" prefHeight="153.0" prefWidth="458.0" spacing="10.0">
+                              <VBox layoutX="5.0" prefHeight="183.0" prefWidth="130.0" spacing="11.0" translateX="160.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="129.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                    <Label prefHeight="17.0" prefWidth="129.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                    <Label prefHeight="17.0" prefWidth="129.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                    <Label prefHeight="17.0" prefWidth="129.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                    <Label prefHeight="17.0" prefWidth="129.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="14.0" layoutY="2.0" prefHeight="177.0" prefWidth="161.0" spacing="10.0">
                                  <children>
                                     <Label text="Meal ID:">
                                        <font>
@@ -73,14 +100,14 @@
                         </AnchorPane>
                   </content>
                      <font>
-                        <Font name="Open Sans Regular" size="24.0" />
+                        <Font size="36.0" />
                      </font>
                 </TitledPane>
                 <TitledPane animated="false" prefHeight="300.0" prefWidth="500.0" text="View My Room Booking Requests">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <VBox layoutX="30.0" layoutY="29.0" prefHeight="200.0" prefWidth="439.0" spacing="10.0">
+                              <VBox layoutX="29.0" layoutY="7.0" prefHeight="200.0" prefWidth="160.0" spacing="10.0">
                                  <children>
                                     <Label text="Room Booked: ">
                                        <font>
@@ -107,39 +134,34 @@
                                     <Insets top="10.0" />
                                  </padding>
                               </VBox>
+                              <VBox layoutX="176.0" prefHeight="200.0" prefWidth="100.0" spacing="11.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="100.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                    <Label prefHeight="17.0" prefWidth="100.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                    <Label prefHeight="17.0" prefWidth="100.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                    <Label prefHeight="17.0" prefWidth="100.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" top="15.0" />
+                                 </padding>
+                              </VBox>
                            </children>
                         </AnchorPane>
                   </content>
                      <font>
-                        <Font name="Open Sans Regular" size="24.0" />
-                     </font>
-                </TitledPane>
-              </panes>
-            </Accordion>
-            <Accordion layoutX="1065.0" layoutY="134.0" prefHeight="129.0" prefWidth="356.0">
-              <panes>
-                <TitledPane animated="false" text="View All Submitted Requests">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="381.0" />
-                  </content>
-                     <font>
-                        <Font name="Open Sans Regular" size="24.0" />
-                     </font>
-                </TitledPane>
-                <TitledPane animated="false" text="Meal Requests">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                     <font>
-                        <Font name="Open Sans Regular" size="24.0" />
-                     </font>
-                </TitledPane>
-                <TitledPane animated="false" text="Room Booking Requests">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                     <font>
-                        <Font name="Open Sans Regular" size="24.0" />
+                        <Font size="36.0" />
                      </font>
                 </TitledPane>
               </panes>
@@ -149,11 +171,40 @@
                   <Image url="@../../../../../../../../../../../Desktop/SoftwareEngineeringCS3733/1200px-Icon-round-Question_mark.svg.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="profileIcon" fitHeight="58.0" fitWidth="70.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#goToHomePage" pickOnBounds="true" preserveRatio="true" translateX="1450.0" translateY="15.0">
+            <ImageView fx:id="profileIcon" fitHeight="67.0" fitWidth="72.0" layoutX="10.0" layoutY="1.0" onMouseClicked="#goToHomePage" pickOnBounds="true" preserveRatio="true" translateX="1475.0" translateY="15.0">
                <image>
                   <Image url="@../../../../../../../../../../../Desktop/SoftwareEngineeringCS3733/ProfileIcon.png" />
                </image>
             </ImageView>
+            <Accordion layoutX="1112.0" layoutY="141.0" translateX="-200.0" translateY="80.0">
+              <panes>
+                <TitledPane animated="false" text="View All Submitted Requests">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox layoutX="-6.0" layoutY="-2.0" prefHeight="103.0" prefWidth="561.0">
+                                 <children>
+                                    <Button fx:id="submittedMealButton" mnemonicParsing="false" prefHeight="51.0" prefWidth="558.0" text="Meal Requests">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="submittedRoomButton" mnemonicParsing="false" prefHeight="51.0" prefWidth="558.0" text="Room Booking Requests">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                </TitledPane>
+              </panes>
+            </Accordion>
          </children>
       </AnchorPane>
    </center>
