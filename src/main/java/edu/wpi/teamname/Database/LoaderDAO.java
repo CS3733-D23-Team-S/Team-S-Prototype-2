@@ -1,5 +1,6 @@
 package edu.wpi.teamname.Database;
 
+import edu.wpi.teamname.Database.Login.LoginDAOImpl;
 import edu.wpi.teamname.Database.Map.EdgeDaoImpl;
 import edu.wpi.teamname.Database.Map.LocationDoaImpl;
 import edu.wpi.teamname.Database.Map.MoveDaoImpl;
@@ -13,6 +14,8 @@ public class LoaderDAO {
   final String edgesTable = schemaName + "." + "edges";
   final String locationTable = schemaName + "." + "locations";
   final String moveTable = schemaName + "." + "moves";
+
+  final String loginTable = schemaName + "." + "login";
   final String defaultNodePath = "src/main/java/edu/wpi/teamname/Node.csv";
   final String defaultEdgePath = "src/main/java/edu/wpi/teamname/Edge.csv";
   final String defaultLocationPath = "src/main/java/edu/wpi/teamname/LocationName.csv";
@@ -41,6 +44,7 @@ public class LoaderDAO {
       EdgeDaoImpl.getInstance().initTable(edgesTable);
       LocationDoaImpl.getInstance().initTable(locationTable);
       MoveDaoImpl.getInstance().initTable(moveTable);
+      LoginDAOImpl.getInstance().initTables(loginTable);
 
     } catch (SQLException e) {
       System.out.println(e.getMessage());
