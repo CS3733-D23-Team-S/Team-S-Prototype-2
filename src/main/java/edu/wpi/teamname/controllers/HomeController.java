@@ -8,13 +8,14 @@ import javafx.fxml.FXML;
 public class HomeController {
 
   @FXML MFXButton navigateButton;
-  @FXML MFXButton mealdelivery1Button;
+  @FXML MFXButton mealdeliveryButton;
   @FXML MFXButton roomBookingButton;
 
   @FXML
   public void initialize() {
     navigateButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUEST));
-    mealdelivery1Button.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
+    mealdeliveryButton.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
+
     roomBookingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING));
   }
 }

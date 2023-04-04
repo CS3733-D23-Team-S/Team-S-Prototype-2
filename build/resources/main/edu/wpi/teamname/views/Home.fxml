@@ -12,9 +12,9 @@
             <Font name="Nunito Sans Regular" size="16.0" />
          </font>
       </MFXButton>
-      <MFXButton fx:id="mealdelivery1Button" text="Meal Delivery Button">
+      <MFXButton fx:id="mealdeliveryButton" text="Meal Delivery Button">
          <StackPane.margin>
-            <Insets top="80.0" />
+            <Insets top="100.0" />
          </StackPane.margin>
       </MFXButton>
       <MFXButton fx:id="roomBookingButton" text="Room Booking">
@@ -22,7 +22,7 @@
             <Font name="Nunito Sans Regular" size="16.0" />
          </font>
          <StackPane.margin>
-            <Insets top="100.0" />
+            <Insets top="200.0" />
          </StackPane.margin>
       </MFXButton>
    </children>
