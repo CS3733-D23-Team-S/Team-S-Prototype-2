@@ -130,7 +130,14 @@ public class FoodDAOImpl implements FoodDAO_I {
     }
   }
 
+  /**
+   * retrieves food from the database
+   *
+   * @param target the id of desired food
+   * @return food from database if exists, null otherwise
+   */
   public Food retrieveFood(int target) {
+    System.out.println(foods.get(target).toString());
     if (foods.get(target) == null) {
       System.out.println("This node is not in the database, so its row cannot be printed");
       return null;
