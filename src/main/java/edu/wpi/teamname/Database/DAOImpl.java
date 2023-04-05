@@ -20,6 +20,7 @@ public abstract class DAOImpl {
   }
 
   public void initTables() throws SQLException {
+
     Statement stmt = connection.c.createStatement();
 
     String dropEdgeTable = "DROP TABLE IF EXISTS " + edgesTable;
