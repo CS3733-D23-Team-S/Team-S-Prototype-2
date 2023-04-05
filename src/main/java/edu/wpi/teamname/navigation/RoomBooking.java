@@ -65,11 +65,12 @@ public class RoomBooking {
       System.out.println("CHILDREN: ");
       System.out.println(conferenceRoomsHBox.getChildren());
 
-     // for (int j=0; j<conferenceRoomsHBox.getChildren().size(); j++) {
-      //  if (conferenceRoomsHBox.getChildren().get(j).getId() == "room" + roomRequestList.get(i).getRoom().getId()) {
+      // for (int j=0; j<conferenceRoomsHBox.getChildren().size(); j++) {
+      //  if (conferenceRoomsHBox.getChildren().get(j).getId() == "room" +
+      // roomRequestList.get(i).getRoom().getId()) {
       //    conferenceRoomsHBox.getChildren().add(resGroup);
-     //   }
-    // }
+      //   }
+      // }
       // for (int j = 0; j < roomList.size(); j++) {
       //  conferenceRoomsHBox.getChildren().lookup("#room" + roomList.get(j).getId());
       // }
