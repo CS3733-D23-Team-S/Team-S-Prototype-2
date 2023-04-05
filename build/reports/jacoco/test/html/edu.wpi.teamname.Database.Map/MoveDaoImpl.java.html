@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MoveDaoImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Team-S-Prototype-2</a> &gt; <a href="index.source.html" class="el_package">edu.wpi.teamname.Database.Map</a> &gt; <span class="el_source">MoveDaoImpl.java</span></div><h1>MoveDaoImpl.java</h1><pre class="source lang-java linenums">package edu.wpi.teamname.Database.Map;
+
+import edu.wpi.teamname.Database.dbConnection;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import lombok.Getter;
+
+public class MoveDaoImpl implements MoveDAO_I {
+
+  private static MoveDaoImpl single_instance;
+  @Getter private String name;
+  dbConnection connection;
+  @Getter List&lt;Move&gt; moves;
+<span class="nc" id="L21">  @Getter HashMap&lt;Integer, Move&gt; movesORM = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L22">  LocationDoaImpl locationDoa = LocationDoaImpl.getInstance();</span>
+<span class="nc" id="L23">  NodeDaoImpl nodeDao = NodeDaoImpl.getInstance();</span>
+
+<span class="nc" id="L25">  private MoveDaoImpl() {</span>
+<span class="nc" id="L26">    connection = dbConnection.getInstance();</span>
+<span class="nc" id="L27">  }</span>
+
+  public static synchronized MoveDaoImpl getInstance() {
+<span class="nc bnc" id="L30" title="All 2 branches missed.">    if (single_instance == null) single_instance = new MoveDaoImpl();</span>
+
+<span class="nc" id="L32">    return single_instance;</span>
+  }
+
+  @Override
+  public List&lt;Move&gt; getAllMoves() {
+<span class="nc" id="L37">    return moves;</span>
+  }
+
+  @Override
+  public void initTable(String name) {
+<span class="nc" id="L42">    this.name = name;</span>
+<span class="nc" id="L43">    String moveTable =</span>
+        &quot;CREATE TABLE IF NOT EXISTS &quot;
+            + name
+            + &quot; &quot;
+            + &quot;(nodeID int, location varchar(100), date DATE)&quot;;
+    try {
+<span class="nc" id="L49">      Statement stmt = connection.getConnection().createStatement();</span>
+<span class="nc" id="L50">      stmt.execute(moveTable);</span>
+<span class="nc" id="L51">    } catch (SQLException e) {</span>
+<span class="nc" id="L52">      e.getMessage();</span>
+<span class="nc" id="L53">      e.printStackTrace();</span>
+<span class="nc" id="L54">      System.out.println(&quot;Error with creating the node table&quot;);</span>
+<span class="nc" id="L55">    }</span>
+<span class="nc" id="L56">  }</span>
+
+  @Override
+  public List&lt;Move&gt; getLocationMove(String location) {
+<span class="nc" id="L60">    List&lt;Move&gt; previousMoves = new ArrayList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L62" title="All 2 branches missed.">    for (Move thisMove : moves) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">      if (thisMove.getLocation().equals(location)) previousMoves.add(thisMove);</span>
+<span class="nc" id="L64">    }</span>
+<span class="nc" id="L65">    return previousMoves;</span>
+  }
+
+  @Override
+  public Move getMove(String location, Date moveDate) throws Exception {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">    for (Move thisMove : moves) {</span>
+<span class="nc bnc" id="L71" title="All 4 branches missed.">      if (thisMove.getLocation().equals(location) &amp;&amp; thisMove.getDate().equals(moveDate))</span>
+<span class="nc" id="L72">        return thisMove;</span>
+<span class="nc" id="L73">    }</span>
+<span class="nc" id="L74">    throw new NullPointerException();</span>
+  }
+
+  public void processMoveRequest(int nodeID, String location, Date date) throws Exception {
+<span class="nc" id="L78">    Node newNode = nodeDao.getNode(nodeID);</span>
+
+<span class="nc bnc" id="L80" title="All 2 branches missed.">    if (!checkDate(location, date)) {</span>
+<span class="nc" id="L81">      Location thisLocation = locationDoa.getLocation(location);</span>
+<span class="nc" id="L82">      newNode.addLocation(thisLocation);</span>
+<span class="nc" id="L83">      thisLocation.setNode(newNode);</span>
+<span class="nc" id="L84">      moves.add(new Move(nodeID, location, date));</span>
+<span class="nc" id="L85">    } else throw new Exception(&quot;Moved Today already&quot;);</span>
+<span class="nc" id="L86">  }</span>
+
+  public boolean checkDate(String location, Date date) {
+
+<span class="nc" id="L90">    return (locationDoa.getLocation(location).getDates().contains(date));</span>
+  }
+
+  public void loadToRemote(String pathToCSV) {
+    try {
+<span class="nc" id="L95">      Statement stmt = connection.getConnection().createStatement();</span>
+<span class="nc" id="L96">      String checkTable = &quot;SELECT * FROM &quot; + name;</span>
+<span class="nc" id="L97">      ResultSet check = stmt.executeQuery(checkTable);</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">      if (check.next()) constructFromRemote();</span>
+<span class="nc" id="L99">      else constructRemote(pathToCSV);</span>
+<span class="nc" id="L100">    } catch (SQLException e) {</span>
+<span class="nc" id="L101">      e.getMessage();</span>
+<span class="nc" id="L102">      e.printStackTrace();</span>
+<span class="nc" id="L103">    }</span>
+<span class="nc" id="L104">  }</span>
+
+  private void constructFromRemote() {
+    try {
+<span class="nc" id="L108">      Statement stmt = connection.getConnection().createStatement();</span>
+<span class="nc" id="L109">      String getData = &quot;SELECT * FROM &quot; + name;</span>
+<span class="nc" id="L110">      ResultSet data = stmt.executeQuery(getData);</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">      while (data.next()) {</span>
+<span class="nc" id="L112">        Move thisMove =</span>
+<span class="nc" id="L113">            new Move(data.getInt(&quot;nodeID&quot;), data.getString(&quot;location&quot;), data.getDate(&quot;date&quot;));</span>
+<span class="nc" id="L114">        moves.add(thisMove);</span>
+<span class="nc" id="L115">        movesORM.put(thisMove.getNodeID(), thisMove);</span>
+<span class="nc" id="L116">      }</span>
+<span class="nc" id="L117">      String getNodes = &quot;SELECT nodeID FROM &quot; + nodeDao.getName();</span>
+
+<span class="nc" id="L119">    } catch (SQLException e) {</span>
+<span class="nc" id="L120">      e.printStackTrace();</span>
+<span class="nc" id="L121">      System.out.println(e.getSQLState());</span>
+<span class="nc" id="L122">      System.out.println(&quot;Error accessing the remote and constructing the list of nodes&quot;);</span>
+<span class="nc" id="L123">    }</span>
+<span class="nc" id="L124">  }</span>
+
+  private void constructRemote(String csvFilePath) {
+<span class="nc" id="L127">    try (BufferedReader reader = new BufferedReader(new FileReader(csvFilePath))) {</span>
+      try {
+        String line;
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        while ((line = reader.readLine()) != null) {</span>
+<span class="nc" id="L131">          String[] fields = line.split(&quot;,&quot;);</span>
+<span class="nc" id="L132">          SimpleDateFormat formatter = new SimpleDateFormat(&quot;dd/MMM/yyyy&quot;, Locale.ENGLISH);</span>
+<span class="nc" id="L133">          Move thisMove =</span>
+<span class="nc" id="L134">              new Move(Integer.parseInt(fields[0]), fields[1], formatter.parse(fields[2]));</span>
+
+<span class="nc" id="L136">          Statement stmt = connection.getConnection().createStatement();</span>
+<span class="nc" id="L137">          String insertMove =</span>
+              &quot;INSERT INTO &quot;
+                  + name
+                  + &quot; (&quot;
+<span class="nc" id="L141">                  + Integer.parseInt(fields[0])</span>
+                  + &quot;, &quot;
+                  + fields[1]
+                  + &quot;, &quot;
+<span class="nc" id="L145">                  + formatter.parse(fields[2])</span>
+                  + &quot;)&quot;;
+<span class="nc" id="L147">          stmt.execute(insertMove);</span>
+<span class="nc" id="L148">          moves.add(thisMove);</span>
+<span class="nc" id="L149">          movesORM.put(thisMove.getNodeID(), thisMove);</span>
+<span class="nc" id="L150">        }</span>
+<span class="nc" id="L151">        constructFromRemote();</span>
+<span class="nc" id="L152">      } catch (SQLException e) {</span>
+<span class="nc" id="L153">        e.printStackTrace();</span>
+<span class="nc" id="L154">        System.out.println(e.getSQLState());</span>
+<span class="nc" id="L155">        System.out.println(&quot;Error accessing the remote and constructing the list of edges&quot;);</span>
+<span class="nc" id="L156">      } catch (ParseException e) {</span>
+<span class="nc" id="L157">        throw new RuntimeException(e);</span>
+<span class="nc" id="L158">      }</span>
+<span class="nc" id="L159">    } catch (IOException e) {</span>
+<span class="nc" id="L160">      e.printStackTrace();</span>
+<span class="nc" id="L161">    }</span>
+<span class="nc" id="L162">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

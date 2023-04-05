@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LocationDoaImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Team-S-Prototype-2</a> &gt; <a href="index.source.html" class="el_package">edu.wpi.teamname.Database.Map</a> &gt; <span class="el_source">LocationDoaImpl.java</span></div><h1>LocationDoaImpl.java</h1><pre class="source lang-java linenums">package edu.wpi.teamname.Database.Map;
+
+import edu.wpi.teamname.Database.dbConnection;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.List;
+import lombok.Getter;
+
+public class LocationDoaImpl implements LocationDOA_I {
+  private static LocationDoaImpl single_instance;
+  @Getter String name;
+  @Getter private HashMap&lt;String, Location&gt; locations;
+
+  dbConnection connection;
+
+<span class="nc" id="L21">  private LocationDoaImpl() {</span>
+<span class="nc" id="L22">    connection = dbConnection.getInstance();</span>
+<span class="nc" id="L23">  }</span>
+
+  public static synchronized LocationDoaImpl getInstance() {
+<span class="nc bnc" id="L26" title="All 2 branches missed.">    if (single_instance == null) single_instance = new LocationDoaImpl();</span>
+
+<span class="nc" id="L28">    return single_instance;</span>
+  }
+
+  @Override
+  public List&lt;Location&gt; getAllLocations() {
+<span class="nc" id="L33">    return (List&lt;Location&gt;) this.locations.values();</span>
+  }
+
+  @Override
+  public void initTable(String name) {
+<span class="nc" id="L38">    this.name = name;</span>
+<span class="nc" id="L39">    String locationTable =</span>
+        &quot;CREATE TABLE IF NOT EXISTS &quot;
+            + name
+            + &quot; &quot;
+            + &quot;(longname varchar(100),&quot;
+            + &quot;shortname varchar(100),&quot;
+            + &quot;nodetype int)&quot;;
+
+    try {
+<span class="nc" id="L48">      Statement stmt = connection.getConnection().createStatement();</span>
+<span class="nc" id="L49">      stmt.execute(locationTable);</span>
+<span class="nc" id="L50">    } catch (SQLException e) {</span>
+<span class="nc" id="L51">      e.getMessage();</span>
+<span class="nc" id="L52">      e.printStackTrace();</span>
+<span class="nc" id="L53">      System.out.println(&quot;Error with creating the node table&quot;);</span>
+<span class="nc" id="L54">    }</span>
+<span class="nc" id="L55">  }</span>
+
+  @Override
+  public Location getLocation(String longName) {
+<span class="nc" id="L59">    return this.locations.get(longName);</span>
+  }
+
+  @Override
+  public void loadToRemote(String pathToCSV) {
+    try {
+<span class="nc" id="L65">      Statement stmt = connection.getConnection().createStatement();</span>
+<span class="nc" id="L66">      String checkTable = &quot;SELECT * FROM &quot; + name;</span>
+<span class="nc" id="L67">      ResultSet check = stmt.executeQuery(checkTable);</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">      if (check.next()) constructFromRemote();</span>
+<span class="nc" id="L69">      else constructRemote(pathToCSV);</span>
+<span class="nc" id="L70">    } catch (SQLException e) {</span>
+<span class="nc" id="L71">      e.getMessage();</span>
+<span class="nc" id="L72">      e.printStackTrace();</span>
+<span class="nc" id="L73">    }</span>
+<span class="nc" id="L74">  }</span>
+
+  @Override
+  public void addLocation(Location thisLocation) {
+    try {
+<span class="nc" id="L79">      Statement stmt = connection.getConnection().createStatement();</span>
+<span class="nc" id="L80">      String addLocation =</span>
+          &quot;INSERT INTO &quot;
+              + name
+              + &quot;(&quot;
+<span class="nc" id="L84">              + thisLocation.getLongName()</span>
+              + &quot;, &quot;
+<span class="nc" id="L86">              + thisLocation.getShortName()</span>
+              + &quot;, &quot;
+<span class="nc" id="L88">              + thisLocation.getNodeType().ordinal()</span>
+              + &quot;)&quot;;
+<span class="nc" id="L90">      stmt.executeQuery(addLocation);</span>
+<span class="nc" id="L91">    } catch (SQLException e) {</span>
+<span class="nc" id="L92">      e.getMessage();</span>
+<span class="nc" id="L93">      e.printStackTrace();</span>
+<span class="nc" id="L94">    }</span>
+<span class="nc" id="L95">  }</span>
+
+  private void constructFromRemote() {
+    try {
+<span class="nc" id="L99">      Statement stmt = connection.getConnection().createStatement();</span>
+<span class="nc" id="L100">      String listOfLocs = &quot;SELECT * FROM &quot; + name;</span>
+<span class="nc" id="L101">      ResultSet data = stmt.executeQuery(listOfLocs);</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">      while (data.next()) {</span>
+<span class="nc" id="L103">        String longName = data.getString(&quot;longname&quot;);</span>
+<span class="nc" id="L104">        String shortName = data.getString(&quot;shortname&quot;);</span>
+<span class="nc" id="L105">        NodeType type = NodeType.values()[data.getInt(&quot;nodetype&quot;)];</span>
+<span class="nc" id="L106">        Location location = new Location(longName, shortName, type);</span>
+<span class="nc" id="L107">        locations.put(longName, location);</span>
+<span class="nc" id="L108">      }</span>
+<span class="nc" id="L109">    } catch (SQLException e) {</span>
+<span class="nc" id="L110">      e.printStackTrace();</span>
+<span class="nc" id="L111">      System.out.println(e.getSQLState());</span>
+<span class="nc" id="L112">      System.out.println(&quot;Error accessing the remote and constructing the list of nodes&quot;);</span>
+<span class="nc" id="L113">    }</span>
+<span class="nc" id="L114">  }</span>
+
+  private void constructRemote(String csvFilePath) {
+<span class="nc" id="L117">    try (BufferedReader reader = new BufferedReader(new FileReader(csvFilePath))) {</span>
+<span class="nc" id="L118">      reader.readLine();</span>
+      String line;
+      try {
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        while ((line = reader.readLine()) != null) {</span>
+<span class="nc" id="L122">          String[] fields = line.split(&quot;,&quot;);</span>
+<span class="nc" id="L123">          NodeType value = NodeType.values()[Integer.parseInt(fields[2])];</span>
+<span class="nc" id="L124">          Location location = new Location(fields[0], fields[1], value);</span>
+<span class="nc" id="L125">          locations.put(fields[0], location);</span>
+<span class="nc" id="L126">          this.addLocation(location);</span>
+
+<span class="nc" id="L128">          Statement stmt = connection.getConnection().createStatement();</span>
+<span class="nc" id="L129">          String insert =</span>
+              &quot;INSERT INTO &quot;
+                  + name
+                  + &quot;(&quot;
+                  + fields[0]
+                  + &quot;, &quot;
+                  + fields[1]
+                  + &quot;, &quot;
+<span class="nc" id="L137">                  + Integer.parseInt(fields[2])</span>
+                  + &quot;)&quot;;
+<span class="nc" id="L139">          stmt.executeQuery(insert);</span>
+<span class="nc" id="L140">        }</span>
+<span class="nc" id="L141">      } catch (SQLException e) {</span>
+<span class="nc" id="L142">        e.printStackTrace();</span>
+<span class="nc" id="L143">        System.out.println(e.getSQLState());</span>
+<span class="nc" id="L144">        System.out.println(&quot;Error accessing the remote and constructing the list of nodes&quot;);</span>
+<span class="nc" id="L145">      }</span>
+<span class="nc" id="L146">    } catch (IOException e) {</span>
+<span class="nc" id="L147">      e.printStackTrace();</span>
+<span class="nc" id="L148">    }</span>
+<span class="nc" id="L149">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
