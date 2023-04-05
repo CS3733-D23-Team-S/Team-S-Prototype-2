@@ -1,7 +1,5 @@
 package edu.wpi.teamname.controllers;
 
-import static edu.wpi.teamname.navigation.Screen.PATHFINDING;
-
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -19,6 +17,8 @@ public class HomeController {
   @FXML MenuItem exitOption;
 
   @FXML MFXButton helpButton;
+  @FXML MFXButton navigateButton;
+  @FXML MFXButton mealdelivery1Button;
 
   @FXML MFXButton homeToPathfindingButton;
   @FXML MFXButton signageButton;
@@ -67,5 +67,7 @@ public class HomeController {
 
   public void goToHelpPage() {
     Navigation.navigate(Screen.HELP_PAGE);
+    navigateButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUEST));
+    mealdelivery1Button.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
   }
 }
