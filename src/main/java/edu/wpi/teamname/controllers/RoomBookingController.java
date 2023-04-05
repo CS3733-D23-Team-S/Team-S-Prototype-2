@@ -107,6 +107,9 @@ public class RoomBookingController {
             null,
             Status.InProgress,
             "");
+    roomRequestDAO.addRequest(res1);
+    roomRequestDAO.addRequest(res2);
+    roomRequestDAO.addRequest(res3);
 
     reservationList.add(res1);
     reservationList.add(res2);
