@@ -5,7 +5,7 @@ import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
 
-public class HomeController {
+public class WelcomeController {
 
   @FXML MFXButton loginButton;
 

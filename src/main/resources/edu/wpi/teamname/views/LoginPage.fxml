@@ -20,7 +20,7 @@
          <children>
             <HBox prefHeight="73.0" prefWidth="850.0" VBox.vgrow="ALWAYS">
                <children>
-                  <MFXButton fx:id="backbutton" prefHeight="60.0" prefWidth="60.0" style="-fx-border-color: #F8BC54; -fx-background-color: transparent; -fx-border-width: 4;" text="&lt;">
+                  <MFXButton fx:id="backButton" prefHeight="60.0" prefWidth="60.0" style="-fx-border-color: #F8BC54; -fx-background-color: transparent; -fx-border-width: 4;" text="&lt;">
                      <font>
                         <Font name="System Bold" size="30.0" />
                      </font>
