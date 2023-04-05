@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class LoaderDAO implements LoaderDAOI {
+	static LoaderDAO single_instance = null;
 	final String schemaName = "hospitaldb";
 	final String nodeTable = schemaName + "." + "nodes";
 	final String edgesTable = schemaName + "." + "edges";
@@ -24,7 +25,12 @@ public class LoaderDAO implements LoaderDAOI {
 	final String defaultMovePath = "src/main/java/edu/wpi/teamname/defaultCSV/Move.csv";
 	dbConnection connection;
 
-	public LoaderDAO() {
+	private LoaderDAO() {
+	}
+
+	public static LoaderDAO getInstance(){
+		if(single_instance == null) single_instance = new LoaderDAO();
+		return single_instance;
 	}
 
 	@Override

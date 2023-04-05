@@ -4,28 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="adding working meal delivery(back button doesn't work)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/LoaderDAOI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_2_23__8_31_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_2_23__8_31_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="Adding the CSV import/export page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/spotlessJava" beforeDir="false" afterPath="$PROJECT_DIR$/build/spotlessJava" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/LoaderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/LoaderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/Edge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/MoveDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/MoveDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/Map/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Edge.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/defaultCSV/Edge.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/LocationName.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/defaultCSV/LocationName.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Move.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/defaultCSV/Move.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Node.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/defaultCSV/Node.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/algorithms/AStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/algorithms/AStar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/wpi/teamname/DefaultTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/wpi/teamname/DefaultTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +43,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -138,6 +122,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nikesh\IdeaProjects\Team-S-Prototype-2\src\main\resources\edu\wpi\teamname\views" />
       <recent name="C:\Users\Nikesh\IdeaProjects\Team-S-Prototype-2\src\main\java\edu\wpi\teamname\defaultCSV" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -192,7 +177,8 @@
       <workItem from="1680479476214" duration="2577000" />
       <workItem from="1680482726505" duration="861000" />
       <workItem from="1680483747961" duration="490000" />
-      <workItem from="1680705615557" duration="2581000" />
+      <workItem from="1680705615557" duration="2716000" />
+      <workItem from="1680716951221" duration="8006000" />
     </task>
     <task id="LOCAL-00001" summary="adding meal delivery">
       <created>1680481774855</created>
@@ -215,7 +201,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680491585963</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adding CSV import/export and then also adding an interface for the loader so that it can be easily implemented later">
+      <created>1680709284861</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680709284861</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Adding the CSV import/export page">
+      <created>1680737589918</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680737589918</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +248,8 @@
     <MESSAGE value="adding meal delivery" />
     <MESSAGE value="adding meal delivery to main" />
     <MESSAGE value="adding working meal delivery(back button doesn't work)" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding working meal delivery(back button doesn't work)" />
+    <MESSAGE value="Adding CSV import/export and then also adding an interface for the loader so that it can be easily implemented later" />
+    <MESSAGE value="Adding the CSV import/export page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding the CSV import/export page" />
   </component>
 </project>

@@ -44,7 +44,7 @@ public class DefaultTest {
 
   @Test
   public void test() throws Exception {
-    LoaderDAO loader = new LoaderDAO();
+    LoaderDAO loader = LoaderDAO.getInstance();
     loader.load();
 
     testLogin();
