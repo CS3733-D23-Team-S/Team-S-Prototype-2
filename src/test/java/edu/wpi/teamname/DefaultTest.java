@@ -15,8 +15,7 @@ import org.junit.jupiter.api.Test;
 
 public class DefaultTest {
 
-
-
+  @Test
   public void testAlgos() {
     AStar a = new AStar();
     List<Integer> res = new ArrayList<>();
@@ -35,6 +34,7 @@ public class DefaultTest {
     assertEquals(a.findPath("Staircase K1 Floor 1", "Ambulance Parking Exit Floor 1"), res2);
   }
 
+  @Test
   public void testLogin() throws Exception {
     LoginDAOImpl LDaoI = LoginDAOImpl.getInstance();
     Exception exception = assertThrows(Exception.class, () -> LDaoI.login("aaaa", "bbbb"));
