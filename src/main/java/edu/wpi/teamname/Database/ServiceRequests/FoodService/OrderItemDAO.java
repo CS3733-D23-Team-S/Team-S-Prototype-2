@@ -23,12 +23,24 @@ public class OrderItemDAO {
     return cart;
   }
 
+  /**
+   * Awesome testing method
+   * @param foodName
+   * @return
+   * @throws Exception
+   */
   public OrderItem getOrderItem(String foodName) throws Exception {
     for (OrderItem orderItem : cart)
       if (orderItem.getItem().getFoodName().equals(foodName)) return orderItem;
     throw new NullPointerException("Item Not Present");
   }
 
+  /**
+   * Makes new orderItem and adds it
+   * @param item
+   * @param quantity
+   * @throws Exception
+   */
   public void addOrderItem(Food item, int quantity) throws Exception {
     OrderItem orderItem = new OrderItem(this.cartID, item, quantity);
     cart.add(orderItem);

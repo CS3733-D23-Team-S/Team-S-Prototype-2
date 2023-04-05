@@ -8,11 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItem;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItemDAO;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 public class DefaultTest {
 
-  public void testFood() {
+  public void testFood() throws Exception {
 
     // FoodDAOImpl
     // retrieveFood()
@@ -92,10 +94,20 @@ public class DefaultTest {
 
     // OrderItem
     OrderItem OI = new OrderItem(13, food, 10);
-    System.out.println(food.getFoodPrice());
     assertEquals(OI.calculateCost(), 1130);
 
-    // OrderItem
+    // OrderItemDAO
+    OrderItemDAO OIDao = new OrderItemDAO(1000);
+    OIDao.addOrderItem(food2, 10);
+    OrderItem OITest = new OrderItem(1000, food2, 10);
+    assertEquals(OIDao.getOrderItem(food2.getFoodName()), OITest);
+
+    OrderItem OI2 = OIDao.getOrderItem(food2.getFoodName());
+
+    OIDao.updateOrderQuantity(food2.getFoodName(), 20);
+    assertEquals(OI2.getQuantity(), 20);
+
+    OIDao.deleteOrderItem(food2.getFoodName());
 
     // FoodDelivery
     // FoodDelivery fd = new FoodDelivery();
