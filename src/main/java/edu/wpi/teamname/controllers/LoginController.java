@@ -1,18 +1,17 @@
 package edu.wpi.teamname.controllers;
 
+import static edu.wpi.teamname.navigation.Screen.HOME;
+
 import edu.wpi.teamname.LoginPage;
 import edu.wpi.teamname.navigation.Navigation;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import static edu.wpi.teamname.navigation.Screen.HOME;
 
 public class LoginController implements Initializable {
   @FXML private MFXButton backbutton;

@@ -7,10 +7,10 @@ import javafx.fxml.FXML;
 
 public class HomeController {
 
-  @FXML MFXButton navigateButton;
+  @FXML MFXButton loginButton;
 
   @FXML
   public void initialize() {
-    navigateButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUEST));
+    loginButton.setOnMouseClicked(event -> Navigation.navigate(Screen.LOGIN_PAGE));
   }
 }
