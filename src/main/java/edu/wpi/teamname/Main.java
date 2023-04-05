@@ -11,6 +11,7 @@ public class Main {
     //    loader.establishConnection();
     //    loader.resetData();
     loader.load();
+    App.launch(App.class, args);
     // Debugging stuff in order to check everything looks about right
     System.out.println("Loaded everything");
     //    for (int key : NodeDaoImpl.getInstance().getNodes().keySet())

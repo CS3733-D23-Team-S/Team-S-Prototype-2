@@ -9,7 +9,7 @@ public class Location {
   @Getter @Setter private NodeType nodeType;
   @Getter @Setter private String longName;
   @Getter @Setter private String shortName;
-  @Getter @Setter private Date mostRecentMove = null;
+  @Getter @Setter private LocalDate mostRecentMove = null;
 
   @Getter @Setter private Node node;
 
@@ -19,7 +19,7 @@ public class Location {
     this.shortName = shortName;
   }
 
-  public void updateDate(Date date) {
+  public void updateDate(LocalDate date) {
     this.mostRecentMove = date;
   }
 
@@ -37,4 +37,9 @@ public class Location {
         + this.shortName
         + "}";
   }
+
+  public String toCSVString(){
+    return longName + "," + shortName + "," + nodeType.toString();
+   }
+
 }

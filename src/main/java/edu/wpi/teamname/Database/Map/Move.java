@@ -27,4 +27,9 @@ public class Move {
         + dates.toString()
         + '}';
   }
+
+  public String toCSVString(){
+    return nodeID + "," + location + "," + dates.get(0);
+  }
+
 }
