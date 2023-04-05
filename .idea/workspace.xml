@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="86311e75-a6fd-46fd-a5fc-b71cebf02228" name="Changes" comment="Added Logout button">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/BBQpulledPork.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Coffee.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/CommealBread.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/DrPepper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/GarlicBread.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/LentilSoup.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/MacNCheese.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Pasta.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Pizza.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Samosa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Tacos.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/RoomBooking.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/Home.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Team-S-Prototype-2" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Team-S-Prototype-2" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="Class" />
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Adminpage" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NtS91sMyxyu8mHNnUJ3qpJ0zQW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/conta/IdeaProjects/Prototype2/Prototype2/Team-S-Prototype-2/src/main/resources/edu/wpi/teamname/FoodImages",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\conta\IdeaProjects\Prototype2\Prototype2\Team-S-Prototype-2\src\main\resources\edu\wpi\teamname\Images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\conta\IdeaProjects\Prototype2\Prototype2\Team-S-Prototype-2\src\main\resources\edu\wpi\teamname\FoodImages" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Team-S-Prototype-2 [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Team-S-Prototype-2 [run]" />
+        <item itemvalue="Gradle.Team-S-Prototype-2 [run]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="86311e75-a6fd-46fd-a5fc-b71cebf02228" name="Changes" comment="" />
+      <created>1680481730043</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680481730043</updated>
+      <workItem from="1680481731283" duration="10118000" />
+      <workItem from="1680573517384" duration="1528000" />
+      <workItem from="1680653071028" duration="802000" />
+      <workItem from="1680653911081" duration="6726000" />
+    </task>
+    <task id="LOCAL-00001" summary="Redesigned Homepage">
+      <created>1680483723332</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680483723332</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Redesigned Homepage">
+      <created>1680485763352</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680485763352</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adminpage added">
+      <created>1680491543176</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680491543176</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adminpage added">
+      <created>1680577082586</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680577082586</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Adminpage added">
+      <created>1680654134124</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680654134124</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added Logout button">
+      <created>1680655932199</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680655932199</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Redesigned Homepage" />
+    <MESSAGE value="Adminpage added" />
+    <MESSAGE value="Added Logout button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Logout button" />
+  </component>
+</project>
