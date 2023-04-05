@@ -57,7 +57,7 @@ public class RoomRequestDAO implements RoomRequest_I {
 
   @Override
   public ConfRoomRequest getRequest(int requestID) {
-    return null;
+    return requests.get(requestID);
   }
 
   @Override
@@ -91,5 +91,7 @@ public class RoomRequestDAO implements RoomRequest_I {
   }
 
   @Override
-  public void deleteRequest(ConfRoomRequest request) {}
+  public void deleteRequest(int requestID) {
+    requests.remove(requestID);
+  }
 }
