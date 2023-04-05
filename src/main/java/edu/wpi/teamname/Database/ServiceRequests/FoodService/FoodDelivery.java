@@ -15,7 +15,7 @@ public class FoodDelivery {
   @Getter @Setter LocalTime time;
   @Getter Room room;
   @Getter @Setter String orderer;
-  @Getter@Setter String assignedTo;
+  @Getter @Setter String assignedTo;
   @Getter @Setter Status orderStatus;
   @Getter @Setter String notes = "";
 
