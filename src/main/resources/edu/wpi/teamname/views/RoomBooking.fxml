@@ -33,7 +33,7 @@
                 <Font name="Arial Bold" size="40.0" />
             </font>
         </TextField2TableCell>
-        <TextField2TableCell editable="false" prefHeight="21.0" prefWidth="535.0" text="Monday, May 13" textFill="#1d3d94" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+        <TextField2TableCell fx:id="currentDateText" editable="false" prefHeight="21.0" prefWidth="535.0" text="Monday, May 13" textFill="#1d3d94" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
             <font>
                 <Font name="Arial" size="40.0" />
             </font>
@@ -111,8 +111,14 @@
                                 </Text>
                             </children>
                         </Group>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5c5ee" height="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="171.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Rectangle>
                     </children>
                 </VBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5c5ee" height="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="171.0" />
             </children>
             <GridPane.margin>
                 <Insets top="30.0" />

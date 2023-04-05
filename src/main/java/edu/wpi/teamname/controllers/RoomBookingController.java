@@ -32,11 +32,13 @@ public class RoomBookingController {
     backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
 
     createDummyRooms(); // create dummy rooms
-    rb.setRoomList(roomList);
     createDummyRoomRequests(); // create dummy reservations
+    rb.setRoomList(roomList); // later -- read from DB
     rb.setRoomRequestList(reservationList);
+
+    // read room requests from DB
+
     rb.createRoomsUI(conferenceRoomsHBox);
-    rb.createReservationsUI(conferenceRoomsHBox);
   }
 
   public static void addNewRequest(
@@ -57,6 +59,7 @@ public class RoomBookingController {
             "Assignee",
             Status.Received,
             "No notes");
+    // roomRequestDAO.addRequest(request); TODO need this?
   }
 
   public void createDummyRooms() {
@@ -112,8 +115,8 @@ public class RoomBookingController {
     reservationList.add(res2);
     reservationList.add(res3);
 
-    // roomRequestDAO.addRequest(res1);
-    // roomRequestDAO.addRequest(res2);
-    // roomRequestDAO.addRequest(res3);
+    roomRequestDAO.addRequest(res1);
+    roomRequestDAO.addRequest(res2);
+    roomRequestDAO.addRequest(res3);
   }
 }

@@ -12,7 +12,7 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="e21ee806-2012-4d79-9a9d-dfbfd90167d6">
+    <connection id="4c298eba-3595-43a4-802d-d9181a44e9f0">
       <console name="Connection" type="STANDARD" schema="teamsdb" session="Main" />
     </connection>
   </component>
@@ -21,10 +21,6 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="e21ee806-2012-4d79-9a9d-dfbfd90167d6" dataset="hospitaldb.roomreservation" active-filter-id="" />
-    <filter-actions connection-id="e21ee806-2012-4d79-9a9d-dfbfd90167d6" dataset="hospitaldb.roomreservations" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -43,13 +39,13 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="e21ee806-2012-4d79-9a9d-dfbfd90167d6" active="true" signed="true">
+      <connection id="4c298eba-3595-43a4-802d-d9181a44e9f0" active="true" signed="true">
         <database>
-          <name value="Connection2" />
+          <name value="Connection" />
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="15.2" />
+          <database-version value="9999.0" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />

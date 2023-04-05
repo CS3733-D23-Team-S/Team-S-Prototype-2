@@ -50,4 +50,8 @@ public class ConfRoomRequest {
     this.reservationID = reservationIDUpdater;
     return reservationID;
   }
+
+  public String getRoomId() {
+    return Integer.toString(room.getId());
+  }
 }
