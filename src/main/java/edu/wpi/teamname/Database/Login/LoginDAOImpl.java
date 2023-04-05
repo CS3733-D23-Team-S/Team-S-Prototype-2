@@ -32,6 +32,12 @@ public class LoginDAOImpl implements LoginDAOI {
               + "password varchar(100) NOT NULL, "
               + "permission int)";
       stmt.execute(loginTableConstruct);
+      LoginInfo admin = new LoginInfo("admin", "admin", Permission.ADMIN);
+      loginInfo.put("admin", admin);
+      ResultSet checkExists =
+          connection.getConnection().createStatement().executeQuery("SELECT  * FROM " + name);
+      if (checkExists.next()) return;
+
       String addAdmin =
           "INSERT INTO "
               + loginTableName
@@ -39,8 +45,6 @@ public class LoginDAOImpl implements LoginDAOI {
               + "('admin','admin',"
               + Permission.ADMIN.ordinal()
               + ")";
-      LoginInfo admin = new LoginInfo("admin", "admin", Permission.ADMIN);
-      loginInfo.put("admin", admin);
       stmt.executeUpdate(addAdmin);
     } catch (SQLException e) {
       e.getMessage();
@@ -53,7 +57,7 @@ public class LoginDAOImpl implements LoginDAOI {
    * @return true if user exists, false if otherwise
    */
   private boolean checkIfUserExists(String username) {
-    return loginInfo.get(username) == null;
+    return loginInfo.get(username) != null;
   }
 
   /**

@@ -69,7 +69,8 @@ public class AStar {
     return pathTaken;
   }
 
-//  pathTaken.put(currentNode.getNodeID(),moveDao.getNodeToLoc().get(currentNode.getNodeID()).get(1));
+  //
+  // pathTaken.put(currentNode.getNodeID(),moveDao.getNodeToLoc().get(currentNode.getNodeID()).get(1));
   static class HeuristicNode implements Comparator<HeuristicNode> {
     Node node;
     double weight;
