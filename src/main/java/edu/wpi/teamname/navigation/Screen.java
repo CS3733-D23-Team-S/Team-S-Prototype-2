@@ -6,7 +6,8 @@ public enum Screen {
   LOGIN_PAGE("views/LoginPage.fxml"),
   HOME("views/Home.fxml"),
   MEAL_DELIVERY1("views/MealDelivery1.fxml"),
-  SERVICE_REQUEST("views/ServiceRequest.fxml");
+  SERVICE_REQUEST("views/ServiceRequest.fxml"),
+  CSV_MANAGE("edu/wpi/teamname/views/CSVPage.fxml");
 
   private final String filename;
 
