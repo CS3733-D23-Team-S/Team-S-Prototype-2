@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Node.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Team-S-Prototype-2</a> &gt; <a href="index.source.html" class="el_package">edu.wpi.teamname.Database.Map</a> &gt; <span class="el_source">Node.java</span></div><h1>Node.java</h1><pre class="source lang-java linenums">package edu.wpi.teamname.Database.Map;
+
+import java.util.LinkedList;
+import lombok.Getter;
+import lombok.Setter;
+
+public class Node {
+  @Getter @Setter private int nodeID;
+  @Getter @Setter private int xCoord;
+  @Getter @Setter private int yCoord;
+  @Getter @Setter private Floor floor;
+  @Getter @Setter private String building;
+  @Getter @Setter private LinkedList&lt;Location&gt; locations;
+
+<span class="nc" id="L15">  public Node(int nodeID, int xCoord, int yCoord, Floor floor, String building) {</span>
+
+<span class="nc" id="L17">    this.nodeID = nodeID;</span>
+<span class="nc" id="L18">    this.xCoord = xCoord;</span>
+<span class="nc" id="L19">    this.yCoord = yCoord;</span>
+<span class="nc" id="L20">    this.floor = floor;</span>
+<span class="nc" id="L21">    this.building = building;</span>
+<span class="nc" id="L22">  }</span>
+
+  @Override
+  public String toString() {
+
+<span class="nc" id="L27">    return &quot;Node{&quot;</span>
+        + &quot;nodeID=&quot;
+        + nodeID
+        + &quot;  &quot;
+        + &quot;coords=(&quot;
+        + xCoord
+        + &quot;, &quot;
+        + yCoord
+        + &quot;  &quot;
+        + &quot;floor=&quot;
+        + floor
+        + &quot;  &quot;
+        + &quot;building=&quot;
+        + building;
+  }
+
+  public void addLocation(Location newlocation) {
+<span class="nc" id="L44">    this.locations.add(newlocation);</span>
+<span class="nc" id="L45">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

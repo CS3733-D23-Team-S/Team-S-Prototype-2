@@ -10,5 +10,7 @@ public enum NodeType {
   REST,
   RETL,
   SERV,
-  STAI
+  STAI,
+  INFO,
+  BATH
 }
