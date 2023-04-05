@@ -6,6 +6,7 @@ import edu.wpi.teamname.Database.ServiceRequests.Room;
 
 public class Sdb {
   public static void main(String[] args) throws Exception {
+
     // String foodPath = "";
     FoodDAOImpl foodDao = FoodDAOImpl.getInstance();
     // foodDao.csvToFood(foodPath);
@@ -23,10 +24,12 @@ public class Sdb {
     OrderItemDAO cart = new OrderItemDAO(1);
     cart.addOrderItem(newFood, 3);
     FoodDelivery newRequest =
-        new FoodDelivery(1, cart, null, new Room(1, "Conference Room", 3), "admin");
+        new FoodDelivery(1, cart, null, new Room(1, "Conference Room", "L1", 30, ""), "admin");
 
     FoodDeliveryDAOImp foodRequest = FoodDeliveryDAOImp.getInstance();
     foodRequest.addFoodRequest(newRequest);
+
+    App.launch(App.class, args);
   }
   //
   //    String floorPath = "src/main/java/edu/wpi/teamname/Node.csv";

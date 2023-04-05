@@ -6,31 +6,50 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import lombok.Getter;
+import lombok.Setter;
 
 public class RoomBookingDetailsController {
 
   @FXML MFXButton submitDetailsButton;
   @FXML MFXTextField roomLocationText;
-  @FXML MFXTextField roomTimesText;
+  @FXML MFXTextField startTimeText;
+  @FXML MFXTextField endTimeText;
   @FXML MFXTextField eventTitleText;
   @FXML MFXTextField eventDescriptionText;
   @FXML MFXButton backButton;
+  @FXML MFXButton clearButton;
 
-  String roomLocation;
-  String roomTimes;
-  String eventTitle;
-  String eventDescription;
+  @Setter @Getter String roomLocation;
+  @Setter @Getter String startTime;
+  @Setter @Getter String endTime;
+  @Setter @Getter String eventTitle;
+  @Setter @Getter String eventDescription;
+
+  RoomBookingController rbc = new RoomBookingController();
 
   @FXML
   public void initialize() {
     submitDetailsButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING));
+    clearButton.setOnMouseClicked(event -> clearFields());
   }
 
   @FXML
   public void submitDetails(ActionEvent event) {
     roomLocation = roomLocationText.getText();
-    roomTimes = roomTimesText.getText();
+    startTime = startTimeText.getText();
+    endTime = endTimeText.getText();
     eventTitle = eventTitleText.getText();
     eventDescription = eventDescriptionText.getText();
+    rbc.addNewRequest(roomLocation, startTime, endTime, eventTitle, eventDescription);
+    clearFields();
+  }
+
+  public void clearFields() {
+    roomLocationText.clear();
+    startTimeText.clear();
+    endTimeText.clear();
+    eventTitleText.clear();
+    eventDescriptionText.clear();
   }
 }

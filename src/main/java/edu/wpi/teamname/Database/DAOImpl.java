@@ -13,6 +13,8 @@ public abstract class DAOImpl {
   protected static final String foodsTable = schemaName + "." + "foods";
   protected static final String cartTable = schemaName + "." + "cart";
   protected static final String foodRequestsTable = schemaName + "." + "foodRequests";
+  protected static final String roomReservationsTable = schemaName + "." + "roomReservations";
+
   dbConnection connection;
 
   public void establishConnection() {
@@ -27,6 +29,9 @@ public abstract class DAOImpl {
     String dropFoodTable = "DROP TABLE IF EXISTS " + foodsTable + " CASCADE";
     String dropCartTable = "DROP TABLE IF EXISTS " + cartTable + " CASCADE";
     String dropFoodRequestTable = "DROP TABLE IF EXISTS " + foodRequestsTable + " CASCADE";
+    String dropRoomReservationsTable = "DROP TABLE IF EXISTS " + roomReservationsTable + " CASCADE";
+
+    System.out.println("Drops created");
 
     String createSchema = "CREATE SCHEMA IF NOT EXISTS " + schemaName;
     String floorTableConstruct =
@@ -94,18 +99,38 @@ public abstract class DAOImpl {
             + "FOREIGN KEY (cartID) REFERENCES "
             + cartTable
             + "(cartID) ON DELETE CASCADE)";
+
+    String roomReservationsTableConstruct =
+        "CREATE TABLE IF NOT EXISTS "
+            + roomReservationsTable
+            + " "
+            + "(reservationID int UNIQUE PRIMARY KEY,"
+            + "date Date,"
+            + "startTime Time,"
+            + "endTime Time,"
+            + "room Varchar(100),"
+            + "reservedBy Varchar(100),"
+            + "eventName Varchar(100),"
+            + "eventDescription Varchar(100),"
+            + "assignedTo Varchar(100),"
+            + "orderStatus Varchar(100),"
+            + "notes Varchar(500))";
+    System.out.println("Room reservations table created");
     try {
+      System.out.println("Trying to create tables");
       stmt.execute(createSchema);
       stmt.execute(dropFloorTable);
       stmt.execute(dropEdgeTable);
       stmt.execute(dropFoodTable);
       stmt.execute(dropCartTable);
       stmt.execute(dropFoodRequestTable);
+      stmt.execute(dropRoomReservationsTable);
       stmt.execute(floorTableConstruct);
       stmt.execute(edgeTableConstruct);
       stmt.execute(foodTableConstruct);
       stmt.execute(cartTableConstruct);
       stmt.execute(foodOrdersTableConstruct);
+      stmt.execute(roomReservationsTableConstruct);
       System.out.println("Loaded the tables into the database");
     } catch (SQLException e) {
       System.out.println(e.getMessage());
