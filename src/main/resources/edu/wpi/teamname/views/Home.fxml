@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.teamname.controllers.HomeController">
    <center>
-      <HBox alignment="CENTER" prefHeight="900.0" prefWidth="1600.0">
+      <VBox alignment="CENTER" prefHeight="900.0" prefWidth="1600.0">
          <children>
             <MFXButton fx:id="logout" prefHeight="100.0" prefWidth="500.0" text="Log-out">
                <font>
                   <Font size="50.0" />
                </font>
             </MFXButton>
+            <MFXButton fx:id="exitApp" prefHeight="50.0" prefWidth="200.0" text="Exit">
+               <font>
+                  <Font size="40.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </MFXButton>
          </children>
-      </HBox>
+      </VBox>
    </center>
 </BorderPane>
