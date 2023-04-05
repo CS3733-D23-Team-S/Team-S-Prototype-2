@@ -320,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680677788690</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="room booking - fixed adding to ui">
+      <created>1680736434076</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1680736434076</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,7 +363,8 @@
     <MESSAGE value="adding functions to room booking" />
     <MESSAGE value="room booking - fixed broken functions" />
     <MESSAGE value="room booking - integrated with database" />
-    <option name="LAST_COMMIT_MESSAGE" value="room booking - integrated with database" />
+    <MESSAGE value="room booking - fixed adding to ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="room booking - fixed adding to ui" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
