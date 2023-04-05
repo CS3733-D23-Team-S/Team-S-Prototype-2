@@ -5,7 +5,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import lombok.Getter;
@@ -160,6 +162,63 @@ public class FoodDAOImpl implements FoodDAO_I {
     }
 
     return quickFood;
+  }
+
+  public void loadToRemote() {
+
+    try {
+      Statement st = connection.getC().createStatement();
+      ResultSet rs = st.executeQuery("SELECT * FROM " + foodsTable);
+
+      while (rs.next()) {
+        Integer foodid = rs.getInt("foodid");
+        String foodname = rs.getString("name");
+        String foodtype = rs.getString("type");
+        Integer foodpreptime = rs.getInt("preptime");
+        String foodcuisine = rs.getString("cuisine");
+        Double foodprice = rs.getDouble("price");
+        String fooddesciption = rs.getString("description");
+        Boolean issoldout = rs.getBoolean("soldout");
+        String image = rs.getString("image");
+        Integer cal = rs.getInt("calories");
+        Boolean isit = rs.getBoolean("italian");
+        Boolean isam = rs.getBoolean("american");
+        Boolean isin = rs.getBoolean("indian");
+        Boolean isme = rs.getBoolean("mexican");
+        Boolean isveg = rs.getBoolean("vegetarian");
+        Boolean isha = rs.getBoolean("halal");
+        Boolean isve = rs.getBoolean("vegan");
+        Boolean isgl = rs.getBoolean("glutenfree");
+        Boolean isko = rs.getBoolean("kosher");
+
+        Food f =
+            new Food(
+                foodid,
+                foodname,
+                foodtype,
+                foodpreptime,
+                foodcuisine,
+                foodprice,
+                fooddesciption,
+                issoldout,
+                image,
+                cal,
+                isit,
+                isam,
+                isin,
+                isme,
+                isveg,
+                isha,
+                isve,
+                isgl,
+                isko);
+
+        foods.put(foodid, f);
+      }
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   public void csvToFood(String csvFilePath) {
