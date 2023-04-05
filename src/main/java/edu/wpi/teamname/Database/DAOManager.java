@@ -1,17 +1,13 @@
 package edu.wpi.teamname.Database;
 
+import edu.wpi.teamname.Database.Map.Edge;
+import edu.wpi.teamname.Database.Map.Floor;
+import edu.wpi.teamname.Database.Map.Node;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.HashSet;
-
-import edu.wpi.teamname.Database.DAOImpl;
-import edu.wpi.teamname.Database.DAO_I;
-import edu.wpi.teamname.Database.Map.Edge;
-import edu.wpi.teamname.Database.Map.Floor;
-import edu.wpi.teamname.Database.Map.Node;
-import edu.wpi.teamname.Database.Map.NodeType;
 import lombok.Getter;
 
 public class DAOManager extends DAOImpl implements DAO_I {
@@ -159,13 +155,7 @@ public class DAOManager extends DAOImpl implements DAO_I {
         String building = data.getString("Building");
         String longName = data.getString("longName");
         String shortName = data.getString("shortName");
-        Node floorNode =
-            new Node(
-                nodeID,
-                xCoord,
-                yCoord,
-                Floor.values()[floor],
-                building);
+        Node floorNode = new Node(nodeID, xCoord, yCoord, Floor.values()[floor], building);
         nodes.put(nodeID, floorNode);
       }
     } catch (SQLException e) {

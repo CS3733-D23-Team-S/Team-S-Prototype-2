@@ -9,7 +9,9 @@ public enum Screen {
   SERVICE_REQUEST("views/ServiceRequest.fxml"),
   SIGNAGE_PAGE("views/Signage.fxml"),
 
-  KITCHENFACILITIES_PAGE("views/KitchenFacilitiesPage.fxml"),
+  KITCHEN_STAFF("views/KitchenStaff.fxml"),
+  FACILITIES_STAFF("views/FacilitiesStaff.fxml"),
+  MAP_EDITOR("views/MapEditor.fxml"),
   MEAL_DELIVERY("views/MealDelivery.fxml");
 
   private final String filename;

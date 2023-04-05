@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MealDeliveryController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Team-S-Prototype-2</a> &gt; <a href="index.source.html" class="el_package">edu.wpi.teamname.controllers.ServiceRequestControllers</a> &gt; <span class="el_source">MealDeliveryController.java</span></div><h1>MealDeliveryController.java</h1><pre class="source lang-java linenums">package edu.wpi.teamname.controllers.ServiceRequestControllers;
+
+import edu.wpi.teamname.MealDeliverySubmission;
+import edu.wpi.teamname.navigation.Navigation;
+import edu.wpi.teamname.navigation.Screen;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.fxml.FXML;
+
+<span class="nc" id="L10">public class MealDeliveryController {</span>
+
+  @FXML MFXButton backButton1;
+  @FXML MFXButton submitButton;
+  @FXML MFXButton friesButton;
+  @FXML MFXButton burgersButton;
+  @FXML MFXButton soupButton;
+  @FXML MFXButton pizzaButton;
+  @FXML MFXButton coffeeButton;
+  @FXML MFXButton icecreamButton;
+  @FXML MFXButton cakeButton;
+  @FXML MFXTextField roomNum;
+
+  @FXML
+  public void initialize() {
+<span class="nc" id="L25">    backButton1.setOnMouseClicked(event -&gt; Navigation.navigate(Screen.HOME));</span>
+<span class="nc" id="L26">    submitButton.setOnMouseClicked(event -&gt; Navigation.navigate(Screen.HOME));</span>
+<span class="nc" id="L27">    friesButton.setOnMouseClicked(event -&gt; MealDeliverySubmission.setFood(&quot;fries&quot;));</span>
+<span class="nc" id="L28">    burgersButton.setOnMouseClicked(event -&gt; MealDeliverySubmission.setFood(&quot;burger&quot;));</span>
+<span class="nc" id="L29">    soupButton.setOnMouseClicked(event -&gt; MealDeliverySubmission.setFood(&quot;soup&quot;));</span>
+<span class="nc" id="L30">    pizzaButton.setOnMouseClicked(event -&gt; MealDeliverySubmission.setFood(&quot;pizza&quot;));</span>
+<span class="nc" id="L31">    coffeeButton.setOnMouseClicked(event -&gt; MealDeliverySubmission.setFood(&quot;coffee&quot;));</span>
+<span class="nc" id="L32">    icecreamButton.setOnMouseClicked(event -&gt; MealDeliverySubmission.setFood(&quot;icecream&quot;));</span>
+<span class="nc" id="L33">    cakeButton.setOnMouseClicked(event -&gt; MealDeliverySubmission.setFood(&quot;cake&quot;));</span>
+<span class="nc" id="L34">    roomNum.setOnKeyTyped(event -&gt; MealDeliverySubmission.setRoom(roomNum));</span>
+<span class="nc" id="L35">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

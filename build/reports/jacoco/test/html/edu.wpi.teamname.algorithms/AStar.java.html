@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AStar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Team-S-Prototype-2</a> &gt; <a href="index.source.html" class="el_package">edu.wpi.teamname.algorithms</a> &gt; <span class="el_source">AStar.java</span></div><h1>AStar.java</h1><pre class="source lang-java linenums">package edu.wpi.teamname.algorithms;
+
+import edu.wpi.teamname.Database.DAOManager;
+import edu.wpi.teamname.Database.Map.Node;
+import java.util.*;
+
+public class AStar {
+
+  DAOManager dbManager;
+  HashMap&lt;String, Node&gt; floors;
+  HashMap&lt;String, HashSet&lt;String&gt;&gt; edges;
+
+<span class="nc" id="L13">  public AStar(DAOManager manager) {</span>
+<span class="nc" id="L14">    dbManager = manager;</span>
+<span class="nc" id="L15">    floors = dbManager.getNodes();</span>
+<span class="nc" id="L16">    edges = dbManager.getNeighbors();</span>
+<span class="nc" id="L17">  }</span>
+
+  private void updateDataBase() {
+<span class="nc" id="L20">    floors = dbManager.getNodes();</span>
+<span class="nc" id="L21">    edges = dbManager.getNeighbors();</span>
+<span class="nc" id="L22">  }</span>
+
+  public ArrayList&lt;String&gt; findPath(String s, String e) {
+<span class="nc" id="L25">    updateDataBase();</span>
+<span class="nc" id="L26">    final PriorityQueue&lt;HeuristicNode&gt; nodesYetToSearch =</span>
+        new PriorityQueue&lt;&gt;(10, new HeuristicNode(null, Double.MAX_VALUE));
+<span class="nc" id="L28">    final HashSet&lt;Node&gt; visitedNodes = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L29">    final Map&lt;Node, Node&gt; gotHereFrom = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L30">    Node start = dbManager.getNodes().get(s);</span>
+<span class="nc" id="L31">    Node end = dbManager.getNodes().get(e);</span>
+<span class="nc" id="L32">    HeuristicNode startHNode = new HeuristicNode(start, calculateWeight(start, end));</span>
+    //    System.out.println(startHNode.node + &quot;\t&quot; + startHNode.weight);
+<span class="nc" id="L34">    nodesYetToSearch.add(startHNode);</span>
+    HeuristicNode currentNode;
+
+<span class="nc bnc" id="L37" title="All 2 branches missed.">    while (nodesYetToSearch.size() != 0) {</span>
+<span class="nc" id="L38">      currentNode = nodesYetToSearch.poll();</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">      if (currentNode.node.getNodeID().equals(e)) {</span>
+<span class="nc" id="L40">        return constructShortestPath(currentNode.node, gotHereFrom);</span>
+      }
+      //      dbManager.printLocalDatabases();
+      //      System.out.print(currentNode.node.getNodeID());
+<span class="nc bnc" id="L44" title="All 2 branches missed.">      for (String nodeToSearchID : edges.get(currentNode.node.getNodeID())) {</span>
+        //        System.out.print(nodeToSearchID + &quot;\t&quot;);
+<span class="nc" id="L46">        Node nodeToSearch = floors.get(nodeToSearchID);</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (!visitedNodes.contains(nodeToSearch)) {</span>
+<span class="nc" id="L48">          double weight = calculateWeight(nodeToSearch, end);</span>
+<span class="nc" id="L49">          nodesYetToSearch.add(new HeuristicNode(nodeToSearch, weight));</span>
+<span class="nc" id="L50">          gotHereFrom.put(nodeToSearch, currentNode.node);</span>
+        }
+<span class="nc" id="L52">      }</span>
+<span class="nc" id="L53">      visitedNodes.add(currentNode.node);</span>
+    }
+<span class="nc" id="L55">    return null;</span>
+  }
+
+  private double calculateWeight(Node start, Node target) {
+<span class="nc" id="L59">    return Math.sqrt(</span>
+<span class="nc" id="L60">        Math.pow((start.getXCoord() - target.getXCoord()), 2)</span>
+<span class="nc" id="L61">            + Math.pow((start.getYCoord() - target.getYCoord()), 2));</span>
+  }
+
+  private ArrayList&lt;String&gt; constructShortestPath(Node currentNode, Map&lt;Node, Node&gt; gotHereFrom) {
+<span class="nc" id="L65">    final ArrayList&lt;String&gt; pathTaken = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">    while (gotHereFrom.get(currentNode) != null) {</span>
+<span class="nc" id="L67">      pathTaken.add(currentNode.getNodeID());</span>
+<span class="nc" id="L68">      currentNode = gotHereFrom.get(currentNode);</span>
+    }
+<span class="nc" id="L70">    pathTaken.add(currentNode.getNodeID());</span>
+<span class="nc" id="L71">    Collections.reverse(pathTaken);</span>
+<span class="nc" id="L72">    return pathTaken;</span>
+  }
+
+  static class HeuristicNode implements Comparator&lt;HeuristicNode&gt; {
+    Node node;
+    double weight;
+
+<span class="nc" id="L79">    public HeuristicNode(Node node, double weight) {</span>
+<span class="nc" id="L80">      this.node = node;</span>
+<span class="nc" id="L81">      this.weight = weight;</span>
+<span class="nc" id="L82">    }</span>
+
+    @Override
+    public int compare(HeuristicNode o1, HeuristicNode o2) {
+<span class="nc" id="L86">      return Double.compare(o1.weight, o2.weight);</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

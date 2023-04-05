@@ -1,24 +1,18 @@
 package edu.wpi.teamname;
 
-import edu.wpi.teamname.Database.Map.Node;
+import java.util.ArrayList;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-
 public class PathfindingEntity {
 
-  @Getter @Setter
-  String startingLocation;
+  @Getter @Setter String startingLocation;
 
-  @Getter
-  @Setter
-  String destination;
+  @Getter @Setter String destination;
 
-  @Getter @Setter
-  ArrayList<Node> nodesTraversed;
+  @Getter @Setter ArrayList<String> nodesTraversed;
 
-
+  // create AStar object
 
   public PathfindingEntity(String startingLocation, String destination) {
     this.startingLocation = startingLocation;
@@ -27,24 +21,9 @@ public class PathfindingEntity {
   }
 
   /*
-  public Boolean realLocations() {
-    if (listOfLocations.contains(this.startingLocation) && listOfLocations.contains(this.destination)) {
-      return true;
-    } else {
-      return false;
-    }
+  public void generatePath() {
+    this.nodesTraversed = this.aStar.findPath(this.startingLocation, this.destination);
   }
    */
-
-
-  /*
-  public void generatePath() {
-    if (realLocation(this.startingLocation) && realLocation(destination)) {
-      // run search
-      // this.nodesTraversed = pathFromSearch;
-    }
-  }
-  */
-
 
 }

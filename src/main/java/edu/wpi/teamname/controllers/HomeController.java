@@ -1,6 +1,7 @@
 package edu.wpi.teamname.controllers;
 
-import edu.wpi.teamname.Main;
+import static edu.wpi.teamname.navigation.Screen.PATHFINDING;
+
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -8,10 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import static edu.wpi.teamname.navigation.Screen.PATHFINDING;
 
 public class HomeController {
 
@@ -29,10 +27,10 @@ public class HomeController {
   @FXML ImageView mealdelivery;
 
   public void initialize() {
-    Image mealImage = new Image(Main.class.getResource("images/Meal_Icon.jpg").toString());
-    mealdelivery.setImage(mealImage);
+     Image mealImage = new Image(Main.class.getResource("images/Meal_Icon.jpg").toString());
+     mealdelivery.setImage(mealImage);
 
-    Image conferenceImage =
+     Image conferenceImage =
         new Image(Main.class.getResource("images/Conference_room_icon.jpg").toString());
     conferenceroom.setImage(conferenceImage);
 

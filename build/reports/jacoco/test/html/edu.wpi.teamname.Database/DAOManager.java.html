@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DAOManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Team-S-Prototype-2</a> &gt; <a href="index.source.html" class="el_package">edu.wpi.teamname.Database</a> &gt; <span class="el_source">DAOManager.java</span></div><h1>DAOManager.java</h1><pre class="source lang-java linenums">package edu.wpi.teamname.Database;
+
+import edu.wpi.teamname.Database.Map.Edge;
+import edu.wpi.teamname.Database.Map.Floor;
+import edu.wpi.teamname.Database.Map.Node;
+import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.HashSet;
+import lombok.Getter;
+
+public class DAOManager extends DAOImpl implements DAO_I {
+
+  @Getter private HashMap&lt;String, HashSet&lt;String&gt;&gt; neighbors;
+  @Getter private HashMap&lt;String, Node&gt; nodes;
+
+<span class="nc" id="L18">  public DAOManager() {</span>
+<span class="nc" id="L19">    neighbors = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L20">    nodes = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L21">  }</span>
+
+  @Override
+  public void constructLocalDataBase() throws SQLException {
+<span class="nc bnc" id="L25" title="All 2 branches missed.">    if (!nodes.isEmpty()) nodes.clear();</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">    if (!neighbors.isEmpty()) neighbors.clear();</span>
+<span class="nc" id="L27">    constructLocalFloorDataBase();</span>
+<span class="nc" id="L28">    constructLocalNeighborsDB();</span>
+<span class="nc" id="L29">  }</span>
+
+  public void addNode(Node thisNode) {
+    try {
+<span class="nc" id="L33">      PreparedStatement preparedStatement =</span>
+<span class="nc" id="L34">          c.prepareStatement(</span>
+              &quot;INSERT INTO &quot;
+                  + floorNodeTableName
+                  + &quot; (nodeID ,xCoord ,yCoord , Floor, Building, nodeType, longName, shortName) &quot;
+                  + &quot; VALUES (?, ?, ? ,?, ?, ?, ?, ?)&quot;);
+<span class="nc" id="L39">      preparedStatement.setString(1, thisNode.getNodeID());</span>
+<span class="nc" id="L40">      preparedStatement.setInt(2, thisNode.getXCoord());</span>
+<span class="nc" id="L41">      preparedStatement.setInt(3, thisNode.getYCoord());</span>
+<span class="nc" id="L42">      preparedStatement.setInt(4, thisNode.getFloor().ordinal());</span>
+<span class="nc" id="L43">      preparedStatement.setString(5, thisNode.getBuilding());</span>
+
+<span class="nc" id="L45">      preparedStatement.executeUpdate();</span>
+
+<span class="nc" id="L47">    } catch (SQLException e) {</span>
+<span class="nc" id="L48">      e.printStackTrace();</span>
+<span class="nc" id="L49">      System.out.println(e.getSQLState());</span>
+<span class="nc" id="L50">    }</span>
+<span class="nc" id="L51">  }</span>
+
+  public void addEdge(Edge thisEdge) {
+    try {
+<span class="nc" id="L55">      PreparedStatement preparedStatement =</span>
+<span class="nc" id="L56">          c.prepareStatement(</span>
+              &quot;INSERT INTO &quot;
+                  + edgesTableName
+                  + &quot; (startNode, endNode, edgeID) &quot;
+                  + &quot; VALUES (?, ?, ? )&quot;);
+<span class="nc" id="L61">      preparedStatement.setString(1, thisEdge.getStartNode().getNodeID());</span>
+<span class="nc" id="L62">      preparedStatement.setString(2, thisEdge.getEndNode().getNodeID());</span>
+<span class="nc" id="L63">      preparedStatement.setString(3, thisEdge.getEdgeID());</span>
+
+<span class="nc" id="L65">      preparedStatement.executeUpdate();</span>
+<span class="nc" id="L66">    } catch (SQLException e) {</span>
+<span class="nc" id="L67">      e.printStackTrace();</span>
+<span class="nc" id="L68">    }</span>
+<span class="nc" id="L69">  }</span>
+
+  // Left if desired to use, but technically the above method will be faster and not rely on the
+  // remote
+  public void updateLocationName(String nodeId, String longName) {
+    try {
+<span class="nc" id="L75">      PreparedStatement preparedStatement =</span>
+<span class="nc" id="L76">          c.prepareStatement(&quot;UPDATE &quot; + floorNodeTableName + &quot; SET longname = ? WHERE nodeID = ?&quot;);</span>
+<span class="nc" id="L77">      preparedStatement.setString(1, longName);</span>
+<span class="nc" id="L78">      preparedStatement.setString(2, nodeId);</span>
+<span class="nc" id="L79">      Node temp = nodes.get(nodeId);</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">      if (temp == null) {</span>
+<span class="nc" id="L81">        System.out.println(&quot;This node is not in the database&quot;);</span>
+<span class="nc" id="L82">        return;</span>
+      }
+
+<span class="nc" id="L85">      nodes.put(nodeId, temp);</span>
+<span class="nc" id="L86">      preparedStatement.executeUpdate();</span>
+<span class="nc" id="L87">      System.out.println(&quot;Updated Node&quot;);</span>
+<span class="nc" id="L88">    } catch (SQLException e) {</span>
+<span class="nc" id="L89">      e.printStackTrace();</span>
+<span class="nc" id="L90">      System.out.println(e.getSQLState());</span>
+      // Handle the exception appropriately
+<span class="nc" id="L92">    }</span>
+    // Handles the edge updates as well
+<span class="nc" id="L94">  }</span>
+
+  public void updateCoord(String nodeId, int xcoord, int ycoord) {
+    try {
+<span class="nc" id="L98">      PreparedStatement preparedStatement =</span>
+<span class="nc" id="L99">          c.prepareStatement(</span>
+              &quot;UPDATE &quot; + floorNodeTableName + &quot; SET xcoord = ?, ycoord = ? WHERE nodeID = ?&quot;);
+<span class="nc" id="L101">      preparedStatement.setInt(1, xcoord);</span>
+<span class="nc" id="L102">      preparedStatement.setInt(2, ycoord);</span>
+<span class="nc" id="L103">      preparedStatement.setString(3, nodeId);</span>
+<span class="nc" id="L104">      Node temp = nodes.get(nodeId);</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">      if (temp == null) {</span>
+<span class="nc" id="L106">        System.out.println(&quot;This node is not in the database&quot;);</span>
+<span class="nc" id="L107">        return;</span>
+      }
+<span class="nc" id="L109">      temp.setXCoord(xcoord);</span>
+<span class="nc" id="L110">      temp.setXCoord(ycoord);</span>
+<span class="nc" id="L111">      nodes.put(nodeId, temp);</span>
+<span class="nc" id="L112">      preparedStatement.executeUpdate();</span>
+<span class="nc" id="L113">      System.out.println(&quot;Updated Coordinates&quot;);</span>
+<span class="nc" id="L114">    } catch (SQLException e) {</span>
+<span class="nc" id="L115">      e.printStackTrace();</span>
+<span class="nc" id="L116">      System.out.println(e.getSQLState());</span>
+      // Handle the exception appropriately
+<span class="nc" id="L118">    }</span>
+<span class="nc" id="L119">  }</span>
+
+  public void deleteNode(String target) throws SQLException {
+<span class="nc" id="L122">    PreparedStatement deleteNode =</span>
+<span class="nc" id="L123">        c.prepareStatement(&quot;DELETE FROM &quot; + floorNodeTableName + &quot; WHERE nodeID = ?&quot;);</span>
+    try {
+<span class="nc" id="L125">      deleteNode.setString(1, target);</span>
+<span class="nc" id="L126">      deleteNode.execute();</span>
+<span class="nc" id="L127">      nodes.remove(target);</span>
+<span class="nc" id="L128">      neighbors.remove(target);</span>
+
+<span class="nc bnc" id="L130" title="All 2 branches missed.">      for (String key : neighbors.keySet()) {</span>
+<span class="nc" id="L131">        neighbors.get(key).remove(target);</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">        if (neighbors.get(key).isEmpty()) neighbors.remove(key);</span>
+<span class="nc" id="L133">      }</span>
+<span class="nc" id="L134">    } catch (SQLException e) {</span>
+<span class="nc" id="L135">      e.printStackTrace();</span>
+<span class="nc" id="L136">      System.out.println(e.getSQLState());</span>
+<span class="nc" id="L137">    }</span>
+<span class="nc" id="L138">  }</span>
+
+  //	private void addNodeToFloorDB(Node node) {
+  //		nodes.put(node.getNodeID(), node);
+  //	}
+
+  private void constructLocalFloorDataBase() throws SQLException {
+<span class="nc" id="L145">    Statement stmt = c.createStatement();</span>
+<span class="nc" id="L146">    String listOfNodes = &quot;SELECT * FROM &quot; + floorNodeTableName;</span>
+    try {
+<span class="nc" id="L148">      ResultSet data = stmt.executeQuery(listOfNodes);</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">      while (data.next()) {</span>
+<span class="nc" id="L150">        String nodeID = data.getString(&quot;nodeID&quot;);</span>
+<span class="nc" id="L151">        int xCoord = data.getInt(&quot;xCoord&quot;);</span>
+<span class="nc" id="L152">        int yCoord = data.getInt(&quot;yCoord&quot;);</span>
+<span class="nc" id="L153">        int floor = data.getInt(&quot;Floor&quot;);</span>
+<span class="nc" id="L154">        int nodeType = data.getInt(&quot;nodeType&quot;);</span>
+<span class="nc" id="L155">        String building = data.getString(&quot;Building&quot;);</span>
+<span class="nc" id="L156">        String longName = data.getString(&quot;longName&quot;);</span>
+<span class="nc" id="L157">        String shortName = data.getString(&quot;shortName&quot;);</span>
+<span class="nc" id="L158">        Node floorNode = new Node(nodeID, xCoord, yCoord, Floor.values()[floor], building);</span>
+<span class="nc" id="L159">        nodes.put(nodeID, floorNode);</span>
+<span class="nc" id="L160">      }</span>
+<span class="nc" id="L161">    } catch (SQLException e) {</span>
+<span class="nc" id="L162">      e.printStackTrace();</span>
+<span class="nc" id="L163">      System.out.println(e.getSQLState());</span>
+<span class="nc" id="L164">      System.out.println(&quot;Error accessing the remote and constructing the list of nodes&quot;);</span>
+<span class="nc" id="L165">    }</span>
+<span class="nc" id="L166">  }</span>
+
+  private void constructLocalNeighborsDB() throws SQLException {
+<span class="nc" id="L169">    Statement stmt = c.createStatement();</span>
+<span class="nc" id="L170">    String getNodes = &quot;SELECT nodeID FROM &quot; + floorNodeTableName;</span>
+<span class="nc" id="L171">    PreparedStatement getNeighbors =</span>
+<span class="nc" id="L172">        c.prepareStatement(</span>
+            &quot;SELECT * FROM &quot; + edgesTableName + &quot; WHERE startNode = ? OR endnode = ?&quot;);
+    try {
+<span class="nc" id="L175">      ResultSet listOfNodes = stmt.executeQuery(getNodes);</span>
+<span class="nc bnc" id="L176" title="All 2 branches missed.">      while (listOfNodes.next()) {</span>
+<span class="nc" id="L177">        String currentNode = listOfNodes.getString(&quot;nodeID&quot;);</span>
+<span class="nc" id="L178">        getNeighbors.setString(1, currentNode);</span>
+<span class="nc" id="L179">        getNeighbors.setString(2, currentNode);</span>
+<span class="nc" id="L180">        ResultSet data = getNeighbors.executeQuery();</span>
+<span class="nc" id="L181">        HashSet&lt;String&gt; neighbors = new HashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">        while (data.next()) {</span>
+<span class="nc" id="L183">          neighbors.add(data.getString(&quot;endNode&quot;));</span>
+<span class="nc" id="L184">          neighbors.add(data.getString(&quot;startNode&quot;));</span>
+        }
+<span class="nc" id="L186">        neighbors.remove(currentNode);</span>
+<span class="nc" id="L187">        this.neighbors.put(currentNode, neighbors);</span>
+<span class="nc" id="L188">      }</span>
+<span class="nc" id="L189">    } catch (SQLException e) {</span>
+<span class="nc" id="L190">      System.out.println(&quot;Error accessing the remote and constructing the list of edges&quot;);</span>
+<span class="nc" id="L191">    }</span>
+<span class="nc" id="L192">  }</span>
+
+  public void retrieveNodeRow(String target) {
+<span class="nc bnc" id="L195" title="All 2 branches missed.">    if (nodes.get(target) == null) {</span>
+<span class="nc" id="L196">      System.out.println(&quot;This node is not in the database, so its row cannot be printed&quot;);</span>
+<span class="nc" id="L197">      return;</span>
+    }
+<span class="nc" id="L199">    System.out.println(nodes.get(target).toString());</span>
+<span class="nc" id="L200">  }</span>
+
+  public void retrieveEdgeInformation(String target) {
+<span class="nc bnc" id="L203" title="All 2 branches missed.">    if (neighbors.get(target) == null) {</span>
+<span class="nc" id="L204">      System.out.println(&quot;This node is not in the database, so its row cannot be printed&quot;);</span>
+<span class="nc" id="L205">      return;</span>
+    }
+<span class="nc" id="L207">    System.out.println(&quot;From this starting node, the following edges exist:&quot;);</span>
+<span class="nc bnc" id="L208" title="All 2 branches missed.">    for (String name : neighbors.get(target)) {</span>
+<span class="nc" id="L209">      System.out.println(target + &quot;_&quot; + name);</span>
+<span class="nc" id="L210">    }</span>
+<span class="nc" id="L211">  }</span>
+
+  public void printLocalDatabases() {
+<span class="nc bnc" id="L214" title="All 2 branches missed.">    for (String key : nodes.keySet()) {</span>
+<span class="nc" id="L215">      System.out.println(nodes.get(key).toString());</span>
+<span class="nc" id="L216">    }</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">    for (String key : neighbors.keySet()) {</span>
+<span class="nc" id="L218">      System.out.print(key + &quot;\t&quot;);</span>
+<span class="nc" id="L219">      System.out.println(neighbors.get(key).toString());</span>
+<span class="nc" id="L220">    }</span>
+<span class="nc" id="L221">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
