@@ -30,7 +30,7 @@ public class csvConverter {
         //
         Node thisNode =
             new Node(
-                fields[0],
+                Integer.parseInt(fields[0]),
                 Integer.parseInt(fields[1]),
                 Integer.parseInt(fields[2]),
                 Floor.valueOf(fields[3]),
