@@ -10,8 +10,8 @@ public class Main {
 
   public static void main(String[] args) throws SQLException {
     LoaderDAO loader = new LoaderDAO();
-    //    loader.establishConnection();
-    //    loader.resetData();
+//    loader.establishConnection();
+//    loader.resetData();
     loader.load();
     // Debugging stuff in order to check everything looks about right
     System.out.println("Loaded everything");
