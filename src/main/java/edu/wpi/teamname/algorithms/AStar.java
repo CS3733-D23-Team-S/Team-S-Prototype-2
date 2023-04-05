@@ -1,35 +1,31 @@
 package edu.wpi.teamname.algorithms;
 
-import edu.wpi.teamname.Database.DAOManager;
-import edu.wpi.teamname.Database.Map.Node;
-
+import edu.wpi.teamname.Database.Map.*;
 import java.util.*;
 
 public class AStar {
 
-  DAOManager dbManager;
-  HashMap<String, Node> floors;
-  HashMap<String, HashSet<String>> edges;
+  private NodeDaoImpl nodeDao;
+  private EdgeDaoImpl edgeDao;
+  private LocationDoaImpl locationDoa;
+  private MoveDaoImpl moveDao;
 
-  public AStar(DAOManager manager) {
-    dbManager = manager;
-    floors = dbManager.getNodes();
-    edges = dbManager.getNeighbors();
+  public AStar() {
+    nodeDao = NodeDaoImpl.getInstance();
+    edgeDao = EdgeDaoImpl.getInstance();
+    locationDoa = LocationDoaImpl.getInstance();
+    moveDao = MoveDaoImpl.getInstance();
   }
 
-  private void updateDataBase() {
-    floors = dbManager.getNodes();
-    edges = dbManager.getNeighbors();
-  }
+  public ArrayList<Integer> findPath(String s, String e) {
+    Node start = nodeDao.getNode(moveDao.getMoves().get(s).getNodeID());
+    Node end = nodeDao.getNode(moveDao.getMoves().get(e).getNodeID());
 
-  public ArrayList<String> findPath(String s, String e) {
-    updateDataBase();
     final PriorityQueue<HeuristicNode> nodesYetToSearch =
         new PriorityQueue<>(10, new HeuristicNode(null, Double.MAX_VALUE));
     final HashSet<Node> visitedNodes = new HashSet<>();
     final Map<Node, Node> gotHereFrom = new HashMap<>();
-    Node start = dbManager.getNodes().get(s);
-    Node end = dbManager.getNodes().get(e);
+
     HeuristicNode startHNode = new HeuristicNode(start, calculateWeight(start, end));
     //    System.out.println(startHNode.node + "\t" + startHNode.weight);
     nodesYetToSearch.add(startHNode);
@@ -37,14 +33,14 @@ public class AStar {
 
     while (nodesYetToSearch.size() != 0) {
       currentNode = nodesYetToSearch.poll();
-      if (currentNode.node.getNodeID().equals(e)) {
+      if (currentNode.node.getNodeID() == (end.getNodeID())) {
         return constructShortestPath(currentNode.node, gotHereFrom);
       }
       //      dbManager.printLocalDatabases();
       //      System.out.print(currentNode.node.getNodeID());
-      for (String nodeToSearchID : edges.get(currentNode.node.getNodeID())) {
+      for (int nodeToSearchID : edgeDao.getNeighbors().get(currentNode.node.getNodeID())) {
         //        System.out.print(nodeToSearchID + "\t");
-        Node nodeToSearch = floors.get(nodeToSearchID);
+        Node nodeToSearch = nodeDao.getNodes().get(nodeToSearchID);
         if (!visitedNodes.contains(nodeToSearch)) {
           double weight = calculateWeight(nodeToSearch, end);
           nodesYetToSearch.add(new HeuristicNode(nodeToSearch, weight));
@@ -62,8 +58,8 @@ public class AStar {
             + Math.pow((start.getYCoord() - target.getYCoord()), 2));
   }
 
-  private ArrayList<String> constructShortestPath(Node currentNode, Map<Node, Node> gotHereFrom) {
-    final ArrayList<String> pathTaken = new ArrayList<>();
+  private ArrayList<Integer> constructShortestPath(Node currentNode, Map<Node, Node> gotHereFrom) {
+    final ArrayList<Integer> pathTaken = new ArrayList<>();
     while (gotHereFrom.get(currentNode) != null) {
       pathTaken.add(currentNode.getNodeID());
       currentNode = gotHereFrom.get(currentNode);
@@ -73,6 +69,8 @@ public class AStar {
     return pathTaken;
   }
 
+  //
+  // pathTaken.put(currentNode.getNodeID(),moveDao.getNodeToLoc().get(currentNode.getNodeID()).get(1));
   static class HeuristicNode implements Comparator<HeuristicNode> {
     Node node;
     double weight;
