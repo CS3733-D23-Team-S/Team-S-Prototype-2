@@ -1,31 +1,63 @@
 package edu.wpi.teamname.controllers;
 
+import edu.wpi.teamname.Database.ServiceRequests.ConferenceRoom.ConfRoomRequest;
+import edu.wpi.teamname.Database.ServiceRequests.ConferenceRoom.RoomRequestDAO;
+import edu.wpi.teamname.Database.ServiceRequests.Room;
+import edu.wpi.teamname.Database.ServiceRequests.Status;
 import edu.wpi.teamname.navigation.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 
 public class RoomBookingController {
 
-  RoomBooking rb = new RoomBooking();
-
   @FXML MFXButton addMeetingButton;
   @FXML MFXButton backButton;
+  @FXML HBox conferenceRoomsHBox; // hbox containing all conference rooms and schedules
 
-  @FXML
-  HBox
-      conferenceRoomsHBox; //  = rb.getHBox(); // hbox containing all conference rooms and schedules
+  RoomBooking rb = new RoomBooking();
+  RoomRequestDAO roomRequestDAO = RoomRequestDAO.getInstance();
+
+  Room r1, r2, r3, r4;
 
   ArrayList<Room> roomList = new ArrayList<>();
-  ArrayList<Reservation> reservationList = new ArrayList<>();
+  ArrayList<ConfRoomRequest> reservationList = new ArrayList<>();
 
   @FXML
   public void initialize() {
     addMeetingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING_DETAILS));
     backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
 
-    // create rooms TODO: replace with db items
+    createDummyRooms(); // create dummy rooms
+    rb.setRoomList(roomList);
+    createDummyRoomRequests(); // create dummy reservations
+    rb.createRoomsUI(conferenceRoomsHBox);
+  }
+
+  public static void addNewRequest(
+      String roomLocation,
+      String startTime,
+      String endTime,
+      String eventTitle,
+      String eventDescription) {
+    ConfRoomRequest newRequest =
+        new ConfRoomRequest(
+            LocalDate.now(),
+            LocalTime.of(Integer.parseInt(startTime), 0, 0, 0),
+            LocalTime.of(Integer.parseInt(endTime), 0, 0, 0),
+            new Room(Integer.parseInt(roomLocation), "Cafe", "Floor", 50, "F"),
+            "TestReserve",
+            eventTitle,
+            eventDescription,
+            "Assignee",
+            Status.Received,
+            "No notes");
+  }
+
+  public void createDummyRooms() {
     Room r1 = new Room(1, "Hale Cafe", "L1", 30, "All");
     Room r2 = new Room(2, "Teaching Room", "L2", 50, "All");
     Room r3 = new Room(3, "Conference Room", "L1", 30, "All");
@@ -34,48 +66,48 @@ public class RoomBookingController {
     roomList.add(r2);
     roomList.add(r3);
     roomList.add(r4);
-    // create reservations
-    Reservation res1 =
-        new Reservation(8, 10, r1, "Policy Change Meeting", "Change policy", "Sarah Kogan");
-    Reservation res2 = new Reservation(16, 18, r1, "Meeting2", "Test meeting 2", "Sarah Kogan");
-    Reservation res3 = new Reservation(12, 14, r1, "Meeting3", "test time ordering", "Sarah Kogan");
-    Reservation res4 =
-        new Reservation(
-            11, 15, r1, "Overlapping meeting", "test overlapping throw error", "Sarah Kogan");
-    Reservation res5 =
-        new Reservation(10, 13, r2, "Test meeting again", "Testing testing testing", "John Adams");
-    Reservation res6 =
-        new Reservation(14, 16, r2, "Another meeting", "Another another test test", "Jimmy Buffet");
-    reservationList.add(res1);
-    reservationList.add(res2);
-    reservationList.add(res3);
-    reservationList.add(res4);
-    reservationList.add(res5);
-    reservationList.add(res6);
+  }
 
-    // set room list
-    rb.setRoomList(roomList);
+  public void createDummyRoomRequests() {
+    ConfRoomRequest res1 =
+        new ConfRoomRequest(
+            LocalDate.now(),
+            LocalTime.of(6, 0, 0, 0),
+            LocalTime.of(8, 0, 0, 0),
+            r1,
+            "Sarah Kogan",
+            "Checking for update",
+            "description description description",
+            null,
+            Status.Received,
+            "");
+    ConfRoomRequest res2 =
+        new ConfRoomRequest(
+            LocalDate.now(),
+            LocalTime.of(8, 0, 0, 0),
+            LocalTime.of(10, 0, 0, 0),
+            r1,
+            "Jimmy Buffett",
+            "Meeting Test 2",
+            "description 2",
+            null,
+            Status.Received,
+            "");
+    ConfRoomRequest res3 =
+        new ConfRoomRequest(
+            LocalDate.now(),
+            LocalTime.of(12, 0, 0, 0),
+            LocalTime.of(4, 0, 0, 0),
+            r2,
+            "Christine Dion",
+            "Conference Rooooooom",
+            "description description description",
+            null,
+            Status.InProgress,
+            "");
 
-    // set rooms into UI
-    rb.setRoomsUI(conferenceRoomsHBox);
-
-    // set meeting list
-    rb.setReservationList();
-
-    // set meetings into UI
-    rb.setReservationUI(conferenceRoomsHBox);
-
-    // order meetings (later)
-
-    // add a meeting to the system
-
-    // FILTERS
-
-    // filter by date
-
-    // filter by time
-
-    // filter by features
-
+    // roomRequestDAO.addRequest(res1);
+    // roomRequestDAO.addRequest(res2);
+    // roomRequestDAO.addRequest(res3);
   }
 }

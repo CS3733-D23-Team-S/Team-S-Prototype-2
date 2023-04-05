@@ -8,7 +8,7 @@ import java.util.List;
 
 public class RoomRequestDAO implements RoomRequest_I {
   protected static final String schemaName = "hospitaldb";
-  protected final String roomRequestsTable = schemaName + "." + "roomRequests";
+  protected final String roomReservationsTable = schemaName + "." + "roomReservations";
   HashMap<Integer, ConfRoomRequest> requests = new HashMap<Integer, ConfRoomRequest>();
   dbConnection connection = dbConnection.getInstance();
   static RoomRequestDAO single_instance = null;
@@ -36,27 +36,29 @@ public class RoomRequestDAO implements RoomRequest_I {
   public void addRequest(ConfRoomRequest request) {
     requests.put(request.getReservationID(), request);
     try {
-      try (PreparedStatement preparedStatement =
+      PreparedStatement preparedStatement =
           connection
               .getC()
               .prepareStatement(
                   "INSERT INTO "
-                      + roomRequestsTable
-                      + " (deliveryID, orderDate , assignedBy, assignedTo, room, notes) "
-                      + " VALUES (?, ?, ?, ?, ?, ?, ?)")) {
-        preparedStatement.setInt(1, request.getReservationID());
-        preparedStatement.setDate(2, null);
-        preparedStatement.setString(3, request.getOrderer());
-        preparedStatement.setString(4, request.getAssignedTo());
-        preparedStatement.setInt(5, request.getRoom().getNodeID());
-        preparedStatement.setString(6, request.getNotes());
+                      + roomReservationsTable
+                      + " (reservationID, date, startTime, endTime, room, reservedBy, eventName, eventDescription, assignedTo, orderStatus, notes) "
+                      + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      preparedStatement.setInt(1, request.getReservationID());
+      preparedStatement.setDate(2, null);
+      preparedStatement.setTime(3, null);
+      preparedStatement.setTime(4, null);
+      preparedStatement.setString(5, "ROOM"); // TODO add room id
+      preparedStatement.setString(6, request.getReservedBy());
+      preparedStatement.setString(7, request.getEventName());
+      preparedStatement.setString(8, request.getEventDescription());
+      preparedStatement.setString(9, request.getAssignedTo());
+      preparedStatement.setString(10, request.getOrderStatus().name()); // TODO fix
+      preparedStatement.setString(11, request.getNotes());
 
-        preparedStatement.executeUpdate();
-      }
-
-    } catch (SQLException e) {
-      e.printStackTrace();
-      System.out.println(e.getSQLState());
+      preparedStatement.executeUpdate();
+    } catch (SQLException ex) {
+      throw new RuntimeException(ex);
     }
   }
 

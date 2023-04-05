@@ -13,7 +13,7 @@ public class FoodDelivery {
   @Getter OrderItemDAO cart;
   @Getter @Setter Date date;
   @Getter @Setter LocalTime time;
-  @Getter Room room;
+  @Getter @Setter Room room;
   @Getter @Setter String orderer;
   @Getter @Setter String assignedTo;
   @Getter @Setter Status orderStatus;

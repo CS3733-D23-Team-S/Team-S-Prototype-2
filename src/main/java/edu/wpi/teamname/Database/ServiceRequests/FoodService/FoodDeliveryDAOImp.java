@@ -37,7 +37,7 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
       preparedStatement.setInt(2, request.getCart().getCartID());
       preparedStatement.setDate(3, null);
       preparedStatement.setString(4, request.getOrderer());
-      preparedStatement.setInt(5, request.getRoom().getNodeID());
+      preparedStatement.setInt(5, request.getDeliveryID());
       preparedStatement.setDouble(6, request.orderTotal());
       preparedStatement.setString(7, request.getNotes());
 
