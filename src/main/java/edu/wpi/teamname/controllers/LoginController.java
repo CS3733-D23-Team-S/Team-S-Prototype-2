@@ -4,6 +4,7 @@ import static edu.wpi.teamname.navigation.Screen.HOME;
 
 import edu.wpi.teamname.LoginPage;
 import edu.wpi.teamname.navigation.Navigation;
+import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController implements Initializable {
-  @FXML private MFXButton backbutton;
+  @FXML private MFXButton backButton;
 
   @FXML private Label errormessageLabel;
 
@@ -66,6 +67,9 @@ public class LoginController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
+    backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.WELCOME_PAGE));
+
     loginbutton.setOnMouseClicked(
         event -> {
           errorMessage = "";
