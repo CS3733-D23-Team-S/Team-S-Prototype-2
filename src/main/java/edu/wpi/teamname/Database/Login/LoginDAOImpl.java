@@ -1,9 +1,11 @@
 package edu.wpi.teamname.Database.Login;
 
 import edu.wpi.teamname.Database.dbConnection;
+import lombok.Getter;
+
 import java.sql.*;
 import java.util.HashMap;
-import lombok.Getter;
+
 
 public class LoginDAOImpl implements LoginDAOI {
   private static LoginDAOImpl single_instance = null;
