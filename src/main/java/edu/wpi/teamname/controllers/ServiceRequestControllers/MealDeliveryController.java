@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 public class MealDeliveryController {
 
   @FXML MFXButton backButton1;
+  @FXML MFXButton checkout;
   @FXML HBox wf;
 
   ArrayList<Integer> foodPrice = new ArrayList<Integer>();
@@ -17,6 +18,7 @@ public class MealDeliveryController {
   @FXML
   public void initialize() {
     backButton1.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
+    checkout.setOnMouseClicked(event -> Navigation.navigate(Screen.ORDER_DETAILS));
 
     foodPrice.add(3);
     foodPrice.add(24);

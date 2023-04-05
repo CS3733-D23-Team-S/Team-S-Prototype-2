@@ -7,8 +7,8 @@ public enum Screen {
   SERVICE_REQUEST("views/ServiceRequestPages/ServiceRequest.fxml"),
   ROOM_BOOKING("views/RoomBooking.fxml"),
   ROOM_BOOKING_DETAILS("views/RoomBookingDetails.fxml"),
-  ROOM_BOOKING_CONFIRMATION("views/RoomBookingConfirmation.fxml");
-  ;
+  ROOM_BOOKING_CONFIRMATION("views/RoomBookingConfirmation.fxml"),
+  ORDER_DETAILS("views/OrderDetails.fxml");
 
   private final String filename;
 
