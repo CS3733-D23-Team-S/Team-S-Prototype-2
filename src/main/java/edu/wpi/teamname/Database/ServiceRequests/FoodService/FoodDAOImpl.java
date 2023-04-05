@@ -34,9 +34,9 @@ public class FoodDAOImpl implements FoodDAO_I {
               .prepareStatement(
                   "INSERT INTO "
                       + foodsTable
-                      + " (FoodID, Name, Type, PrepTime, Cuisine, Price, Description, SoldOut, Image, "
+                      + " (FoodID, Name, Type, PrepTime, Cuisine, Price, Description, Quantity, SoldOut, Image, "
                       + "Calories, Italian, American, Indian, Mexican, Vegetarian, Halal, Vegan, GlutenFree, Kosher) "
-                      + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                      + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       preparedStatement.setInt(1, thisFood.getFoodID());
       preparedStatement.setString(2, thisFood.getFoodName());
       preparedStatement.setString(3, thisFood.getFoodType());
@@ -44,18 +44,19 @@ public class FoodDAOImpl implements FoodDAO_I {
       preparedStatement.setString(5, thisFood.getFoodCuisine());
       preparedStatement.setDouble(6, thisFood.getFoodPrice());
       preparedStatement.setString(7, thisFood.getFoodDescription());
-      preparedStatement.setBoolean(8, thisFood.isSoldOut());
-      preparedStatement.setString(9, thisFood.getImage());
-      preparedStatement.setInt(10, thisFood.getCalories());
-      preparedStatement.setBoolean(11, thisFood.isItalian());
-      preparedStatement.setBoolean(12, thisFood.isAmerican());
-      preparedStatement.setBoolean(13, thisFood.isIndian());
-      preparedStatement.setBoolean(14, thisFood.isMexican());
-      preparedStatement.setBoolean(15, thisFood.isVegetarian());
-      preparedStatement.setBoolean(16, thisFood.isHalal());
-      preparedStatement.setBoolean(17, thisFood.isVegan());
-      preparedStatement.setBoolean(18, thisFood.isGlutFree());
-      preparedStatement.setBoolean(19, thisFood.isKosher());
+      preparedStatement.setInt(8, thisFood.getQuantity());
+      preparedStatement.setBoolean(9, thisFood.isSoldOut());
+      preparedStatement.setString(10, thisFood.getImage());
+      preparedStatement.setInt(11, thisFood.getCalories());
+      preparedStatement.setBoolean(12, thisFood.isItalian());
+      preparedStatement.setBoolean(13, thisFood.isAmerican());
+      preparedStatement.setBoolean(14, thisFood.isIndian());
+      preparedStatement.setBoolean(15, thisFood.isMexican());
+      preparedStatement.setBoolean(16, thisFood.isVegetarian());
+      preparedStatement.setBoolean(17, thisFood.isHalal());
+      preparedStatement.setBoolean(18, thisFood.isVegan());
+      preparedStatement.setBoolean(19, thisFood.isGlutFree());
+      preparedStatement.setBoolean(20, thisFood.isKosher());
 
       preparedStatement.executeUpdate();
 
@@ -98,7 +99,8 @@ public class FoodDAOImpl implements FoodDAO_I {
               .prepareStatement(
                   "Update "
                       + foodsTable
-                      + " SET Name = ? ,Type = ?, PrepTime = ? , Cuisine = ?, Price = ?, Description = ?, SoldOut = ?, "
+                      + " SET Name = ? ,Type = ?, PrepTime = ? , Cuisine = ?, Price = ?, Description = ?, Quantity = ?"
+                      + ", SoldOut = ?, "
                       + "Image = ?, Calories = ?, Italian = ?, American = ?, Indian = ?, Mexican = ?, Vegetarian = ?, "
                       + "Halal = ?, Vegan = ?, GlutenFree = ?, Kosher = ?"
                       + " WHERE FoodID = ?");
@@ -109,19 +111,20 @@ public class FoodDAOImpl implements FoodDAO_I {
       preparedStatement.setString(4, thisFood.getFoodCuisine());
       preparedStatement.setDouble(5, thisFood.getFoodPrice());
       preparedStatement.setString(6, thisFood.getFoodDescription());
-      preparedStatement.setBoolean(7, thisFood.isSoldOut());
-      preparedStatement.setString(8, thisFood.getImage());
-      preparedStatement.setInt(9, thisFood.getCalories());
-      preparedStatement.setBoolean(10, thisFood.isItalian());
-      preparedStatement.setBoolean(11, thisFood.isAmerican());
-      preparedStatement.setBoolean(12, thisFood.isIndian());
-      preparedStatement.setBoolean(13, thisFood.isMexican());
-      preparedStatement.setBoolean(14, thisFood.isVegetarian());
-      preparedStatement.setBoolean(15, thisFood.isHalal());
-      preparedStatement.setBoolean(16, thisFood.isVegan());
-      preparedStatement.setBoolean(17, thisFood.isGlutFree());
-      preparedStatement.setBoolean(18, thisFood.isKosher());
-      preparedStatement.setInt(19, thisFood.getFoodID());
+      preparedStatement.setInt(7, thisFood.getQuantity());
+      preparedStatement.setBoolean(8, thisFood.isSoldOut());
+      preparedStatement.setString(9, thisFood.getImage());
+      preparedStatement.setInt(10, thisFood.getCalories());
+      preparedStatement.setBoolean(11, thisFood.isItalian());
+      preparedStatement.setBoolean(12, thisFood.isAmerican());
+      preparedStatement.setBoolean(13, thisFood.isIndian());
+      preparedStatement.setBoolean(14, thisFood.isMexican());
+      preparedStatement.setBoolean(15, thisFood.isVegetarian());
+      preparedStatement.setBoolean(16, thisFood.isHalal());
+      preparedStatement.setBoolean(17, thisFood.isVegan());
+      preparedStatement.setBoolean(18, thisFood.isGlutFree());
+      preparedStatement.setBoolean(19, thisFood.isKosher());
+      preparedStatement.setInt(20, thisFood.getFoodID());
       preparedStatement.executeUpdate();
 
       System.out.println("Food updated");
@@ -178,6 +181,7 @@ public class FoodDAOImpl implements FoodDAO_I {
         String foodcuisine = rs.getString("cuisine");
         Double foodprice = rs.getDouble("price");
         String fooddesciption = rs.getString("description");
+        Integer quantity = rs.getInt("quantity");
         Boolean issoldout = rs.getBoolean("soldout");
         String image = rs.getString("image");
         Integer cal = rs.getInt("calories");
@@ -200,6 +204,7 @@ public class FoodDAOImpl implements FoodDAO_I {
                 foodcuisine,
                 foodprice,
                 fooddesciption,
+                quantity,
                 issoldout,
                 image,
                 cal,
@@ -224,7 +229,6 @@ public class FoodDAOImpl implements FoodDAO_I {
   public void initFood() {
     try {
       Statement st = connection.getC().createStatement();
-
       String dropFoodTable = "DROP TABLE IF EXISTS " + foodsTable + " CASCADE";
 
       String foodTableConstruct =
@@ -256,10 +260,10 @@ public class FoodDAOImpl implements FoodDAO_I {
       st.execute(foodTableConstruct);
 
     } catch (SQLException e) {
-      e.printStackTrace();
       System.out.println(e.getMessage());
       System.out.println(e.getSQLState());
       System.out.println("Database creation error");
+      e.printStackTrace();
     }
   }
 
@@ -280,10 +284,10 @@ public class FoodDAOImpl implements FoodDAO_I {
                 fields[4],
                 Double.parseDouble(fields[5]),
                 fields[6],
-                Boolean.parseBoolean(fields[7]),
-                fields[8],
-                Integer.parseInt(fields[9]),
-                Boolean.parseBoolean(fields[10]),
+                Integer.parseInt(fields[7]),
+                Boolean.parseBoolean(fields[8]),
+                fields[9],
+                Integer.parseInt(fields[10]),
                 Boolean.parseBoolean(fields[11]),
                 Boolean.parseBoolean(fields[12]),
                 Boolean.parseBoolean(fields[13]),
@@ -291,7 +295,8 @@ public class FoodDAOImpl implements FoodDAO_I {
                 Boolean.parseBoolean(fields[15]),
                 Boolean.parseBoolean(fields[16]),
                 Boolean.parseBoolean(fields[17]),
-                Boolean.parseBoolean(fields[18]));
+                Boolean.parseBoolean(fields[18]),
+                Boolean.parseBoolean(fields[19]));
         foods.put(Integer.valueOf(fields[0]), thisFood);
       }
     } catch (IOException e) {

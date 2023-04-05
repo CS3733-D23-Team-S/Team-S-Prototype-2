@@ -1,6 +1,7 @@
 package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
 import edu.wpi.teamname.Database.dbConnection;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,8 +11,8 @@ import java.util.List;
 public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
   protected static final String schemaName = "hospitaldb";
   protected static final String foodRequestsTable = schemaName + "." + "foodRequests";
-  HashMap<Integer, FoodDelivery> requests = new HashMap<>();
-  dbConnection connection = dbConnection.getInstance();
+  private HashMap<Integer, FoodDelivery> requests = new HashMap<>();
+  private dbConnection connection = dbConnection.getInstance();
   static FoodDeliveryDAOImp single_instance = null;
 
   private FoodDeliveryDAOImp() {}
@@ -23,7 +24,7 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
     return single_instance;
   }
 
-  public void addFoodRequest(FoodDelivery request) {
+  public void addRequest(FoodDelivery request) {
     requests.put(request.deliveryID, request);
     try {
       PreparedStatement preparedStatement =
@@ -32,17 +33,22 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
               .prepareStatement(
                   "INSERT INTO "
                       + foodRequestsTable
-                      + " (deliveryID, CartID, orderDate , employee, room, cost, notes) "
-                      + " VALUES (?, ?, ?, ?, ?, ?, ?)");
+                      + " (deliveryID, Cart, orderDate, orderTime, room, orderer, assignedTo, status, cost, notes) "
+                      + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       preparedStatement.setInt(1, request.getDeliveryID());
-      preparedStatement.setInt(2, request.getCart().getCartID());
-      preparedStatement.setDate(3, null);
-      preparedStatement.setString(4, request.getOrderer());
+      preparedStatement.setString(2, request.getCart());
+      preparedStatement.setDate(3, request.getDate());
+      preparedStatement.setTime(4, request.getTime());
       preparedStatement.setInt(5, request.getRoom());
-      preparedStatement.setDouble(6, request.orderTotal());
-      preparedStatement.setString(7, request.getNotes());
+      preparedStatement.setString(6, request.getOrderer());
+      preparedStatement.setString(7, request.getAssignedTo());
+      preparedStatement.setString(8, request.getOrderStatus());
+      preparedStatement.setDouble(9, request.getCost());
+      preparedStatement.setString(10, request.getNotes());
 
       preparedStatement.executeUpdate();
+
+      requests.put(request.deliveryID, request);
 
     } catch (SQLException e) {
       e.printStackTrace();
@@ -61,9 +67,6 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
   }
 
   @Override
-  public void addRequest(FoodDelivery request) {}
-
-  @Override
   public void deleteRequest(FoodDelivery request) {}
 
   public void initFoodRequests() {
@@ -76,26 +79,24 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
               + foodRequestsTable
               + " "
               + "(deliveryID int UNIQUE PRIMARY KEY,"
-              + "cartID int,"
+              + "cartID Varchar(100),"
               + "orderDate Date,"
               + "orderTime time,"
               + "room int,"
               + "orderedBy Varchar(100),"
               + "assignedTo Varchar(100),"
               + "Status Varchar(100),"
-              + "notes Varchar(255),"
-              + "FOREIGN KEY (cartID) REFERENCES "
-              + "hospitaldb.cart"
-              + "(cartID) ON DELETE CASCADE)";
+              + "cost int,"
+              + "notes Varchar(255))";
 
       st.execute(dropFoodRequestsTable);
       st.execute(foodRequestsTableConstruct);
 
     } catch (SQLException e) {
-      e.printStackTrace();
       System.out.println(e.getMessage());
       System.out.println(e.getSQLState());
       System.out.println("Database creation error");
+      e.printStackTrace();
     }
   }
 }

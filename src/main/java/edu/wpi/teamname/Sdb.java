@@ -8,70 +8,76 @@ public class Sdb {
     // String foodPath = "";
 
     FoodDAOImpl foodDao = FoodDAOImpl.getInstance();
-    // foodDao.csvToFood(foodPath);
+    foodDao.initFood();
 
     DAOManager dbManager = new DAOManager();
     // Establish connection to database
     dbManager.establishConnection();
 
+    OrderItem cart = new OrderItem(1);
 
-    //FoodDeliveryDAOImp fooddel = FoodDeliveryDAOImp.getInstance();
-    //fooddel.initFoodRequests();
+    // FoodDeliveryDAOImp fooddel = FoodDeliveryDAOImp.getInstance();
+    // fooddel.initFoodRequests();
 
     // Create Empty Table
     // dbManager.initTables();
-    /*
-        foodDao.initFood();
-        Food newFood =
-            new Food(
-                5,
-                "Pizza",
-                "Hello",
-                10,
-                "String fc",
-                2,
-                "String fd",
-                false,
-                "image",
-                69,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false);
-        Food newFoodt =
-            new Food(
-                6,
-                "za",
-                "Hello",
-                4,
-                "String fc",
-                60,
-                "String fd",
-                false,
-                "image",
-                420,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false);
-        // OrderItem orderItem = new OrderItem(1, newFood, 3);
-        // OrderItemDAO cart = new OrderItemDAO(1);
-        // cart.addOrderItem(newFood, 3);
-        // FoodDelivery newRequest = new FoodDelivery(1, cart, new Date(), new Room(1, 3), "admin");
 
-        foodDao.addFood(newFood);
-        foodDao.addFood(newFoodt);
-    */
+    foodDao.initFood();
+    Food newFood =
+        new Food(
+            5,
+            "Pizza",
+            "Hello",
+            10,
+            "String fc",
+            2,
+            "String fd",
+            1,
+            false,
+            "image",
+            69,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false);
+    Food newFoodt =
+        new Food(
+            6,
+            "za",
+            "Hello",
+            4,
+            "String fc",
+            60,
+            "String fd",
+            1,
+            false,
+            "image",
+            420,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false);
+    // OrderItem orderItem = new OrderItem(1, newFood, 3);
+    // OrderItemDAO cart = new OrderItemDAO(1);
+    // cart.addOrderItem(newFood, 3);
+    // FoodDelivery newRequest = new FoodDelivery(1, cart, new Date(), new Room(1, 3), "admin");
+
+    foodDao.addFood(newFood);
+    foodDao.addFood(newFoodt);
+
+    cart.addFoodItem(newFood);
+
+    System.out.println(cart.getTheCart().get(5).toString());//works
     // foodDao.loadToRemote();
     // System.out.println(foodDao.retrieveFood(7).toString());
 
