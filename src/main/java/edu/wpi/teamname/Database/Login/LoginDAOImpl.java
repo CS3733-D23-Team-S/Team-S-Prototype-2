@@ -94,10 +94,9 @@ public class LoginDAOImpl implements LoginDAOI {
    * @return false if username/password does not exist, true if login is successful
    */
   public boolean login(String username, String password) throws Exception {
-    if(!checkIfUserExists(username)){
+    if (!checkIfUserExists(username)) {
       throw new Exception("User does not exist");
-    }
-    else{
+    } else {
       return password.equals(loginInfo.get(username).getPassword());
     }
   }
