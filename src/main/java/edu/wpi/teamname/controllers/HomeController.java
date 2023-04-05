@@ -18,7 +18,7 @@ public class HomeController {
   @FXML MFXButton mealDeliveryButton;
   @FXML MFXButton reserveRoomButton;
 
-  @FXML MFXButton loginButton;
+  @FXML MFXButton logoutButton;
 
   @FXML ButtonBar buttonBar;
 
@@ -39,7 +39,7 @@ public class HomeController {
 
     mealDeliveryButton.setOnMouseClicked(event -> goToMealPage());
     reserveRoomButton.setOnMouseClicked(event -> goToRoomPage());
-    loginButton.setOnMouseClicked(event -> goToSignagePage());
+    logoutButton.setOnMouseClicked(event -> goToLoginPage());
     helpIcon.setOnMouseClicked(event -> goToHelpPage());
     exitOption.setOnAction(event -> exitApplication());
     homeToPathfindingButton.setOnMouseClicked(event -> Navigation.navigate(PATHFINDING));
@@ -58,8 +58,8 @@ public class HomeController {
     Navigation.navigate(Screen.SERVICE_REQUEST);
   }
 
-  public void goToSignagePage() {
-    Navigation.navigate(Screen.SIGNAGE_PAGE);
+  public void goToLoginPage() {
+    Navigation.navigate(Screen.LOGIN_PAGE);
   }
 
   public void exitApplication() {
