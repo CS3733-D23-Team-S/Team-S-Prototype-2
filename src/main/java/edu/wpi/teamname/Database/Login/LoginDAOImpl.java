@@ -42,7 +42,7 @@ public class LoginDAOImpl implements LoginDAOI
     {
         try {
             PreparedStatement preparedStatement =
-                    connection.c.prepareStatement("SELECT * from " + loginTableName + "WHERE username = ?");
+                    connection.getConnection().prepareStatement("SELECT * from " + loginTableName + "WHERE username = ?");
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) return true;
@@ -67,7 +67,7 @@ public class LoginDAOImpl implements LoginDAOI
 
         try {
             PreparedStatement preparedStatement =
-                    connection.c.prepareStatement(
+                    connection.getConnection().prepareStatement(
                             "INSERT INTO"
                                     + loginTableName
                                     + "VALUES (username, password, permission)"
@@ -92,7 +92,7 @@ public class LoginDAOImpl implements LoginDAOI
         String dbPassword;
         try {
             PreparedStatement preparedStatement =
-                    connection.c.prepareStatement(
+                    connection.getConnection().prepareStatement(
                             "SELECT password FROM " + loginTableName + " WHERE username = ?"
 
                     ); preparedStatement.setString(1, username);
