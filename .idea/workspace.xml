@@ -4,14 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86311e75-a6fd-46fd-a5fc-b71cebf02228" name="Changes" comment="Adminpage added">
+    <list default="true" id="86311e75-a6fd-46fd-a5fc-b71cebf02228" name="Changes" comment="Added Logout button">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/BBQpulledPork.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Coffee.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/CommealBread.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/DrPepper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/GarlicBread.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/LentilSoup.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/MacNCheese.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Pasta.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Pizza.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Samosa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Tacos.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/RoomBooking.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/SignagePage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/navigation/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/navigation/Screen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/SignagePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Screen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/Home.fxml" afterDir="false" />
     </list>
@@ -75,23 +84,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/conta/IdeaProjects/Prototype2/Prototype2/Team-S-Prototype-2/src/main/resources/edu/wpi/teamname/Images&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/conta/IdeaProjects/Prototype2/Prototype2/Team-S-Prototype-2/src/main/resources/edu/wpi/teamname/FoodImages",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\conta\IdeaProjects\Prototype2\Prototype2\Team-S-Prototype-2\src\main\resources\edu\wpi\teamname\Images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\conta\IdeaProjects\Prototype2\Prototype2\Team-S-Prototype-2\src\main\resources\edu\wpi\teamname\FoodImages" />
     </key>
   </component>
   <component name="RunManager">
@@ -134,7 +146,7 @@
       <workItem from="1680481731283" duration="10118000" />
       <workItem from="1680573517384" duration="1528000" />
       <workItem from="1680653071028" duration="802000" />
-      <workItem from="1680653911081" duration="1990000" />
+      <workItem from="1680653911081" duration="6726000" />
     </task>
     <task id="LOCAL-00001" summary="Redesigned Homepage">
       <created>1680483723332</created>
@@ -171,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680654134124</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Logout button">
+      <created>1680655932199</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680655932199</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +199,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Redesigned Homepage" />
     <MESSAGE value="Adminpage added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adminpage added" />
+    <MESSAGE value="Added Logout button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Logout button" />
   </component>
 </project>

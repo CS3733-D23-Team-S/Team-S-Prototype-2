@@ -51,7 +51,7 @@ public class HomeController {
   }
 
   public void goToRoomPage() {
-    Navigation.navigate(Screen.SERVICE_REQUEST);
+    Navigation.navigate(Screen.ROOM_BOOKING);
   }
 
   public void goToMealPage() {
@@ -69,4 +69,5 @@ public class HomeController {
   public void goToHelpPage() {
     Navigation.navigate(Screen.HELP_PAGE);
   }
+
 }

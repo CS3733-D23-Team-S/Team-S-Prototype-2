@@ -7,7 +7,10 @@ public enum Screen {
   HELP_PAGE("views/HelpPage.fxml"),
 
   PATHFINDING("views/Pathfinding.fxml"),
-  SERVICE_REQUEST("views/ServiceRequest.fxml");
+  ROOM_BOOKING("views/RoomBooking.fxml"),
+  SERVICE_REQUEST("views/ServiceRequest.fxml"); // Meal Request
+
+
 
   private final String filename;
 
