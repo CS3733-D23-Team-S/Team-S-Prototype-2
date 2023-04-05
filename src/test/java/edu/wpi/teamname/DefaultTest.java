@@ -15,6 +15,8 @@ import org.junit.jupiter.api.Test;
 
 public class DefaultTest {
 
+
+
   public void testAlgos() {
     AStar a = new AStar();
     List<Integer> res = new ArrayList<>();
@@ -22,6 +24,15 @@ public class DefaultTest {
     res.add(1810);
 
     assertEquals(a.findPath("75 Lobby", "75 Lobby Information Desk"), res);
+
+    List<Integer> res2 = new ArrayList<>();
+    res2.add(640);
+    res2.add(645);
+    res2.add(650);
+    res2.add(655);
+    res2.add(660);
+
+    assertEquals(a.findPath("Staircase K1 Floor 1", "Ambulance Parking Exit Floor 1"), res2);
   }
 
   public void testLogin() throws Exception {
