@@ -5,6 +5,7 @@ import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,30 +27,18 @@ public class PathfindingController {
 
   @FXML TableColumn nodesTraversedCol;
 
-  /*
-  public void makePathfindingEntity(String startingLocation, String destination) {
+  public void makePathfindingEntity(String startingLocation, String destination)
+      throws SQLException {
     PathfindingEntity pfEntity = new PathfindingEntity(startingLocation, destination);
-    if (pfEntity.realLocations) {
-      pfEntity.generatePath();
-      displayNodes(pfEntity);
-    } else {
-      stepsTable.getItems().add(new String
-              ("Your starting location and/or destination are not real locations. Please try again."));
+    pfEntity.generatePath();
+    for (int i = 0; i < pfEntity.getNodesTraversed().size(); i++) {
+      stepsTable.getItems().add(pfEntity.getNodesTraversed().get(i));
     }
-
   }
-
-   */
 
   public void clearFields() {
     startingLocation.setText("");
     destination.setText("");
-  }
-
-  public void displayNodes(PathfindingEntity pathfindingEntity) {
-    for (int i = 0; i < pathfindingEntity.getNodesTraversed().size(); i++) {
-      stepsTable.getItems().add(pathfindingEntity.getNodesTraversed().get(i));
-    }
   }
 
   public void initialize() {
@@ -58,7 +47,13 @@ public class PathfindingController {
     clearFieldsButton.setOnMouseClicked(event -> clearFields());
 
     findPathButton.setOnMouseClicked(
-        event -> stepsTable.getItems().add(startingLocation + " " + destination));
+        event -> {
+          try {
+            makePathfindingEntity(startingLocation.getText(), destination.getText());
+          } catch (SQLException e) {
+            throw new RuntimeException(e);
+          }
+        });
 
     // pathfindingToProfileButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ADMIN));
 

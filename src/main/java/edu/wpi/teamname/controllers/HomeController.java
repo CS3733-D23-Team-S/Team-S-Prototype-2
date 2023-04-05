@@ -27,12 +27,12 @@ public class HomeController {
   @FXML ImageView mealdelivery;
 
   public void initialize() {
-     Image mealImage = new Image(Main.class.getResource("images/Meal_Icon.jpg").toString());
-     mealdelivery.setImage(mealImage);
+    // Image mealImage = new Image(Main.class.getResource("images/Meal_Icon.jpg").toString());
+    // mealdelivery.setImage(mealImage);
 
-     Image conferenceImage =
-        new Image(Main.class.getResource("images/Conference_room_icon.jpg").toString());
-    conferenceroom.setImage(conferenceImage);
+    // Image conferenceImage =
+    // new Image(Main.class.getResource("images/Conference_room_icon.jpg").toString());
+    // conferenceroom.setImage(conferenceImage);
 
     // Adding the menu option to exit application
 
