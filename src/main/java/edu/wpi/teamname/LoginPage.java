@@ -1,6 +1,10 @@
 package edu.wpi.teamname;
 
-public class LoginPage {
-  public static final String USERNAME = "test";
-  public static final String PASSWORD = "12345";
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class LoginPage extends Application {
+
+  @Override
+  public void start(Stage primaryStage) throws Exception {}
 }
