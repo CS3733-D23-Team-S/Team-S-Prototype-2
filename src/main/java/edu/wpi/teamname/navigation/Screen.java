@@ -8,7 +8,6 @@ public enum Screen {
   ROOM_BOOKING("views/RoomBooking.fxml"),
   HELP_PAGE("views/HelpPage.fxml"),
   PATHFINDING("views/Pathfinding.fxml"),
-  SERVICE_REQUEST("views/ServiceRequest.fxml"),
   SIGNAGE_PAGE("views/Signage.fxml"),
 
   KITCHEN_STAFF("views/KitchenStaff.fxml"),

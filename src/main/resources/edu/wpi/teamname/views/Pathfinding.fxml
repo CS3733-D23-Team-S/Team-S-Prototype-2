@@ -160,9 +160,9 @@
                   <Color red="1.0" green="1.0" blue="1.0" opacity="0.8700000047683716" />
                </textFill>
             </MFXTextField>
-            <TableView fx:id="stepsTable" prefHeight="744.0" prefWidth="1003.0">
+            <TableView fx:id="stepsTable" editable="true" prefHeight="744.0" prefWidth="1003.0">
               <columns>
-                <TableColumn fx:id="nodesTraversedCol" prefWidth="999.4664672613144" text="Nodes Traversed" />
+                <TableColumn fx:id="nodesTraversedCol" editable="false" prefWidth="999.4664672613144" text="Nodes Traversed" />
               </columns>
             </TableView>
          </children>
