@@ -86,7 +86,7 @@ public class EdgeDaoImpl implements EdgeDoa_I {
       PreparedStatement getNeighbors =
           connection
               .getConnection()
-              .prepareStatement("SELECT * FROM " + name + " WHERE startNode = ? OR endnode = ?");
+              .prepareStatement("SELECT * FROM " + name + " WHERE startNode = ? OR endNode = ?");
       try {
         ResultSet listOfNodes = stmt.executeQuery(getNodes);
         while (listOfNodes.next()) {
