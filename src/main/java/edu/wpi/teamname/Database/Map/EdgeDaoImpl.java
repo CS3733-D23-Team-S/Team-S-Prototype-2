@@ -48,7 +48,7 @@ public class EdgeDaoImpl implements EdgeDoa_I {
     } catch (SQLException e) {
       e.getMessage();
       e.printStackTrace();
-      System.out.println("Error with creating the node table");
+      System.out.println("Error with creating the edge table");
     }
   }
 
@@ -86,7 +86,7 @@ public class EdgeDaoImpl implements EdgeDoa_I {
       PreparedStatement getNeighbors =
           connection
               .getConnection()
-              .prepareStatement("SELECT * FROM " + name + " WHERE startNode = ? OR endnode = ?");
+              .prepareStatement("SELECT * FROM " + name + " WHERE startNode = ? OR endNode = ?");
       try {
         ResultSet listOfNodes = stmt.executeQuery(getNodes);
         while (listOfNodes.next()) {

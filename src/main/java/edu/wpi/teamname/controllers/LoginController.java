@@ -2,19 +2,17 @@ package edu.wpi.teamname.controllers;
 
 import static edu.wpi.teamname.navigation.Screen.HOME;
 
-import edu.wpi.teamname.LoginPage;
+import edu.wpi.teamname.Database.Login.LoginDAOImpl;
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginController implements Initializable {
+public class LoginController {
+  private LoginDAOImpl loginDAO = LoginDAOImpl.getInstance();
   @FXML private MFXButton backButton;
 
   @FXML private Label errormessageLabel;
@@ -48,25 +46,27 @@ public class LoginController implements Initializable {
 
   private boolean isValid() {
     boolean isValid = true;
-    if (!tfUsername.getText().equals(LoginPage.USERNAME)) {
-      isValid = false;
-      errorMessage = "Invalid Username!";
-    }
-
-    if (!pfPassword.getText().equals(LoginPage.PASSWORD)) {
-      isValid = false;
-      if (errorMessage.isEmpty()) {
-        errorMessage = "Invalid Password!";
+    try {
+      if (loginDAO.login(tfUsername.getText(), pfPassword.getText())) {
+        // logged in
+        isValid = true;
       } else {
-        errorMessage += "\nInvalid Password!";
+        isValid = false;
+        if (errorMessage.isEmpty()) {
+          errorMessage = "Invalid Password!";
+        } else {
+          errorMessage += "\nInvalid Password!";
+        }
       }
+    } catch (Exception e) {
+      errorMessage = "Invalid Username!";
+      isValid = false;
     }
     errormessageLabel.setText(errorMessage);
     return isValid;
   }
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
+  public void initialize() {
 
     backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.WELCOME_PAGE));
 
