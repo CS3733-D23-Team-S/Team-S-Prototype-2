@@ -15,17 +15,17 @@ public class RoomBookingTest {
   RoomRequestDAO roomRequestDAO = RoomRequestDAO.getInstance();
   int id = 18;
   ConfRoomRequest res1 =
-          new ConfRoomRequest(
-                  LocalDate.now(),
-                  LocalTime.of(6, 0, 0, 0),
-                  LocalTime.of(8, 0, 0, 0),
-                  new Room(Integer.parseInt("1"), "Cafe", "Floor", 50, "F"),
-                  "Sarah Kogan",
-                  "Checking for update",
-                  "description description description",
-                  null,
-                  Status.Received,
-                  "");
+      new ConfRoomRequest(
+          LocalDate.now(),
+          LocalTime.of(6, 0, 0, 0),
+          LocalTime.of(8, 0, 0, 0),
+          new Room(Integer.parseInt("1"), "Cafe", "Floor", 50, "F"),
+          "Sarah Kogan",
+          "Checking for update",
+          "description description description",
+          null,
+          Status.Received,
+          "");
 
   @Test
   public void addtoDaoTest() {
@@ -41,5 +41,4 @@ public class RoomBookingTest {
     roomRequestDAO.deleteRequest(id);
     assertNull(roomRequestDAO.getRequest(id));
   }
-
 }
