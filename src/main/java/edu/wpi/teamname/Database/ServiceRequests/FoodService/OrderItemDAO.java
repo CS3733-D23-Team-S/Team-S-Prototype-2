@@ -25,6 +25,7 @@ public class OrderItemDAO {
 
   /**
    * Awesome testing method
+   *
    * @param foodName
    * @return
    * @throws Exception
@@ -37,6 +38,7 @@ public class OrderItemDAO {
 
   /**
    * Makes new orderItem and adds it
+   *
    * @param item
    * @param quantity
    * @throws Exception
