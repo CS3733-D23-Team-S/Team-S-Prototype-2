@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class OrderItem {
-
   private int cartID;
   @Getter private Food item;
   @Getter @Setter private int quantity;

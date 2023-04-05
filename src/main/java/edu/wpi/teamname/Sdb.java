@@ -2,7 +2,6 @@ package edu.wpi.teamname;
 
 import edu.wpi.teamname.Database.DAOManager;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.*;
-import edu.wpi.teamname.Database.ServiceRequests.Room;
 
 public class Sdb {
   public static void main(String[] args) throws Exception {
@@ -15,10 +14,14 @@ public class Sdb {
     // Establish connection to database
     dbManager.establishConnection();
 
-    /*
-        // Create Empty Table
-        dbManager.initTables();
 
+    //FoodDeliveryDAOImp fooddel = FoodDeliveryDAOImp.getInstance();
+    //fooddel.initFoodRequests();
+
+    // Create Empty Table
+    // dbManager.initTables();
+    /*
+        foodDao.initFood();
         Food newFood =
             new Food(
                 5,
@@ -69,8 +72,8 @@ public class Sdb {
         foodDao.addFood(newFood);
         foodDao.addFood(newFoodt);
     */
-    foodDao.loadToRemote();
-    System.out.println(foodDao.retrieveFood(7).toString());
+    // foodDao.loadToRemote();
+    // System.out.println(foodDao.retrieveFood(7).toString());
 
     /*
     System.out.println(foodDao.getFoods().get(newFood.getFoodID()));

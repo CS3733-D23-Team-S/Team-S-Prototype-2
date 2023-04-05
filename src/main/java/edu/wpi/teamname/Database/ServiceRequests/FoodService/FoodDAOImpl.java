@@ -221,6 +221,48 @@ public class FoodDAOImpl implements FoodDAO_I {
     }
   }
 
+  public void initFood() {
+    try {
+      Statement st = connection.getC().createStatement();
+
+      String dropFoodTable = "DROP TABLE IF EXISTS " + foodsTable + " CASCADE";
+
+      String foodTableConstruct =
+          "CREATE TABLE IF NOT EXISTS "
+              + foodsTable
+              + " "
+              + "(FoodID int UNIQUE PRIMARY KEY,"
+              + "Name Varchar(100),"
+              + "Type Varchar(100),"
+              + "PrepTime int,"
+              + "Cuisine Varchar(100),"
+              + "Price double precision,"
+              + "Description Varchar(100),"
+              + "Quantity int,"
+              + "SoldOut boolean,"
+              + "Image Varchar(100),"
+              + "Calories int,"
+              + "Italian boolean,"
+              + "American boolean,"
+              + "Indian boolean,"
+              + "Mexican boolean,"
+              + "Vegetarian boolean,"
+              + "Halal boolean,"
+              + "Vegan boolean,"
+              + "GlutenFree boolean,"
+              + "Kosher boolean)";
+
+      st.execute(dropFoodTable);
+      st.execute(foodTableConstruct);
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(e.getSQLState());
+      System.out.println("Database creation error");
+    }
+  }
+
   public void csvToFood(String csvFilePath) {
 
     try (BufferedReader reader = new BufferedReader(new FileReader(csvFilePath))) {

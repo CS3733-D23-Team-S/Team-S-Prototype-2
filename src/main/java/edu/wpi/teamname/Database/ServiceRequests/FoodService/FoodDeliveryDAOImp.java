@@ -3,6 +3,7 @@ package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 import edu.wpi.teamname.Database.dbConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
       preparedStatement.setInt(2, request.getCart().getCartID());
       preparedStatement.setDate(3, null);
       preparedStatement.setString(4, request.getOrderer());
-      preparedStatement.setInt(5, request.getRoom().getNodeID());
+      preparedStatement.setInt(5, request.getRoom());
       preparedStatement.setDouble(6, request.orderTotal());
       preparedStatement.setString(7, request.getNotes());
 
@@ -64,4 +65,37 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
 
   @Override
   public void deleteRequest(FoodDelivery request) {}
+
+  public void initFoodRequests() {
+    try {
+      Statement st = connection.getC().createStatement();
+      String dropFoodRequestsTable = "DROP TABLE IF EXISTS " + foodRequestsTable + " CASCADE";
+
+      String foodRequestsTableConstruct =
+          "CREATE TABLE IF NOT EXISTS "
+              + foodRequestsTable
+              + " "
+              + "(deliveryID int UNIQUE PRIMARY KEY,"
+              + "cartID int,"
+              + "orderDate Date,"
+              + "orderTime time,"
+              + "room int,"
+              + "orderedBy Varchar(100),"
+              + "assignedTo Varchar(100),"
+              + "Status Varchar(100),"
+              + "notes Varchar(255),"
+              + "FOREIGN KEY (cartID) REFERENCES "
+              + "hospitaldb.cart"
+              + "(cartID) ON DELETE CASCADE)";
+
+      st.execute(dropFoodRequestsTable);
+      st.execute(foodRequestsTableConstruct);
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println(e.getMessage());
+      System.out.println(e.getSQLState());
+      System.out.println("Database creation error");
+    }
+  }
 }

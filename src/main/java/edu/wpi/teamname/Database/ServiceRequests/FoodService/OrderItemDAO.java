@@ -63,4 +63,21 @@ public class OrderItemDAO {
     cart.removeIf(orderItem -> orderItem.getItem().getFoodName().equals(foodName));
     throw new NullPointerException("Item Not Present");
   }
+
+  public void initOrderItem()
+  {
+    /*
+    String cartTableConstruct =
+            "CREATE TABLE IF NOT EXISTS "
+                    + cartTable
+                    + " "
+                    + "(cartID int UNIQUE PRIMARY KEY,"
+                    + "FoodID int,"
+                    + "Quantity int,"
+                    + "FOREIGN KEY (FoodID) REFERENCES "
+                    + "hospitaldb.foods"
+                    + "(FoodID) ON DELETE CASCADE)";
+
+     */
+  }
 }
