@@ -3,6 +3,7 @@ package edu.wpi.teamname.Database.ServiceRequests.ConferenceRoom;
 import edu.wpi.teamname.Database.dbConnection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,6 +23,33 @@ public class RoomRequestDAO implements RoomRequest_I {
     return single_instance;
   }
 
+  public void initTable() throws SQLException {
+    Statement stmt = connection.getC().createStatement();
+    String roomReservationsTableConstruct =
+        "CREATE TABLE IF NOT EXISTS "
+            + roomReservationsTable
+            + " "
+            + "(reservationID int UNIQUE PRIMARY KEY,"
+            + "date Date,"
+            + "startTime Time,"
+            + "endTime Time,"
+            + "room Varchar(100),"
+            + "reservedBy Varchar(100),"
+            + "eventName Varchar(100),"
+            + "eventDescription Varchar(100),"
+            + "assignedTo Varchar(100),"
+            + "orderStatus Varchar(100),"
+            + "notes Varchar(500))";
+    try {
+      stmt.execute(roomReservationsTableConstruct);
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());
+      System.out.println(e.getSQLState());
+      System.out.println("Room reservation creation error");
+    }
+    System.out.println("Room reservations table created");
+  }
+
   @Override
   public List<ConfRoomRequest> getAllRequests() {
     return null;
@@ -29,7 +57,7 @@ public class RoomRequestDAO implements RoomRequest_I {
 
   @Override
   public ConfRoomRequest getRequest(int requestID) {
-    return null;
+    return requests.get(requestID);
   }
 
   @Override
@@ -63,5 +91,7 @@ public class RoomRequestDAO implements RoomRequest_I {
   }
 
   @Override
-  public void deleteRequest(ConfRoomRequest request) {}
+  public void deleteRequest(int requestID) {
+    requests.remove(requestID);
+  }
 }

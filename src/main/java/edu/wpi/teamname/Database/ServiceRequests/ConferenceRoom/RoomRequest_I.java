@@ -9,5 +9,5 @@ public interface RoomRequest_I {
 
   public void addRequest(ConfRoomRequest request);
 
-  public void deleteRequest(ConfRoomRequest request);
+  public void deleteRequest(int requestID);
 }
