@@ -10,6 +10,8 @@ import javafx.scene.Group;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import lombok.Getter;
@@ -22,6 +24,7 @@ public class RoomBooking {
   @Getter @Setter ArrayList<ConfRoomRequest> roomRequestList = new ArrayList<>();
 
   @FXML HBox conferenceRoomsHBox;
+  private TextFieldTableCell roomListing;
 
   // pull rooms into UI
   public void createRoomsUI(HBox conferenceRoomsHBox) {
@@ -35,30 +38,41 @@ public class RoomBooking {
       // add text field - styling
       TextFieldTableCell roomListing = new TextFieldTableCell();
       roomListing.setText(roomList.get(i).getName());
-      roomListing.setAlignment(TOP_CENTER);
+      roomListing.setAlignment(CENTER);
       roomListing.setTextAlignment(TextAlignment.CENTER);
       roomListing.setPrefSize(247, 86);
-      roomListing.setFont(Font.font("Open Sans", 20));
-
-      // vb.setId("room" + roomList.get(i).getId());
+      roomListing.setFont(Font.font("Open San s", 20));
+      roomListing.setTextFill(Paint.valueOf("#1D3D94"));
+      vb.setId("room" + roomList.get(i).getId());
       vb.getChildren().add(roomListing); // add textfield into vbox
       conferenceRoomsHBox.getChildren().add(vb); // add vbox into conf hbox
+
+      System.out.println(vb.getId());
     }
   }
 
-  /*
-  public void setReservationList() {
-    for (int i = 0; i < reservationList.size(); i++) {
-     // Room r = reservationList.get(i);
-      // r.addReservation(reservationList.get(i));
-    }
-  }
+  public void createReservationsUI(HBox conferenceRoomsHBox) {
 
-   */
-
-  public void setReservationUI(HBox conferenceRoomsHBox) {
     for (int i = 0; i < roomRequestList.size(); i++) {
       Group resGroup = new Group(); // create group
+
+      Rectangle rect = new Rectangle(); // create rectangle
+      rect.setWidth(170);
+      rect.setHeight(110);
+      rect.setArcHeight(5);
+
+      resGroup.getChildren().add(rect);
+      System.out.println("CHILDREN: ");
+      System.out.println(conferenceRoomsHBox.getChildren());
+
+     // for (int j=0; j<conferenceRoomsHBox.getChildren().size(); j++) {
+      //  if (conferenceRoomsHBox.getChildren().get(j).getId() == "room" + roomRequestList.get(i).getRoom().getId()) {
+      //    conferenceRoomsHBox.getChildren().add(resGroup);
+     //   }
+    // }
+      // for (int j = 0; j < roomList.size(); j++) {
+      //  conferenceRoomsHBox.getChildren().lookup("#room" + roomList.get(j).getId());
+      // }
     }
     /*
     Rectangle rect = new Rectangle(); // create rectangle

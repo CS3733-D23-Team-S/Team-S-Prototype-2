@@ -34,7 +34,9 @@ public class RoomBookingController {
     createDummyRooms(); // create dummy rooms
     rb.setRoomList(roomList);
     createDummyRoomRequests(); // create dummy reservations
+    rb.setRoomRequestList(reservationList);
     rb.createRoomsUI(conferenceRoomsHBox);
+    rb.createReservationsUI(conferenceRoomsHBox);
   }
 
   public static void addNewRequest(
@@ -105,6 +107,10 @@ public class RoomBookingController {
             null,
             Status.InProgress,
             "");
+
+    reservationList.add(res1);
+    reservationList.add(res2);
+    reservationList.add(res3);
 
     // roomRequestDAO.addRequest(res1);
     // roomRequestDAO.addRequest(res2);
