@@ -72,47 +72,18 @@ public class Food {
   }
 
   public boolean isWalletFriendly() {
-    if (FoodPrice < 15) {
-      return true;
-    }
-
-    return false;
+    return FoodPrice < 15;
   }
 
   public boolean isQuickDelivery() {
-    if ((FoodPrepTime + 10) < 30) {
-      return true;
-    }
-
-    return false;
+    return (FoodPrepTime + 10) < 30;
   }
 
   @Override
   public String toString() {
     String theFood;
 
-    theFood =
-        "ID: "
-            + FoodID
-            + "\nName: "
-            + FoodName
-            + "\nType: "
-            + FoodType
-            + "\nPrep Time: "
-            + FoodPrepTime
-            + "\nCuisine: "
-            + FoodCuisine
-            + "\nPrice: "
-            + FoodPrice
-            + "\nDescription: "
-            + FoodDescription
-            + "\nImage Path: "
-            + image
-            + "\nCalories: "
-            + calories;
-
-    if (isSoldOut) theFood = theFood + "\nSOLD OUT!";
-    else theFood = theFood + "\nIN STOCK";
+    theFood = FoodName;
 
     return theFood;
   }

@@ -8,7 +8,11 @@ public enum Screen {
   ROOM_BOOKING("views/RoomBooking.fxml"),
   ROOM_BOOKING_DETAILS("views/RoomBookingDetails.fxml"),
   ROOM_BOOKING_CONFIRMATION("views/RoomBookingConfirmation.fxml"),
-  ORDER_DETAILS("views/OrderDetails.fxml");
+  ORDER_DETAILS("views/OrderDetails.fxml"),
+
+  PRODUCT_DETAILS("views/ProductDetails.fxml"),
+
+  ORDER_CONFIRMATION("views/OrderConfirmation.fxml");
 
   private final String filename;
 

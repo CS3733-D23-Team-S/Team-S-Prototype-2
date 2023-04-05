@@ -140,7 +140,7 @@ public class FoodDAOImpl implements FoodDAO_I {
     return foods.get(target);
   }
 
-  public ArrayList<Food> isWalletFriendlyFood() {
+  public ArrayList<Food> getWalletFriendlyFood() {
     ArrayList<Food> wFriendlyFoods = new ArrayList<>();
 
     for (Food aFood : foods.values()) {
@@ -152,7 +152,7 @@ public class FoodDAOImpl implements FoodDAO_I {
     return wFriendlyFoods;
   }
 
-  public ArrayList<Food> isQuick() {
+  public ArrayList<Food> getQuick() {
     ArrayList<Food> quickFood = new ArrayList<>();
 
     for (Food aFood : foods.values()) {
