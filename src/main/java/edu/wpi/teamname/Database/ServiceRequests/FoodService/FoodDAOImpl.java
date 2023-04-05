@@ -67,6 +67,12 @@ public class FoodDAOImpl implements FoodDAO_I {
     }
   }
 
+  /**
+   * Deletes food from database
+   *
+   * @param target food id
+   * @throws SQLException if target does not exist
+   */
   public void deleteFood(int target) throws SQLException {
     PreparedStatement deleteFood =
         connection.getC().prepareStatement("DELETE FROM " + foodsTable + " WHERE FoodID = ?");
@@ -157,6 +163,11 @@ public class FoodDAOImpl implements FoodDAO_I {
     return wFriendlyFoods;
   }
 
+  /**
+   * Checks to see what foods are considered quick
+   *
+   * @return array of quick foods
+   */
   public ArrayList<Food> isQuick() {
     ArrayList<Food> quickFood = new ArrayList<>();
 

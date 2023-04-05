@@ -7,6 +7,7 @@ import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 
+/** Food delivery request */
 public class FoodDelivery {
 
   @Getter int deliveryID;
