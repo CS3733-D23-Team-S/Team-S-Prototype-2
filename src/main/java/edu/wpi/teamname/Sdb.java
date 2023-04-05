@@ -23,9 +23,9 @@ public class Sdb {
             5,
             "Pizza",
             "Hello",
-            4,
+            10,
             "String fc",
-            3.99,
+            2,
             "String fd",
             false,
             "image",
@@ -46,7 +46,7 @@ public class Sdb {
             "Hello",
             4,
             "String fc",
-            3.99,
+            60,
             "String fd",
             false,
             "image",
@@ -67,6 +67,7 @@ public class Sdb {
 
     foodDao.addFood(newFood);
     foodDao.addFood(newFoodt);
+
     /*
     System.out.println(foodDao.getFoods().get(newFood.getFoodID()));
     newFood.setFoodDescription("I changed the description to this");

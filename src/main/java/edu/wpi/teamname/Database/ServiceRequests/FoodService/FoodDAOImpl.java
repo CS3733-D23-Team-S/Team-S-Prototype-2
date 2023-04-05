@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import lombok.Getter;
 
@@ -135,6 +136,30 @@ public class FoodDAOImpl implements FoodDAO_I {
       return null;
     }
     return foods.get(target);
+  }
+
+  public ArrayList<Food> isWalletFriendlyFood() {
+    ArrayList<Food> wFriendlyFoods = new ArrayList<>();
+
+    for (Food aFood : foods.values()) {
+      if (aFood.isWalletFriendly()) {
+        wFriendlyFoods.add(aFood);
+      }
+    }
+
+    return wFriendlyFoods;
+  }
+
+  public ArrayList<Food> isQuick() {
+    ArrayList<Food> quickFood = new ArrayList<>();
+
+    for (Food aFood : foods.values()) {
+      if (aFood.isQuickDelivery()) {
+        quickFood.add(aFood);
+      }
+    }
+
+    return quickFood;
   }
 
   public void csvToFood(String csvFilePath) {

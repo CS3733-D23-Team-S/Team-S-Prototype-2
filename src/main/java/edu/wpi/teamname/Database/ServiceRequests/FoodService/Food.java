@@ -71,6 +71,22 @@ public class Food {
     return isSoldOut;
   }
 
+  public boolean isWalletFriendly() {
+    if (FoodPrice < 15) {
+      return true;
+    }
+
+    return false;
+  }
+
+  public boolean isQuickDelivery() {
+    if ((FoodPrepTime + 10) < 30) {
+      return true;
+    }
+
+    return false;
+  }
+
   @Override
   public String toString() {
     String theFood;
