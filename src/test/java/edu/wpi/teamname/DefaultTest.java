@@ -7,10 +7,13 @@ package edu.wpi.teamname;
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDelivery;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItem;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItemDAO;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
+import java.util.Date;
 
 public class DefaultTest {
 
@@ -108,14 +111,21 @@ public class DefaultTest {
     assertEquals(OI2.getQuantity(), 20);
 
     OIDao.deleteOrderItem(food2.getFoodName());
+    Exception exception = assertThrows(Exception.class, () -> OIDao.getOrderItem(food2.getFoodName()));
+    assertEquals("Item Not Present", exception.getMessage());
+
+    Exception exception2 = assertThrows(Exception.class, () -> OIDao.deleteOrderItem("WAAAAAAAA"));
+    assertEquals("Item Not Present", exception2.getMessage());
 
     // FoodDelivery
-    // FoodDelivery fd = new FoodDelivery();
+    Date date = new Date();
+    FoodDelivery fd = new FoodDelivery(56, OIDao, date, null, "Person");
+    assertEquals(fd.orderTotal(), );
 
   }
 
   @Test
-  public void test() {
+  public void test() throws Exception {
     testFood();
   }
 }
