@@ -45,7 +45,7 @@ public class LoginController {
   }
 
   private boolean isValid() {
-    boolean isValid = true;
+    boolean isValid;
     try {
       if (loginDAO.login(tfUsername.getText(), pfPassword.getText())) {
         // logged in
