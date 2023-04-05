@@ -2,6 +2,7 @@ package edu.wpi.teamname.controllers;
 
 import static edu.wpi.teamname.navigation.Screen.PATHFINDING;
 
+import edu.wpi.teamname.Main;
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -11,7 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 
 public class HomeController {
 
@@ -31,6 +34,8 @@ public class HomeController {
 
   @FXML ImageView helpIcon;
 
+  @FXML ImageView hospitalBg;
+
   @FXML MFXButton homeToPathfindingButton;
 
   @FXML
@@ -48,6 +53,12 @@ public class HomeController {
     buttonBarPathfinding.setOnMouseClicked(event -> Navigation.navigate(PATHFINDING));
     buttonBarMealDelivery.setOnMouseClicked(event -> goToMealPage());
     buttonBarReserveRoom.setOnMouseClicked(event -> goToRoomPage());
+
+
+    Image hospitalBackground = new Image(Main.class.getResource("./HomepageImages/BrighamandWomensHospitalImage.jpeg").toString());
+    hospitalBg.setImage(hospitalBackground);
+
+
   }
 
   public void goToRoomPage() {
