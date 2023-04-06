@@ -84,35 +84,6 @@
                         </Group>
                     </children>
                 </VBox>
-                <VBox prefHeight="612.0" prefWidth="229.0">
-                    <children>
-                        <TextField2TableCell alignment="CENTER" prefHeight="86.0" prefWidth="247.0" style="-fx-border-style: hidden solid hidden hidden;" text="Conference Room 1" textAlignment="CENTER" textFill="#1d3d94">
-                            <font>
-                                <Font name="Open Sans Regular" size="20.0" />
-                            </font>
-                        </TextField2TableCell>
-                        <Group>
-                            <children>
-                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5c5ee" height="110.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="187.0" />
-                                <Text fill="#1d3d94" layoutX="5.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meeting Title">
-                                    <font>
-                                        <Font name="Arial Bold" size="15.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="#1d3d94" layoutX="4.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meeting Organizer">
-                                    <font>
-                                        <Font name="Open Sans Regular" size="15.0" />
-                                    </font>
-                                </Text>
-                                <Text fill="#1d3e91cc" layoutX="8.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="StartTime - EndTime">
-                                    <font>
-                                        <Font size="15.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </Group>
-                    </children>
-                </VBox>
             </children>
             <GridPane.margin>
                 <Insets top="30.0" />

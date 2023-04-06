@@ -18,6 +18,7 @@ public class RoomBookingDetailsController {
   @FXML MFXTextField endTimeText;
   @FXML MFXTextField eventTitleText;
   @FXML MFXTextField eventDescriptionText;
+  @FXML MFXTextField staffMemberText;
   @FXML MFXButton backButton;
   @FXML MFXButton clearButton;
 
@@ -26,6 +27,7 @@ public class RoomBookingDetailsController {
   @Setter @Getter String endTime;
   @Setter @Getter String eventTitle;
   @Setter @Getter String eventDescription;
+  @Setter @Getter String staffMember;
 
   RoomBookingController rbc = new RoomBookingController();
 
@@ -42,8 +44,9 @@ public class RoomBookingDetailsController {
     endTime = endTimeText.getText();
     eventTitle = eventTitleText.getText();
     eventDescription = eventDescriptionText.getText();
+    staffMember = staffMemberText.getText();
     System.out.println("Took in inputs from RBD Controller");
-    rbc.addNewRequest(roomLocation, startTime, endTime, eventTitle, eventDescription);
+    rbc.addNewRequest(roomLocation, startTime, endTime, eventTitle, eventDescription, staffMember);
     clearFields();
   }
 
