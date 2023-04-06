@@ -86,7 +86,7 @@ public class EdgeDaoImpl implements EdgeDoa_I {
       PreparedStatement getNeighbors =
           connection
               .getConnection()
-              .prepareStatement("SELECT * FROM " + name + " WHERE startNode = ? OR endNode = ?");
+              .prepareStatement("SELECT * FROM " + name + " WHERE startNode=? OR endNode=?");
       try {
         ResultSet listOfNodes = stmt.executeQuery(getNodes);
         while (listOfNodes.next()) {
@@ -103,6 +103,8 @@ public class EdgeDaoImpl implements EdgeDoa_I {
           this.neighbors.put(currentNodeID, neighbors);
         }
       } catch (SQLException e) {
+        e.printStackTrace();
+        System.out.println(e.getSQLState());
         System.out.println("Error accessing the remote and constructing the list of edges");
       }
       try {
@@ -122,7 +124,7 @@ public class EdgeDaoImpl implements EdgeDoa_I {
     } catch (SQLException e) {
       e.printStackTrace();
       System.out.println(e.getSQLState());
-      System.out.println("Error accessing the remote and constructing the list of nodes");
+      System.out.println("Error accessing the remote and constructing the list of edges");
     }
   }
 

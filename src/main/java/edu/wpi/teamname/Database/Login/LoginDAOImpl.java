@@ -9,7 +9,7 @@ public class LoginDAOImpl implements LoginDAOI {
   private static LoginDAOImpl single_instance = null;
   private dbConnection connection;
 
-  @Getter private HashMap<String, LoginInfo> loginData = new HashMap<>();
+  @Getter private HashMap<String, LoginInfo> loginInfo = new HashMap<>();
   private String name;
 
   public static LoginDAOImpl getInstance() {
@@ -33,10 +33,11 @@ public class LoginDAOImpl implements LoginDAOI {
               + "permission int)";
       stmt.execute(loginTableConstruct);
       LoginInfo admin = new LoginInfo("admin", "admin", Permission.ADMIN);
-      loginData.put("admin", admin);
-      ResultSet checkExist =
-          connection.getConnection().createStatement().executeQuery("SELECT * FROM " + name);
-      if (checkExist.next()) return;
+      loginInfo.put("admin", admin);
+      ResultSet checkExists =
+          connection.getConnection().createStatement().executeQuery("SELECT  * FROM " + name);
+      if (checkExists.next()) return;
+
       String addAdmin =
           "INSERT INTO "
               + loginTableName
@@ -44,14 +45,10 @@ public class LoginDAOImpl implements LoginDAOI {
               + "('admin','admin',"
               + Permission.ADMIN.ordinal()
               + ")";
-
       stmt.executeUpdate(addAdmin);
     } catch (SQLException e) {
       e.getMessage();
       e.printStackTrace();
-    } catch (Exception e) {
-      System.out.println("user error");
-      throw new RuntimeException(e);
     }
   }
 
@@ -60,7 +57,7 @@ public class LoginDAOImpl implements LoginDAOI {
    * @return true if user exists, false if otherwise
    */
   private boolean checkIfUserExists(String username) {
-    return loginData.get(username) == null;
+    return loginInfo.get(username) != null;
   }
 
   /**
@@ -86,9 +83,8 @@ public class LoginDAOImpl implements LoginDAOI {
       preparedStatement.setString(2, password);
       preparedStatement.setInt(3, Permission.WORKER.ordinal());
       LoginInfo user = new LoginInfo(username, password, Permission.WORKER);
-      loginData.put(username, user);
-
-    } catch (Exception e) {
+      loginInfo.put(username, user);
+    } catch (SQLException e) {
       throw new RuntimeException(e);
     }
     return true;
@@ -100,10 +96,10 @@ public class LoginDAOImpl implements LoginDAOI {
    * @return false if username/password does not exist, true if login is successful
    */
   public boolean login(String username, String password) throws Exception {
-    if (checkIfUserExists(username)) {
+    if (!checkIfUserExists(username)) {
       throw new Exception("User does not exist");
     } else {
-      return password.equals(loginData.get(username).getPassword());
+      return password.equals(loginInfo.get(username).getPassword());
     }
   }
 

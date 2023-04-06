@@ -15,7 +15,9 @@ public enum Screen {
   MAP_EDITOR("views/MapEditor.fxml"),
   MEAL_DELIVERY("views/MealDelivery.fxml"),
   MEAL_DELIVERY1("views/MealDelivery1.fxml"),
-  SERVICE_REQUEST("views/ServiceRequest.fxml");
+  SERVICE_REQUEST("views/ServiceRequest.fxml"),
+
+  CSV_MANAGE("views/CSVPage.fxml");
 
   private final String filename;
 
