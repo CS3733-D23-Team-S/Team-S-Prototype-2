@@ -1,32 +1,52 @@
 package edu.wpi.teamname.controllers.ServiceRequestControllers;
 
+import static edu.wpi.teamname.controllers.HomeController.cartID;
 import static edu.wpi.teamname.controllers.ServiceRequestControllers.MealDeliveryController.clickedFoodID;
 
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDAOImpl;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItemDAO;
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 public class ProductDetailsController {
   @FXML MFXButton back3;
   @FXML MFXButton addCart;
-
   @FXML MFXButton clear;
   @FXML MFXTextField quantity;
+
   @FXML MFXTextField request;
   @FXML FoodDAOImpl foodDAO = FoodDAOImpl.getInstance();
   @FXML HBox foodName;
   @FXML HBox fDescription;
   @FXML HBox fPrice;
+  static int orderID;
+
+  public static int itemCount;
+
+  OrderItemDAO itemDAO = new OrderItemDAO(cartID);
 
   public void initialize() {
 
     back3.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
     addCart.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
+
+    addCart.setOnMouseClicked(
+        event -> {
+          try {
+            itemDAO.addOrderItem(
+                foodDAO.retrieveFood(clickedFoodID), Integer.parseInt(quantity.getText()));
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
+        });
+
+    // addCart.setOnMouseClicked(event -> addToOrder());
     clearFields();
     clear.setOnMouseClicked(event -> clearFields());
     clearFields();
@@ -34,7 +54,12 @@ public class ProductDetailsController {
     foodNamer();
     foodDescription();
     foodPrice();
-    System.out.println(selectedFood().getFoodDescription());
+  }
+
+  public void count(String x) {
+
+    itemCount = Integer.parseInt(x);
+    System.out.println(itemCount);
   }
 
   public void clearFields() {
@@ -48,31 +73,32 @@ public class ProductDetailsController {
 
   public void foodNamer() {
 
-    MFXButton namer = new MFXButton();
-    namer.setId(selectedFood().getFoodDescription());
-    namer.setText(selectedFood().getFoodName().toString());
-    namer.setMaxWidth(103);
-    namer.setMaxHeight(87);
-    foodName.getChildren().add(namer);
+    Label fName = new Label();
+
+    fName.setId(selectedFood().getFoodDescription());
+
+    fName.setText(selectedFood().getFoodName().toString());
+
+    fName.setStyle("-fx-text-fill: white; -fx-font-size: 18px;");
+    foodName.getChildren().add(fName);
   }
 
   public void foodDescription() {
 
-    MFXButton description = new MFXButton();
-    description.setId(selectedFood().getFoodDescription());
-    description.setText(selectedFood().getFoodDescription().toString());
-    description.setMaxWidth(500);
-    description.setMaxHeight(87);
-    fDescription.getChildren().add(description);
+    Label fDescription1 = new Label();
+    fDescription1.setId(selectedFood().getFoodDescription());
+    fDescription1.setText(selectedFood().getFoodDescription().toString());
+    fDescription1.setStyle("-fx-text-fill: white; -fx-font-size: 18px;");
+
+    fDescription.getChildren().add(fDescription1);
   }
 
   public void foodPrice() {
 
-    MFXButton fprice = new MFXButton();
-    fprice.setId(Double.toString(selectedFood().getFoodPrice()));
-    fprice.setText(Double.toString(selectedFood().getFoodPrice()));
-    fprice.setMaxWidth(500);
-    fprice.setMaxHeight(87);
-    fPrice.getChildren().add(fprice);
+    Label fPrice1 = new Label();
+    fPrice1.setId(Double.toString(selectedFood().getFoodPrice()));
+    fPrice1.setText(Double.toString(selectedFood().getFoodPrice()));
+    fPrice1.setStyle("-fx-text-fill: white; -fx-font-size: 18px;");
+    fPrice.getChildren().add(fPrice1);
   }
 }

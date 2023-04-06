@@ -19,10 +19,6 @@ public class OrderItemDAO {
     this.cartID = id;
   }
 
-  public List<OrderItem> getAllOrderItems() {
-    return cart;
-  }
-
   public OrderItem getOrderItem(String foodName) throws Exception {
     for (OrderItem orderItem : cart)
       if (orderItem.getItem().getFoodName().equals(foodName)) return orderItem;

@@ -11,59 +11,30 @@
       <change afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/ProductDetails.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/OrderConfirmation.fxml" afterDir="false" />
+    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="updated order">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/foodDelivery.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/DAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/DAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/Food.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/MealDelivery.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Sdb.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Sdb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/OrderItemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/OrderItemDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/HomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/OrderDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/OrderDetailsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/navigation/MealDelivery1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/navigation/MealDelivery1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/navigation/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/navigation/Screen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/MealDelivery1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/MealDelivery1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/OrderDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/OrderDetails.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/spotlessJava" beforeDir="false" afterPath="$PROJECT_DIR$/build/spotlessJava" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/MealDelivery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/OrderItemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/OrderItemDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/OrderDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/OrderDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/MealDelivery1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/MealDelivery1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/MealDelivery1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/MealDelivery1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/OrderDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/OrderDetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/ProductDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/ProductDetails.fxml" afterDir="false" />
-    </list>
-    <list id="a6e81462-e3f9-4c54-a6b7-455ce6edfbf3" name="Changes by Jake O" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/DAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/DAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Sdb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Sdb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.java" afterDir="false" />
-    </list>
-    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="updated meal delivery" />
-    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="Start integrating front and back">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Sdb.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Sdb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/spotlessJava" beforeDir="false" afterPath="$PROJECT_DIR$/build/spotlessJava" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Sdb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Sdb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +69,12 @@
                 <item name="Team-S-Prototype-2" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Team-S-Prototype-2" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -163,20 +140,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/edu/wpi/teamname/algorithms/AStar.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/edu/wpi/teamname/algorithms/BFS.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="5" changelist="a6e81462-e3f9-4c54-a6b7-455ce6edfbf3" />
-        <range start1="5" end1="6" start2="8" end2="9" changelist="57cc60d1-c57b-4166-ae2f-6c065739621a" />
-        <range start1="15" end1="16" start2="18" end2="23" changelist="57cc60d1-c57b-4166-ae2f-6c065739621a" />
-        <range start1="19" end1="19" start2="26" end2="349" changelist="57cc60d1-c57b-4166-ae2f-6c065739621a" />
-        <range start1="22" end1="26" start2="352" end2="353" changelist="57cc60d1-c57b-4166-ae2f-6c065739621a" />
-        <range start1="28" end1="28" start2="355" end2="358" changelist="57cc60d1-c57b-4166-ae2f-6c065739621a" />
-        <range start1="31" end1="42" start2="361" end2="388" changelist="57cc60d1-c57b-4166-ae2f-6c065739621a" />
-        <range start1="44" end1="44" start2="390" end2="395" changelist="57cc60d1-c57b-4166-ae2f-6c065739621a" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -461,6 +424,28 @@
     </task>
     <option name="localTasksCounter" value="27" />
     <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="meal delivery + product details + order details">
+      <created>1680676679973</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1680676679974</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Changes by Jake O">
+      <created>1680676699870</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1680676699870</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fixed wallet friendly">
+      <created>1680677505224</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1680677505224</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,11 +471,12 @@
     <MESSAGE value="FInal food development" />
     <MESSAGE value="Added if FOod is Wallet Friendly and if it is a quick delivery" />
     <MESSAGE value="Start integrating front and back" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start integrating front and back" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added if FOod is Wallet Friendly and if it is a quick delivery" />
     <MESSAGE value="fixed submit button +alignment" />
     <MESSAGE value="updated meal delivery" />
     <MESSAGE value="meal delivery + product details + order details" />
-    <option name="LAST_COMMIT_MESSAGE" value="meal delivery + product details + order details" />
+    <MESSAGE value="Changes by Jake O" />
+    <MESSAGE value="fixed wallet friendly" />
+    <MESSAGE value="updated order" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated order" />
   </component>
 </project>

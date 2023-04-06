@@ -15,7 +15,6 @@ public class MealDeliveryController {
   @FXML MFXButton backButton1;
   @FXML MFXButton checkout;
   @FXML HBox wf;
-
   @FXML HBox qd;
   // @FXML HBox fname;
 
@@ -25,20 +24,16 @@ public class MealDeliveryController {
   @FXML
   public void initialize() {
 
-    System.out.println("Here1");
     DAOManager dbManager = new DAOManager();
     // Establish connection to database
     dbManager.establishConnection();
     // Create Empty Table
 
-    System.out.println("Here2");
     try {
       dbManager.initTables();
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
-    System.out.println("Here3");
 
     // adding Foods
     Food Pizza =
@@ -327,8 +322,6 @@ public class MealDeliveryController {
             false,
             false);
 
-    System.out.println("Here4");
-
     foodDAO.addFood(Pizza);
     foodDAO.addFood(Burger);
     foodDAO.addFood(StirFry);
@@ -345,40 +338,34 @@ public class MealDeliveryController {
     foodDAO.addFood(RiceAndBeans);
     foodDAO.addFood(Quesadillas);
 
-    System.out.println("Here5");
-
     backButton1.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
     checkout.setOnMouseClicked(event -> Navigation.navigate(Screen.ORDER_DETAILS));
 
-    System.out.println("Here6");
-
     walletFriendly();
     quickDelivery();
-
-    System.out.println("Here7");
   }
 
   public void walletFriendly() {
     for (int i = 0; i < foodDAO.getWalletFriendlyFood().size(); i++) {
-      System.out.println("Here8");
-      MFXButton btn = new MFXButton();
-      btn.setId(foodDAO.getWalletFriendlyFood().get(i).toString());
-      // String button = foodDAO.getWalletFriendlyFood().get(i).toString();
-      btn.setText(foodDAO.getWalletFriendlyFood().get(i).toString());
-      btn.setMaxWidth(103);
-      btn.setMaxHeight(87);
-      wf.getChildren().add(btn);
-      btn.setOnMouseClicked(event -> Navigation.navigate(Screen.PRODUCT_DETAILS));
+
+      MFXButton btn1 = new MFXButton();
+      btn1.setId(foodDAO.getWalletFriendlyFood().get(i).toString());
+      btn1.setText(foodDAO.getWalletFriendlyFood().get(i).toString());
+      btn1.setMaxWidth(103);
+      btn1.setMaxHeight(87);
+      wf.getChildren().add(btn1);
+      btn1.setOnMouseClicked(event -> Navigation.navigate(Screen.PRODUCT_DETAILS));
+      int finalII = i;
+      btn1.setOnMouseClicked(
+          event -> store(foodDAO.getWalletFriendlyFood().get(finalII).getFoodID()));
     }
   }
 
   public void quickDelivery() {
     for (int i = 0; i < foodDAO.getQuick().size(); i++) {
-      System.out.println("Here8");
       MFXButton btn = new MFXButton();
       btn.setId(foodDAO.getQuick().get(i).toString());
       System.out.println(foodDAO.getQuick().get(i).toString());
-      // String button = foodDAO.getWalletFriendlyFood().get(i).toString();
       btn.setText(foodDAO.getQuick().get(i).toString());
       btn.setMaxWidth(103);
       btn.setMaxHeight(87);
