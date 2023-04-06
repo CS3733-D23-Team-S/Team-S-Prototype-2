@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -32,6 +31,11 @@
                   <ImageView fx:id="pathfindingIcon" fitHeight="73.0" fitWidth="76.0" layoutX="612.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true" translateY="5.0">
 
                   </ImageView>
+                  <MFXButton fx:id="exportButton" layoutX="672.0" layoutY="838.0" text="Export">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </MFXButton>
                </children>
             </Pane>
             <Label fx:id="welcomeLabel" layoutX="51.0" layoutY="96.0" prefHeight="109.0" prefWidth="676.0" text="Welcome to Brigham and Women's Hospital!" textAlignment="CENTER" textFill="#1f1f1f">

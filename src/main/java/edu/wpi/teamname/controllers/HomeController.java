@@ -29,7 +29,7 @@ public class HomeController {
   @FXML Button buttonBarPathfinding;
   @FXML Button buttonBarReserveRoom;
   @FXML Button buttonBarMealDelivery;
-
+  @FXML MFXButton exportButton;
   @FXML MenuItem exitOption;
 
   @FXML ImageView helpIcon;
@@ -51,6 +51,7 @@ public class HomeController {
     helpIcon.setOnMouseClicked(event -> goToHelpPage());
     exitOption.setOnAction(event -> exitApplication());
     homeToPathfindingButton.setOnMouseClicked(event -> Navigation.navigate(PATHFINDING));
+    //exportButton.setOnMouseClicked(event -> goToExportPage());
 
     // Menu bar button handlers
     buttonBarPathfinding.setOnMouseClicked(event -> Navigation.navigate(PATHFINDING));
@@ -96,4 +97,7 @@ public class HomeController {
     Navigation.navigate(Screen.HELP_PAGE);
   }
 
+  /*public void goToExportPage(){
+    Navigation.navigate(Screen.)
+  }*/
 }

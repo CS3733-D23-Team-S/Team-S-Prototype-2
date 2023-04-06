@@ -10,7 +10,7 @@ public enum Screen {
 
   PATHFINDING("views/Pathfinding.fxml"),
   ROOM_BOOKING("views/RoomBooking.fxml"),
-  SERVICE_REQUEST("views/ServiceRequest.fxml"); // Meal Request
+  SERVICE_REQUEST("views/ServiceRequestPages/ServiceRequest.fxml"); // Meal Request
 
 
 

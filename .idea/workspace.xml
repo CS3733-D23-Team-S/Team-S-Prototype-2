@@ -4,65 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="Added Logout button">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/HelpPage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/HomePage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/HelpController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/PathfindingController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/SignageController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/Images/1200px-Icon-round-Question_mark.svg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/Images/Brigham and Women's Hospital Image.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/Images/Conference_room_icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/Images/Meal_Icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/HelpPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/Pathfinding.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/SignagePage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/HelpPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/HomePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HelpController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/PathfindingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/SignageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/BBQpulledPork.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Coffee.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/CommealBread.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/DrPepper.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/GarlicBread.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/LentilSoup.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/MacNCheese.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Pasta.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Pizza.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Samosa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/FoodImages/Tacos.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/HomepageImages/1200px-Icon-round-Question_mark.svg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/HomepageImages/BrighamandWomensHospitalImage.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/HomepageImages/Conference_room_icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/HomepageImages/Meal_Icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/HomepageImages/PathfindIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/HelpPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/Pathfinding.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/RoomBooking.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/SignagePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/sha1-checksums.bin" afterDir="false" />
+    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="login function merged with home page">
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/LoginPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/navigation/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/navigation/Screen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/HelpPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/HelpPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/Pathfinding.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/Pathfinding.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/RoomBooking.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/RoomBooking.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/SignagePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/SignagePage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/navigation/Screen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/Home.fxml" afterDir="false" />
@@ -269,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680655932199</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="login function merged with home page">
+      <created>1680738532027</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680738532027</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +267,7 @@
     <MESSAGE value="Redesigned Homepage" />
     <MESSAGE value="Adminpage added" />
     <MESSAGE value="Added Logout button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Logout button" />
+    <MESSAGE value="login function merged with home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="login function merged with home page" />
   </component>
 </project>
