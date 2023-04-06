@@ -26,7 +26,7 @@ public class OrderItem {
   public String toString() {
     String finale = "";
     for (Food aFood : theCart.values()) {
-      finale += aFood.toString();
+      finale += aFood.toString() + ", ";
     }
 
     return finale;

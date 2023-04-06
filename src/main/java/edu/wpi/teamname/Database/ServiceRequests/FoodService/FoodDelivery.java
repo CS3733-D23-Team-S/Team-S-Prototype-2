@@ -1,23 +1,21 @@
 package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
-import java.time.LocalTime;
 import java.sql.*;
 import lombok.Getter;
 import lombok.Setter;
 
-
 public class FoodDelivery {
 
-  @Getter int deliveryID;
-  @Getter String cart;
-  @Getter @Setter java.sql.Date date;
-  @Getter @Setter Time time;
-  @Getter int room;
-  @Getter @Setter String orderer;
-  @Getter @Setter String assignedTo;
-  @Getter @Setter String orderStatus;
-  @Getter @Setter double cost;
-  @Getter @Setter String notes = "";
+  @Getter private int deliveryID;
+  @Getter private String cart;
+  @Getter @Setter private java.sql.Date date;
+  @Getter @Setter private Time time;
+  @Getter private int room;
+  @Getter @Setter private String orderer;
+  @Getter @Setter private String assignedTo;
+  @Getter @Setter private String orderStatus;
+  @Getter @Setter private double cost;
+  @Getter @Setter private String notes = "";
 
   public FoodDelivery(
       int deliveryID,
@@ -40,5 +38,4 @@ public class FoodDelivery {
     this.cost = cart.getTotalPrice();
     this.notes = notes;
   }
-
 }

@@ -1,11 +1,10 @@
 package edu.wpi.teamname.controllers.ServiceRequestControllers;
 
-import static edu.wpi.teamname.controllers.HomeController.cartID;
 import static edu.wpi.teamname.controllers.ServiceRequestControllers.MealDeliveryController.clickedFoodID;
 
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDAOImpl;
-import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItemDAO;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItem;
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -29,7 +28,8 @@ public class ProductDetailsController {
 
   public static int itemCount;
 
-  OrderItemDAO itemDAO = new OrderItemDAO(cartID);
+  // OrderItemDAO itemDAO = new OrderItemDAO(cartID);
+  static OrderItem cart = new OrderItem(1);
 
   public void initialize() {
 
@@ -39,8 +39,14 @@ public class ProductDetailsController {
     addCart.setOnMouseClicked(
         event -> {
           try {
-            itemDAO.addOrderItem(
-                foodDAO.retrieveFood(clickedFoodID), Integer.parseInt(quantity.getText()));
+            cart.getTheCart()
+                .get(1)
+                .setQuantity(
+                    Integer.parseInt(quantity.getText())); // needs bounds if non int entered
+
+            cart.getTheCart().get(1).setNote(request.getText()); // bounds for if non string entered
+            System.out.println(request.getText());
+
           } catch (Exception e) {
             e.printStackTrace();
           }

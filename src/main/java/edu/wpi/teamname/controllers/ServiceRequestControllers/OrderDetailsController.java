@@ -6,6 +6,8 @@ import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class OrderDetailsController {
@@ -19,7 +21,10 @@ public class OrderDetailsController {
 
   @FXML
   public void initialize() {
+    System.out.println(ProductDetailsController.cart.toString());
+
     clearFields2();
+    addedOrder();
     multSelectedFood();
     back2.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
     submit.setOnMouseClicked(event -> Navigation.navigate(Screen.ORDER_CONFIRMATION));
@@ -38,22 +43,38 @@ public class OrderDetailsController {
     empNum.clear();
   }
 
-  /*
-
   public void addedOrder() {
-    for (int i = 0; i < foodDAO.getQuick().size(); i++) {
-      Label newItem = new Label();
-      HBox newRow = new HBox();
 
-      newItem.setText(foodDAO.getQuick().get(i).toString());
+    for (Food aFood : ProductDetailsController.cart.getTheCart().values()) {
+      System.out.println("works");
+      Label newItemName = new Label();
+      Label newItemQuantity = new Label();
+      Label newItemPrice = new Label();
+      Label newItemRequest = new Label();
+
+      HBox newRow = new HBox();
+      newRow.setSpacing(200);
+      newRow.setMaxWidth(1000);
+      // newRow.setStyle("-fx-background-color : red");
+
+      newItemName.setText(aFood.getFoodName());
+      newItemName.setStyle("-fx-text-fill: white; -fx-font-size: 18px;");
+
+      newItemQuantity.setText(String.valueOf(aFood.getQuantity()));
+      newItemQuantity.setStyle("-fx-text-fill: white; -fx-font-size: 18px;");
+
+      newItemPrice.setText(String.valueOf(aFood.getFoodPrice()));
+      newItemPrice.setStyle("-fx-text-fill: white; -fx-font-size: 18px;");
+
+      newItemRequest.setText(String.valueOf(aFood.getNote()));
+      newItemRequest.setStyle("-fx-text-fill: white; -fx-font-size: 18px;");
 
       orderVBox.getChildren().add(newRow);
-      newRow
-          .getChildren()
-          .add(newItem); // add newItem.name, new item.description, newItemQty, newItemRequest
+      newRow.getChildren().add(newItemName);
+
+      newRow.getChildren().add(newItemQuantity);
+      newRow.getChildren().add(newItemPrice);
+      newRow.getChildren().add(newItemRequest);
     }
   }
-
-  */
-
 }

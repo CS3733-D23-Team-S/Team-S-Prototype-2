@@ -3,10 +3,10 @@ package edu.wpi.teamname.controllers.ServiceRequestControllers;
 import edu.wpi.teamname.Database.DAOManager;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDAOImpl;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDeliveryDAOImp;
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 
@@ -19,6 +19,7 @@ public class MealDeliveryController {
   // @FXML HBox fname;
 
   @FXML private FoodDAOImpl foodDAO = FoodDAOImpl.getInstance();
+  @FXML private FoodDeliveryDAOImp foodel = FoodDeliveryDAOImp.getInstance();
   public static int clickedFoodID;
 
   @FXML
@@ -29,11 +30,8 @@ public class MealDeliveryController {
     dbManager.establishConnection();
     // Create Empty Table
 
-    try {
-      dbManager.initTables();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+    foodDAO.initFood();
+    foodel.initFoodRequests();
 
     // adding Foods
     Food Pizza =

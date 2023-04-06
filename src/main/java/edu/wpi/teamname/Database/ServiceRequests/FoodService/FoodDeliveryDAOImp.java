@@ -1,7 +1,6 @@
 package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
 import edu.wpi.teamname.Database.dbConnection;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -62,8 +61,7 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
   }
 
   @Override
-  public FoodDelivery getRequest(int target)
-  {
+  public FoodDelivery getRequest(int target) {
     if (requests.get(target) == null) {
       System.out.println("This node is not in the database, so its row cannot be printed");
       return null;
@@ -73,10 +71,11 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
 
   @Override
   public void deleteRequest(int target) {
-    try
-    {
-    PreparedStatement deleteFood =
-            connection.getC().prepareStatement("DELETE FROM " + foodRequestsTable + " WHERE deliveryId = ?");
+    try {
+      PreparedStatement deleteFood =
+          connection
+              .getC()
+              .prepareStatement("DELETE FROM " + foodRequestsTable + " WHERE deliveryId = ?");
 
       deleteFood.setInt(1, target);
       deleteFood.execute();

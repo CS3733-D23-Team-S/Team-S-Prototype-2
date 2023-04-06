@@ -17,7 +17,7 @@ public class HomeController {
 
     navigateButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUEST));
     mealdeliveryButton.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
-    // mealdeliveryButton.setOnMouseClicked(event -> incrementCart());
+    //  mealdeliveryButton.setOnMouseClicked(event -> incrementCart());
 
     roomBookingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING));
   }

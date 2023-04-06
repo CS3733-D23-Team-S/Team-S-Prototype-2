@@ -79,7 +79,7 @@ public class Sdb {
 
     cart.addFoodItem(newFood);
 
-    System.out.println(cart.getTheCart().get(5).toString());//works
+    System.out.println(cart.getTheCart().get(5).toString()); // works
     // foodDao.loadToRemote();
     // System.out.println(foodDao.retrieveFood(7).toString());
 
