@@ -6,6 +6,7 @@ import edu.wpi.teamname.Database.ServiceRequests.Room;
 import edu.wpi.teamname.Database.ServiceRequests.Status;
 import edu.wpi.teamname.navigation.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class RoomBookingController {
   @FXML HBox conferenceRoomsHBox; // hbox containing all conference rooms and schedules
 
   RoomBooking rb = new RoomBooking();
-  RoomRequestDAO roomRequestDAO = RoomRequestDAO.getInstance();
+  static RoomRequestDAO roomRequestDAO = RoomRequestDAO.getInstance();
 
   Room r1, r2, r3, r4;
 
@@ -27,7 +28,8 @@ public class RoomBookingController {
   ArrayList<ConfRoomRequest> reservationList = new ArrayList<>();
 
   @FXML
-  public void initialize() {
+  public void initialize() throws SQLException {
+    roomRequestDAO.initTable();
     addMeetingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING_DETAILS));
     backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
 
@@ -47,6 +49,7 @@ public class RoomBookingController {
       String endTime,
       String eventTitle,
       String eventDescription) {
+    System.out.println("Adding new request");
     ConfRoomRequest newRequest =
         new ConfRoomRequest(
             LocalDate.now(),
@@ -59,7 +62,7 @@ public class RoomBookingController {
             "Assignee",
             Status.Received,
             "No notes");
-    // roomRequestDAO.addRequest(request); TODO need this?
+    roomRequestDAO.addRequest(newRequest); // TODO need this?
   }
 
   public void createDummyRooms() {
