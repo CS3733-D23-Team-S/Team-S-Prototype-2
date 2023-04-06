@@ -48,7 +48,8 @@ public class RoomBookingController {
       String startTime,
       String endTime,
       String eventTitle,
-      String eventDescription) {
+      String eventDescription,
+      String staffMember) {
     System.out.println("Adding new request");
     ConfRoomRequest newRequest =
         new ConfRoomRequest(
@@ -59,7 +60,7 @@ public class RoomBookingController {
             "TestReserve",
             eventTitle,
             eventDescription,
-            "Assignee",
+            staffMember,
             Status.Received,
             "No notes");
     roomRequestDAO.addRequest(newRequest); // TODO need this?
