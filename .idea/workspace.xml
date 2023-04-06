@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="meal delivery + product details + order details">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.3/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="updated order">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/foodDelivery.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3/fileHashes/fileHashes.bin" afterDir="false" />
@@ -15,13 +14,20 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/FoodDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Sdb.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Sdb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/OrderItemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/Database/ServiceRequests/FoodService/OrderItemDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/HomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/OrderDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/OrderDetailsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/OrderDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/OrderDetails.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/spotlessJava" beforeDir="false" afterPath="$PROJECT_DIR$/build/spotlessJava" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Sdb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Sdb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/OrderItemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/Database/ServiceRequests/FoodService/OrderItemDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/MealDeliveryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/OrderDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/OrderDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/OrderDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/wpi/teamname/views/OrderDetails.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +62,12 @@
                 <item name="Team-S-Prototype-2" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Team-S-Prototype-2" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -375,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680676699870</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fixed wallet friendly">
+      <created>1680677505224</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1680677505224</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,6 +424,8 @@
     <MESSAGE value="updated meal delivery" />
     <MESSAGE value="meal delivery + product details + order details" />
     <MESSAGE value="Changes by Jake O" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by Jake O" />
+    <MESSAGE value="fixed wallet friendly" />
+    <MESSAGE value="updated order" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated order" />
   </component>
 </project>

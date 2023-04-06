@@ -15,7 +15,6 @@ public class MealDeliveryController {
   @FXML MFXButton backButton1;
   @FXML MFXButton checkout;
   @FXML HBox wf;
-
   @FXML HBox qd;
   // @FXML HBox fname;
 
@@ -25,20 +24,16 @@ public class MealDeliveryController {
   @FXML
   public void initialize() {
 
-    System.out.println("Here1");
     DAOManager dbManager = new DAOManager();
     // Establish connection to database
     dbManager.establishConnection();
     // Create Empty Table
 
-    System.out.println("Here2");
     try {
       dbManager.initTables();
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
-    System.out.println("Here3");
 
     // adding Foods
     Food Pizza =
@@ -327,8 +322,6 @@ public class MealDeliveryController {
             false,
             false);
 
-    System.out.println("Here4");
-
     foodDAO.addFood(Pizza);
     foodDAO.addFood(Burger);
     foodDAO.addFood(StirFry);
@@ -345,17 +338,11 @@ public class MealDeliveryController {
     foodDAO.addFood(RiceAndBeans);
     foodDAO.addFood(Quesadillas);
 
-    System.out.println("Here5");
-
     backButton1.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
     checkout.setOnMouseClicked(event -> Navigation.navigate(Screen.ORDER_DETAILS));
 
-    System.out.println("Here6");
-
     walletFriendly();
     quickDelivery();
-
-    System.out.println("Here7");
   }
 
   public void walletFriendly() {
