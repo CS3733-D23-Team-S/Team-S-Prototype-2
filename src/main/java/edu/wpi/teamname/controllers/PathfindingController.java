@@ -6,10 +6,10 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
 
 public class PathfindingController {
-  @FXML MFXButton pathfindingToHomeButton;
+  @FXML MFXButton backButton;
 
   @FXML
   public void initialize() {
-    pathfindingToHomeButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
+    backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
   }
 }

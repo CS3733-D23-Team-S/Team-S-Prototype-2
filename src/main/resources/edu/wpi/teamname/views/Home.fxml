@@ -18,7 +18,7 @@
    <center>
       <AnchorPane maxHeight="900.0" maxWidth="1600.0" prefHeight="900.0" prefWidth="1600.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="hospitalBg" fitHeight="900.0" fitWidth="1600.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="hospitalBg" fitHeight="900.0" fitWidth="1600.0" pickOnBounds="true">
                <image>
 
                </image>
