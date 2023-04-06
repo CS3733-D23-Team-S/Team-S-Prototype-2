@@ -26,9 +26,9 @@ public class AStar {
    */
   public ArrayList<Integer> findPath(String s, String e) {
     Node start, end;
-    if (s.matches(".*\\d.*")) start = nodeDao.getNode(Integer.parseInt(s));
+    if (s.replaceAll("[a-zA-Z]+/g", "").isEmpty()) start = nodeDao.getNode(Integer.parseInt(s));
     else start = nodeDao.getNode(moveDao.getMoves().get(s).getNodeID());
-    if (e.matches(".*\\d.*")) end = nodeDao.getNode(Integer.parseInt(e));
+    if (e.replaceAll("[a-zA-Z]+/g", "").isEmpty()) end = nodeDao.getNode(Integer.parseInt(e));
     else end = nodeDao.getNode(moveDao.getMoves().get(e).getNodeID());
 
     final PriorityQueue<HeuristicNode> nodesYetToSearch =
