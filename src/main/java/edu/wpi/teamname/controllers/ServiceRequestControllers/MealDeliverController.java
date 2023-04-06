@@ -5,7 +5,7 @@ import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
 
-public class ServiceRequestController {
+public class MealDeliverController {
 
   @FXML MFXButton backButton;
 
