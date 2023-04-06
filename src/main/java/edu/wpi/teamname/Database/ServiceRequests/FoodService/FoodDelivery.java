@@ -1,38 +1,44 @@
 package edu.wpi.teamname.Database.ServiceRequests.FoodService;
 
-import edu.wpi.teamname.Database.ServiceRequests.Room;
-import edu.wpi.teamname.Database.ServiceRequests.Status;
 import java.time.LocalTime;
-import java.util.Date;
+import java.sql.*;
 import lombok.Getter;
 import lombok.Setter;
+
 
 public class FoodDelivery {
 
   @Getter int deliveryID;
-  @Getter OrderItemDAO cart;
-  @Getter @Setter Date date;
-  @Getter @Setter LocalTime time;
-  @Getter Room room;
+  @Getter String cart;
+  @Getter @Setter java.sql.Date date;
+  @Getter @Setter Time time;
+  @Getter int room;
   @Getter @Setter String orderer;
   @Getter @Setter String assignedTo;
-  @Getter @Setter Status orderStatus;
+  @Getter @Setter String orderStatus;
+  @Getter @Setter double cost;
   @Getter @Setter String notes = "";
 
-  public FoodDelivery(int deliveryID, OrderItemDAO cart, Date date, Room room, String orderedBy) {
+  public FoodDelivery(
+      int deliveryID,
+      OrderItem cart,
+      Date date,
+      Time time,
+      int room,
+      String orderedBy,
+      String assignedTo,
+      String orderStatus,
+      String notes) {
     this.deliveryID = deliveryID;
-    this.cart = cart;
+    this.cart = cart.toString();
     this.date = date;
+    this.time = time;
     this.room = room;
     this.orderer = orderedBy;
-    this.orderStatus = Status.valueOf("Received");
+    this.assignedTo = assignedTo;
+    this.orderStatus = orderStatus;
+    this.cost = cart.getTotalPrice();
+    this.notes = notes;
   }
 
-  public float orderTotal() {
-    float total = 0;
-    for (OrderItem orderItem : cart.cart) {
-      total += orderItem.calculateCost();
-    }
-    return total;
-  }
 }

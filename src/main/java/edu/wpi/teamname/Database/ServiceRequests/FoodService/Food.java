@@ -11,6 +11,7 @@ public class Food {
   @Getter private String FoodCuisine;
   @Getter @Setter private double FoodPrice;
   @Getter @Setter private String FoodDescription;
+  @Getter @Setter private int quantity;
   @Setter private boolean isSoldOut;
   @Getter @Setter private String image;
   @Getter @Setter private int calories;
@@ -24,6 +25,7 @@ public class Food {
   @Getter @Setter private boolean isVegan;
   @Getter @Setter private boolean isGlutFree;
   @Getter @Setter private boolean isKosher;
+  @Getter @Setter private String note;
 
   public Food(
       int fid,
@@ -33,9 +35,11 @@ public class Food {
       String fc,
       double fp,
       String fd,
+      int q,
       boolean so,
       String i,
       int c,
+      String n,
       boolean am,
       boolean it,
       boolean mex,
@@ -52,9 +56,11 @@ public class Food {
     FoodCuisine = fc;
     FoodPrice = fp;
     FoodDescription = fd;
+    quantity = q;
     isSoldOut = so;
     image = i;
     calories = c;
+    note = n;
 
     isAmerican = am;
     isItalian = it;

@@ -4,7 +4,6 @@ import edu.wpi.teamname.Database.Map.Edge;
 import edu.wpi.teamname.Database.Map.Floor;
 import edu.wpi.teamname.Database.Map.Node;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
-import edu.wpi.teamname.Database.ServiceRequests.FoodService.OrderItem;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -55,22 +54,6 @@ public class DAOManager extends DAOImpl implements DAO_I {
     }
   }
 
-  public void addOrderItem(OrderItem orderItem, int cartID) {
-    try {
-      PreparedStatement preparedStatement =
-          connection.c.prepareStatement(
-              "INSERT INTO " + cartTable + " (CartID, FoodID ,quantity) " + " VALUES (?, ?, ?)");
-      preparedStatement.setInt(1, cartID);
-      preparedStatement.setInt(2, orderItem.getItem().getFoodID());
-      preparedStatement.setInt(3, orderItem.getQuantity());
-
-      preparedStatement.executeUpdate();
-
-    } catch (SQLException e) {
-      e.printStackTrace();
-      System.out.println(e.getSQLState());
-    }
-  }
   //  (deliveryID int UNIQUE PRIMARY KEY, "
   //          + "int cartID, "
   //          + "Date orderDate, "
