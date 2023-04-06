@@ -2,6 +2,8 @@ package edu.wpi.teamname.Database;
 
 import edu.wpi.teamname.Database.Login.LoginDAOImpl;
 import edu.wpi.teamname.Database.Map.*;
+import edu.wpi.teamname.Database.ServiceRequests.ConferenceRoom.RoomRequestDAO;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,6 +18,7 @@ public class LoaderDAO implements LoaderDAOI {
   final String edgesTable = schemaName + "." + "edges";
   final String locationTable = schemaName + "." + "locations";
   final String moveTable = schemaName + "." + "moves";
+  final String roomrequestsTable = schemaName + "." + "roomReservations";
 
   final String loginTable = schemaName + "." + "login";
   final String defaultNodePath = "src/main/java/edu/wpi/teamname/defaultCSV/Node.csv";
@@ -53,6 +56,8 @@ public class LoaderDAO implements LoaderDAOI {
       LocationDoaImpl.getInstance().initTable(locationTable);
       MoveDaoImpl.getInstance().initTable(moveTable);
       LoginDAOImpl.getInstance().initTables(loginTable);
+      RoomRequestDAO.getInstance().initTable();
+
 
     } catch (SQLException e) {
       System.out.println(e.getMessage());
