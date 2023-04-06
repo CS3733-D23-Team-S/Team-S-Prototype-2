@@ -17,9 +17,19 @@ public class AStar {
     moveDao = MoveDaoImpl.getInstance();
   }
 
+  /**
+   * A* Using strings that represents either the long name of the nodes or the node ids
+   *
+   * @param s
+   * @param e
+   * @return
+   */
   public ArrayList<Integer> findPath(String s, String e) {
-    Node start = nodeDao.getNode(moveDao.getMoves().get(s).getNodeID());
-    Node end = nodeDao.getNode(moveDao.getMoves().get(e).getNodeID());
+    Node start, end;
+    if (s.replaceAll("[a-zA-Z]+/g", "").isEmpty()) start = nodeDao.getNode(Integer.parseInt(s));
+    else start = nodeDao.getNode(moveDao.getMoves().get(s).getNodeID());
+    if (e.replaceAll("[a-zA-Z]+/g", "").isEmpty()) end = nodeDao.getNode(Integer.parseInt(e));
+    else end = nodeDao.getNode(moveDao.getMoves().get(e).getNodeID());
 
     final PriorityQueue<HeuristicNode> nodesYetToSearch =
         new PriorityQueue<>(10, new HeuristicNode(null, Double.MAX_VALUE));
