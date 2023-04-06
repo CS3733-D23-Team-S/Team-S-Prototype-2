@@ -1,6 +1,5 @@
 package edu.wpi.teamname.controllers;
 
-import edu.wpi.teamname.PathEntity;
 import edu.wpi.teamname.PathfindingEntity;
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
@@ -60,7 +59,6 @@ public class PathfindingController {
       olist.removeAll();
     }
 
-    /*
     PathfindingEntity pfe =
         new PathfindingEntity(startingLocation.getText(), destination.getText());
     pfe.setPathEntities(new ArrayList<>());
@@ -68,10 +66,10 @@ public class PathfindingController {
     for (int i = 0; i < pfe.getPathEntities().size(); i++) {
       olist.add(pfe.getPathEntities().get(i));
     }
-     */
 
     // dummy code below
     // displays 0-9 in table
+    /*
     PathfindingEntity pfe = new PathfindingEntity("s", "e");
     pfe.setPathEntities(new ArrayList<>());
     for (int i = 0; i < 10; i++) {
@@ -81,6 +79,7 @@ public class PathfindingController {
       olist.add(pfe.getPathEntities().get(i));
     }
     stepsTable.setItems(olist);
+     */
   }
 
   public void clearFields() {

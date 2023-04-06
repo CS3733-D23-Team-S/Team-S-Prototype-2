@@ -34,7 +34,7 @@ public class MoveDaoImpl implements MoveDAO_I {
 
   @Override
   public List<Move> getAllMoves() {
-    return (List<Move>) moves.values();
+    return moves.values().stream().toList();
   }
 
   @Override

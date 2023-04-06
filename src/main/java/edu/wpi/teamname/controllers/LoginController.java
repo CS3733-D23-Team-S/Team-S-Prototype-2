@@ -1,6 +1,6 @@
 package edu.wpi.teamname.controllers;
 
-import static edu.wpi.teamname.navigation.Screen.PATHFINDING;
+import static edu.wpi.teamname.navigation.Screen.MAP_EDITOR;
 
 import edu.wpi.teamname.Database.Login.LoginDAOImpl;
 import edu.wpi.teamname.navigation.Navigation;
@@ -74,7 +74,7 @@ public class LoginController {
         event -> {
           errorMessage = "";
           if (isfieldFilled() && isValid()) {
-            Navigation.navigate(PATHFINDING);
+            Navigation.navigate(MAP_EDITOR);
           }
         });
   }
