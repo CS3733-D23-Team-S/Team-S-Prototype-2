@@ -107,6 +107,20 @@ public class EdgeDaoImpl implements EdgeDoa_I {
         System.out.println(e.getSQLState());
         System.out.println("Error accessing the remote and constructing the list of edges");
       }
+      try {
+        PreparedStatement getEdges =
+            connection.getConnection().prepareStatement("SELECT * FROM " + name);
+        ResultSet edgeList = getEdges.executeQuery();
+        while (edgeList.next()) {
+          Edge edge =
+              new Edge(
+                  nodeDao.getNode(edgeList.getInt("startNode")),
+                  nodeDao.getNode(edgeList.getInt("endNode")));
+          edges.add(edge);
+        }
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
     } catch (SQLException e) {
       e.printStackTrace();
       System.out.println(e.getSQLState());
