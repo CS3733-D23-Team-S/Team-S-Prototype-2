@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="fixed cart system, added stuff to food and food delivry" />
     <list default="true" id="57cc60d1-c57b-4166-ae2f-6c065739621a" name="Changes" comment="meal delivery + product details + order details">
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/wpi/teamname/controllers/ServiceRequestControllers/ProductDetailsController.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/resources/main/edu/wpi/teamname/views/OrderConfirmation.fxml" afterDir="false" />
@@ -194,6 +195,19 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jake O/SoftEng_Workspace/Team-S-Prototype-2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/atitc/Downloads/FactoryPatternDemo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -261,6 +275,7 @@
       <workItem from="1680482726505" duration="861000" />
       <workItem from="1680483747961" duration="490000" />
       <workItem from="1680651947990" duration="11423000" />
+      <workItem from="1680721484422" duration="13586000" />
     </task>
     <task id="LOCAL-00001" summary="adding meal delivery">
       <created>1680481774855</created>
@@ -416,6 +431,35 @@
       <option name="project" value="LOCAL" />
       <updated>1680656076892</updated>
     </task>
+    <task id="LOCAL-00023" summary="adding loads and inits to all FoodDAOs and fixed delivery fields">
+      <created>1680727171177</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1680727171177</updated>
+    </task>
+    <task id="LOCAL-00024" summary="added init tables and fixed cart system">
+      <created>1680738967032</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1680738967032</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fixed cart system, added stuff to food and food delivry">
+      <created>1680740044749</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1680740044749</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fixed cart system, added stuff to food and food delivry">
+      <created>1680740280934</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1680740280934</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <option name="localTasksCounter" value="23" />
     <servers />
   </component>
