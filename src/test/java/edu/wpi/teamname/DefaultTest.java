@@ -9,14 +9,22 @@ import static org.junit.jupiter.api.Assertions.*;
 import edu.wpi.teamname.Database.LoaderDAO;
 import edu.wpi.teamname.Database.Login.LoginDAOImpl;
 import edu.wpi.teamname.algorithms.AStar;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class DefaultTest {
 
+  @BeforeAll
+  static void setup() throws SQLException {
+    LoaderDAO loaderDAO = LoaderDAO.getInstance();
+    loaderDAO.load();
+  }
+
   @Test
-  public void testAlgos() {
+  public void testAlgorithm() {
     AStar a = new AStar();
     List<Integer> res = new ArrayList<>();
     res.add(1805);
@@ -40,14 +48,5 @@ public class DefaultTest {
     Exception exception = assertThrows(Exception.class, () -> LDaoI.login("aaaa", "bbbb"));
     assertEquals("User does not exist", exception.getMessage());
     assertTrue(LDaoI.login("admin", "admin"));
-  }
-
-  @Test
-  public void test() throws Exception {
-    LoaderDAO loader = LoaderDAO.getInstance();
-    loader.load();
-
-    testLogin();
-    testAlgos();
   }
 }

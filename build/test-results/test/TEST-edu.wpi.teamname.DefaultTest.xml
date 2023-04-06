@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.wpi.teamname.DefaultTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-05T04:12:13" hostname="autoreg-5246138.dyn.wpi.edu" time="18.822">
+<testsuite name="edu.wpi.teamname.DefaultTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-04-06T00:38:39" hostname="NIKSDELL" time="0.016">
   <properties/>
-  <testcase name="test()" classname="edu.wpi.teamname.DefaultTest" time="18.822"/>
+  <testcase name="testLogin()" classname="edu.wpi.teamname.DefaultTest" time="0.013"/>
+  <testcase name="testAlgorithm()" classname="edu.wpi.teamname.DefaultTest" time="0.003"/>
   <system-out><![CDATA[Opened database successfully
 Created the schema
 Created the node table
