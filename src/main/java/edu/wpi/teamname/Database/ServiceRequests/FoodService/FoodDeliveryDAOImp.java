@@ -62,12 +62,35 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
   }
 
   @Override
-  public FoodDelivery getRequest(int requestID) {
-    return null;
+  public FoodDelivery getRequest(int target)
+  {
+    if (requests.get(target) == null) {
+      System.out.println("This node is not in the database, so its row cannot be printed");
+      return null;
+    }
+    return requests.get(target);
   }
 
   @Override
-  public void deleteRequest(FoodDelivery request) {}
+  public void deleteRequest(int target) {
+    try
+    {
+    PreparedStatement deleteFood =
+            connection.getC().prepareStatement("DELETE FROM " + foodRequestsTable + " WHERE deliveryId = ?");
+
+      deleteFood.setInt(1, target);
+      deleteFood.execute();
+
+      // remove from local Hashmap
+      requests.remove(target);
+
+      System.out.println("FoodRequest deleted");
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println(e.getSQLState());
+    }
+  }
 
   public void initFoodRequests() {
     try {

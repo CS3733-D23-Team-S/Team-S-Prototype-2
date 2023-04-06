@@ -34,5 +34,5 @@ public class OrderItem {
 
   public void addFoodItem(Food f) {
     theCart.put(f.getFoodID(), f);
-  }//works
+  }
 }

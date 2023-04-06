@@ -25,6 +25,7 @@ public class Food {
   @Getter @Setter private boolean isVegan;
   @Getter @Setter private boolean isGlutFree;
   @Getter @Setter private boolean isKosher;
+  @Getter @Setter private String note;
 
   public Food(
       int fid,
@@ -38,6 +39,7 @@ public class Food {
       boolean so,
       String i,
       int c,
+      String n,
       boolean am,
       boolean it,
       boolean mex,
@@ -58,6 +60,7 @@ public class Food {
     isSoldOut = so;
     image = i;
     calories = c;
+    note = n;
 
     isAmerican = am;
     isItalian = it;

@@ -35,8 +35,8 @@ public class FoodDAOImpl implements FoodDAO_I {
                   "INSERT INTO "
                       + foodsTable
                       + " (FoodID, Name, Type, PrepTime, Cuisine, Price, Description, Quantity, SoldOut, Image, "
-                      + "Calories, Italian, American, Indian, Mexican, Vegetarian, Halal, Vegan, GlutenFree, Kosher) "
-                      + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                      + "Calories, note, Italian, American, Indian, Mexican, Vegetarian, Halal, Vegan, GlutenFree, Kosher) "
+                      + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
       preparedStatement.setInt(1, thisFood.getFoodID());
       preparedStatement.setString(2, thisFood.getFoodName());
       preparedStatement.setString(3, thisFood.getFoodType());
@@ -48,15 +48,16 @@ public class FoodDAOImpl implements FoodDAO_I {
       preparedStatement.setBoolean(9, thisFood.isSoldOut());
       preparedStatement.setString(10, thisFood.getImage());
       preparedStatement.setInt(11, thisFood.getCalories());
-      preparedStatement.setBoolean(12, thisFood.isItalian());
-      preparedStatement.setBoolean(13, thisFood.isAmerican());
-      preparedStatement.setBoolean(14, thisFood.isIndian());
-      preparedStatement.setBoolean(15, thisFood.isMexican());
-      preparedStatement.setBoolean(16, thisFood.isVegetarian());
-      preparedStatement.setBoolean(17, thisFood.isHalal());
-      preparedStatement.setBoolean(18, thisFood.isVegan());
-      preparedStatement.setBoolean(19, thisFood.isGlutFree());
-      preparedStatement.setBoolean(20, thisFood.isKosher());
+      preparedStatement.setString(12, thisFood.getNote());
+      preparedStatement.setBoolean(13, thisFood.isItalian());
+      preparedStatement.setBoolean(14, thisFood.isAmerican());
+      preparedStatement.setBoolean(15, thisFood.isIndian());
+      preparedStatement.setBoolean(16, thisFood.isMexican());
+      preparedStatement.setBoolean(17, thisFood.isVegetarian());
+      preparedStatement.setBoolean(18, thisFood.isHalal());
+      preparedStatement.setBoolean(19, thisFood.isVegan());
+      preparedStatement.setBoolean(20, thisFood.isGlutFree());
+      preparedStatement.setBoolean(21, thisFood.isKosher());
 
       preparedStatement.executeUpdate();
 
@@ -101,7 +102,7 @@ public class FoodDAOImpl implements FoodDAO_I {
                       + foodsTable
                       + " SET Name = ? ,Type = ?, PrepTime = ? , Cuisine = ?, Price = ?, Description = ?, Quantity = ?"
                       + ", SoldOut = ?, "
-                      + "Image = ?, Calories = ?, Italian = ?, American = ?, Indian = ?, Mexican = ?, Vegetarian = ?, "
+                      + "Image = ?, Calories = ?, Note = ?, Italian = ?, American = ?, Indian = ?, Mexican = ?, Vegetarian = ?, "
                       + "Halal = ?, Vegan = ?, GlutenFree = ?, Kosher = ?"
                       + " WHERE FoodID = ?");
 
@@ -115,16 +116,17 @@ public class FoodDAOImpl implements FoodDAO_I {
       preparedStatement.setBoolean(8, thisFood.isSoldOut());
       preparedStatement.setString(9, thisFood.getImage());
       preparedStatement.setInt(10, thisFood.getCalories());
-      preparedStatement.setBoolean(11, thisFood.isItalian());
-      preparedStatement.setBoolean(12, thisFood.isAmerican());
-      preparedStatement.setBoolean(13, thisFood.isIndian());
-      preparedStatement.setBoolean(14, thisFood.isMexican());
-      preparedStatement.setBoolean(15, thisFood.isVegetarian());
-      preparedStatement.setBoolean(16, thisFood.isHalal());
-      preparedStatement.setBoolean(17, thisFood.isVegan());
-      preparedStatement.setBoolean(18, thisFood.isGlutFree());
-      preparedStatement.setBoolean(19, thisFood.isKosher());
-      preparedStatement.setInt(20, thisFood.getFoodID());
+      preparedStatement.setString(11, thisFood.getNote());
+      preparedStatement.setBoolean(12, thisFood.isItalian());
+      preparedStatement.setBoolean(13, thisFood.isAmerican());
+      preparedStatement.setBoolean(14, thisFood.isIndian());
+      preparedStatement.setBoolean(15, thisFood.isMexican());
+      preparedStatement.setBoolean(16, thisFood.isVegetarian());
+      preparedStatement.setBoolean(17, thisFood.isHalal());
+      preparedStatement.setBoolean(18, thisFood.isVegan());
+      preparedStatement.setBoolean(19, thisFood.isGlutFree());
+      preparedStatement.setBoolean(20, thisFood.isKosher());
+      preparedStatement.setInt(21, thisFood.getFoodID());
       preparedStatement.executeUpdate();
 
       System.out.println("Food updated");
@@ -185,6 +187,7 @@ public class FoodDAOImpl implements FoodDAO_I {
         Boolean issoldout = rs.getBoolean("soldout");
         String image = rs.getString("image");
         Integer cal = rs.getInt("calories");
+        String not = rs.getString("note");
         Boolean isit = rs.getBoolean("italian");
         Boolean isam = rs.getBoolean("american");
         Boolean isin = rs.getBoolean("indian");
@@ -208,6 +211,7 @@ public class FoodDAOImpl implements FoodDAO_I {
                 issoldout,
                 image,
                 cal,
+                not,
                 isit,
                 isam,
                 isin,
@@ -246,6 +250,7 @@ public class FoodDAOImpl implements FoodDAO_I {
               + "SoldOut boolean,"
               + "Image Varchar(100),"
               + "Calories int,"
+              + "Note Varchar(100),"
               + "Italian boolean,"
               + "American boolean,"
               + "Indian boolean,"
@@ -288,7 +293,7 @@ public class FoodDAOImpl implements FoodDAO_I {
                 Boolean.parseBoolean(fields[8]),
                 fields[9],
                 Integer.parseInt(fields[10]),
-                Boolean.parseBoolean(fields[11]),
+                fields[11],
                 Boolean.parseBoolean(fields[12]),
                 Boolean.parseBoolean(fields[13]),
                 Boolean.parseBoolean(fields[14]),
@@ -296,7 +301,8 @@ public class FoodDAOImpl implements FoodDAO_I {
                 Boolean.parseBoolean(fields[16]),
                 Boolean.parseBoolean(fields[17]),
                 Boolean.parseBoolean(fields[18]),
-                Boolean.parseBoolean(fields[19]));
+                Boolean.parseBoolean(fields[19]),
+                Boolean.parseBoolean(fields[20]));
         foods.put(Integer.valueOf(fields[0]), thisFood);
       }
     } catch (IOException e) {
