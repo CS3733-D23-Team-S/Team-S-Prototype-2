@@ -1,6 +1,8 @@
 package edu.wpi.teamname.controllers.ServiceRequestControllers;
 
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDelivery;
+import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDeliveryDAOImp;
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -19,6 +21,7 @@ public class OrderDetailsController {
   @FXML MFXTextField roomNum;
   @FXML MFXTextField empNum;
 
+  static FoodDeliveryDAOImp foodreq = FoodDeliveryDAOImp.getInstance();
   @FXML
   public void initialize() {
     System.out.println(ProductDetailsController.cart.toString());
@@ -26,7 +29,7 @@ public class OrderDetailsController {
 
     clearFields2();
     addedOrder();
-    multSelectedFood();
+    //multSelectedFood();
     back2.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
     submit.setOnMouseClicked(event -> Navigation.navigate(Screen.ORDER_CONFIRMATION));
 
