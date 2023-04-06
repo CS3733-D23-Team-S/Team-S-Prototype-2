@@ -30,7 +30,7 @@
             <RowConstraints maxHeight="78.44445122612848" minHeight="49.11113823784723" percentHeight="5.0" prefHeight="78.44445122612848" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <MFXButton mnemonicParsing="false" style="-fx-background-color: &quot;122E59&quot;;" text="Export Selected" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <MFXButton fx:id="exportButton" mnemonicParsing="false" style="-fx-background-color: &quot;122E59&quot;;" text="Export Selected" textFill="#fffefe" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please Select the Database to Export" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -54,7 +54,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </MFXButton>
-            <MFXButton fx:id="importButton" mnemonicParsing="false" style="-fx-background-color: &quot;122E59&quot;;" text="Import Database" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <MFXButton fx:id="importButton" mnemonicParsing="false" style="-fx-background-color: &quot;122E59&quot;;" text="Import Database" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
             <MFXComboBox fx:id="exportOptions" minHeight="-Infinity" style="-fx-border-radius: 0; -fx-background-radius: 0; -mfx-editable: false;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
          </children>
       </GridPane>

@@ -1,5 +1,6 @@
 package edu.wpi.teamname.controllers;
 
+import static edu.wpi.teamname.navigation.Screen.CSV_MANAGE;
 import static edu.wpi.teamname.navigation.Screen.PATHFINDING;
 
 import edu.wpi.teamname.Main;
@@ -18,28 +19,44 @@ import javafx.scene.image.ImageView;
 
 public class HomeController {
 
-  @FXML MFXButton mealDeliveryButton;
-  @FXML MFXButton reserveRoomButton;
+  @FXML
+  MFXButton mealDeliveryButton;
+  @FXML
+  MFXButton reserveRoomButton;
 
-  @FXML MFXButton logoutButton;
+  @FXML
+  MFXButton logoutButton;
 
-  @FXML ButtonBar buttonBar;
+  @FXML
+  ButtonBar buttonBar;
 
-  @FXML MenuButton app;
-  @FXML Button buttonBarPathfinding;
-  @FXML Button buttonBarReserveRoom;
-  @FXML Button buttonBarMealDelivery;
-  @FXML MFXButton exportButton;
-  @FXML MenuItem exitOption;
+  @FXML
+  MenuButton app;
+  @FXML
+  Button buttonBarPathfinding;
+  @FXML
+  Button buttonBarReserveRoom;
+  @FXML
+  Button buttonBarMealDelivery;
+  @FXML
+  MFXButton exportButton;
+  @FXML
+  MenuItem exitOption;
 
-  @FXML ImageView helpIcon;
+  @FXML
+  ImageView helpIcon;
 
-  @FXML ImageView hospitalBg;
-  @FXML ImageView pathfindingIcon;
-  @FXML ImageView roomreserveIcon;
-  @FXML ImageView mealdeliveryIcon;
+  @FXML
+  ImageView hospitalBg;
+  @FXML
+  ImageView pathfindingIcon;
+  @FXML
+  ImageView roomreserveIcon;
+  @FXML
+  ImageView mealdeliveryIcon;
 
-  @FXML MFXButton homeToPathfindingButton;
+  @FXML
+  MFXButton homeToPathfindingButton;
 
   @FXML
   public void initialize() {
@@ -51,7 +68,7 @@ public class HomeController {
     helpIcon.setOnMouseClicked(event -> goToHelpPage());
     exitOption.setOnAction(event -> exitApplication());
     homeToPathfindingButton.setOnMouseClicked(event -> Navigation.navigate(PATHFINDING));
-    //exportButton.setOnMouseClicked(event -> goToExportPage());
+    exportButton.setOnMouseClicked(event -> Navigation.navigate(CSV_MANAGE));
 
     // Menu bar button handlers
     buttonBarPathfinding.setOnMouseClicked(event -> Navigation.navigate(PATHFINDING));
@@ -97,7 +114,9 @@ public class HomeController {
     Navigation.navigate(Screen.HELP_PAGE);
   }
 
-  /*public void goToExportPage(){
-    Navigation.navigate(Screen.)
-  }*/
+
+  public void goToExportPage() {
+    Navigation.navigate(Screen.CSV_MANAGE);
+  }
+
 }

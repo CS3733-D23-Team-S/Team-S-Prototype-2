@@ -10,9 +10,9 @@ public enum Screen {
 
   PATHFINDING("views/Pathfinding.fxml"),
   ROOM_BOOKING("views/RoomBooking.fxml"),
-  SERVICE_REQUEST("views/ServiceRequestPages/ServiceRequest.fxml"); // Meal Request
+  SERVICE_REQUEST("views/ServiceRequestPages/ServiceRequest.fxml"), // Meal Request
 
-  CSV_MANAGE("edu/wpi/teamname/views/CSVPage.fxml");
+  CSV_MANAGE("views/CSVPage.fxml");
 
   private final String filename;
 
