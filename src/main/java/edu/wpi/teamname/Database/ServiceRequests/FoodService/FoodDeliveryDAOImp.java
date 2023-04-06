@@ -24,7 +24,7 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
   }
 
   public void addRequest(FoodDelivery request) {
-    requests.put(request.deliveryID, request);
+    requests.put(request.getDeliveryID(), request);
     try {
       PreparedStatement preparedStatement =
           connection
@@ -47,7 +47,7 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
 
       preparedStatement.executeUpdate();
 
-      requests.put(request.deliveryID, request);
+      requests.put(request.getDeliveryID(), request);
 
     } catch (SQLException e) {
       e.printStackTrace();

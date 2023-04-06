@@ -36,6 +36,9 @@ public class ProductDetailsController {
     back3.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
     addCart.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
 
+    Food currentFood = foodDAO.retrieveFood(clickedFoodID);
+    cart.addFoodItem(currentFood);
+
     addCart.setOnMouseClicked(
         event -> {
           try {

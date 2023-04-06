@@ -38,16 +38,17 @@ public class MealDeliveryController {
         new Food(
             1,
             "Pizza",
-            "Hello",
+            "Entree",
             10,
-            "String fc",
+            "American",
             10,
-            "String fd",
+            "Bread with sauce and cheese on it",
             1,
             false,
             "image",
             20,
-            false,
+            " ",
+            true,
             false,
             false,
             false,
@@ -61,15 +62,16 @@ public class MealDeliveryController {
         new Food(
             2,
             "Burger",
-            "Hello",
+            "Entree",
             10,
-            "String fc",
+            "American",
             12,
-            "String fd",
+            "Unhealthy",
             1,
             false,
             "image",
             14,
+            " ",
             false,
             false,
             false,
@@ -84,15 +86,16 @@ public class MealDeliveryController {
         new Food(
             3,
             "StirFry",
-            "Hello",
+            "Entree",
             10,
-            "String fc",
+            "Other",
             10,
-            "String fd",
+            "Noodles and veggies",
             1,
             false,
             "image",
             5,
+            " ",
             false,
             false,
             false,
@@ -107,15 +110,16 @@ public class MealDeliveryController {
         new Food(
             4,
             "Chicken",
-            "Hello",
+            "Entree",
             10,
-            "String fc",
+            "Other",
             21,
-            "String fd",
+            "its chicken",
             1,
             false,
             "image",
             12,
+            " ",
             false,
             false,
             false,
@@ -130,15 +134,16 @@ public class MealDeliveryController {
         new Food(
             5,
             "Tacos",
-            "Hello",
+            "Entree",
             10,
-            "String fc",
+            "Mexican",
             11,
-            "String fd",
+            "Delicious",
             1,
             false,
             "image",
             20,
+            " ",
             false,
             false,
             false,
@@ -153,15 +158,16 @@ public class MealDeliveryController {
         new Food(
             6,
             "Pasta",
-            "Hello",
+            "Entree",
             10,
-            "String fc",
+            "Italian",
             14,
-            "String fd",
+            "bowties and sauce",
             1,
             false,
             "image",
             15,
+            " ",
             false,
             false,
             false,
@@ -176,15 +182,16 @@ public class MealDeliveryController {
         new Food(
             7,
             "Bagel",
-            "Hello",
+            "Breakfast",
             10,
-            "String fc",
+            "American?",
             13,
-            "String fd",
+            "Boiled Bread",
             1,
             false,
             "image",
             10,
+            " ",
             false,
             false,
             false,
@@ -199,15 +206,16 @@ public class MealDeliveryController {
         new Food(
             8,
             "Tea",
-            "Hello",
+            "Drink",
             10,
-            "String fc",
+            "Other",
             65,
-            "String fd",
+            "From England",
             1,
             false,
             "image",
             11,
+            " ",
             false,
             false,
             false,
@@ -222,7 +230,7 @@ public class MealDeliveryController {
         new Food(
             9,
             "OrangeChicken",
-            "Hello",
+            "Entree",
             10,
             "String fc",
             15,
@@ -231,6 +239,7 @@ public class MealDeliveryController {
             false,
             "image",
             10,
+            "Here is a note",
             false,
             false,
             false,
@@ -254,6 +263,7 @@ public class MealDeliveryController {
             false,
             "image",
             1,
+            "Here is a note",
             false,
             false,
             false,
@@ -277,6 +287,7 @@ public class MealDeliveryController {
             false,
             "image",
             10,
+            "Here is a note",
             false,
             false,
             false,
@@ -300,6 +311,7 @@ public class MealDeliveryController {
             false,
             "image",
             69,
+            "Here is a note",
             false,
             false,
             false,
@@ -323,6 +335,7 @@ public class MealDeliveryController {
             false,
             "image",
             69,
+            "Here is a note",
             false,
             false,
             false,
@@ -340,14 +353,15 @@ public class MealDeliveryController {
     foodDAO.addFood(Tacos);
     foodDAO.addFood(Pasta);
     foodDAO.addFood(Bagel);
-
     foodDAO.addFood(Tea);
     foodDAO.addFood(OrangeChicken);
-
     foodDAO.addFood(FriedRice);
     foodDAO.addFood(HotDog);
     foodDAO.addFood(RiceAndBeans);
     foodDAO.addFood(Quesadillas);
+
+    System.out.println("Start quant: " + foodDAO.retrieveFood(1).getQuantity());
+    System.out.println("Start desc: " + foodDAO.retrieveFood(1).getFoodDescription());
 
     backButton1.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
     checkout.setOnMouseClicked(event -> Navigation.navigate(Screen.ORDER_DETAILS));
@@ -376,7 +390,6 @@ public class MealDeliveryController {
     for (int i = 0; i < foodDAO.getQuick().size(); i++) {
       MFXButton btn = new MFXButton();
       btn.setId(foodDAO.getQuick().get(i).toString());
-      System.out.println(foodDAO.getQuick().get(i).toString());
       btn.setText(foodDAO.getQuick().get(i).toString());
       btn.setMaxWidth(103);
       btn.setMaxHeight(87);
