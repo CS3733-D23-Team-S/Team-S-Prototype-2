@@ -16,7 +16,7 @@ public class CSVController {
   private FileChooser fileChooser = new FileChooser();
   DirectoryChooser directoryChooser = new DirectoryChooser();
   @FXML MFXButton backButton;
-  @FXML MFXComboBox<String> exportOptions = new MFXComboBox<>();
+  @FXML MFXComboBox<String> importOptions = new MFXComboBox<>();
 
   @FXML MFXButton importButton;
   @FXML MFXButton exportButton;
@@ -26,16 +26,17 @@ public class CSVController {
     backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
     importButton.setOnMouseClicked(event -> importCSVOnClick());
     exportButton.setOnMouseClicked(event -> exportCSVOnClick());
-    exportOptions.getItems().add("Nodes");
-    exportOptions.getItems().add("Edges");
-    exportOptions.getItems().add("Locations");
-    exportOptions.getItems().add("Moves");
+    importOptions.getItems().add("Nodes");
+    importOptions.getItems().add("Edges");
+    importOptions.getItems().add("Locations");
+    importOptions.getItems().add("Moves");
   }
 
   private void importCSVOnClick() {
     File selectedFile = fileChooser.showOpenDialog(App.getPrimaryStage());
     String path = selectedFile.toString();
-    char choice = exportOptions.getSelectionModel().getSelectedItem().toLowerCase().charAt(0);
+    System.out.println(path);
+    char choice = importOptions.getSelectionModel().getSelectedItem().toLowerCase().charAt(0);
     LoaderDAO.getInstance().loadCSV(path, choice);
   }
 
