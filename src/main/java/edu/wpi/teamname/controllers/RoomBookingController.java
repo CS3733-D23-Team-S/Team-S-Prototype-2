@@ -1,5 +1,6 @@
 package edu.wpi.teamname.controllers;
 
+
 import static javafx.geometry.Pos.CENTER;
 import static javafx.geometry.Pos.TOP_CENTER;
 
@@ -113,5 +114,6 @@ class Room {
 
   public void setAvailability(String availability) {
     availability = availability;
+(event -> Navigation.navigate(Screen.HOME));
   }
 }

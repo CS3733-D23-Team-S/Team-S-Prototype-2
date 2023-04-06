@@ -5,6 +5,7 @@ public enum Screen {
   WELCOME_PAGE("views/WelcomePage.fxml"),
   LOGIN_PAGE("views/LoginPage.fxml"),
   HOME("views/Home.fxml"),
+
   MEAL_DELIVERY1("views/MealDelivery1.fxml"),
   SERVICE_REQUEST("views/ServiceRequestPages/ServiceRequest.fxml"),
   ROOM_BOOKING("views/RoomBooking.fxml"),

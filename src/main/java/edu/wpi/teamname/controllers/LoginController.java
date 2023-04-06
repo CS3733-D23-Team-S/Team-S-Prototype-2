@@ -64,7 +64,7 @@ public class LoginController {
 				}
 			}
 		} catch (Exception e) {
-			errorMessage = "Invalid Username!";
+			errorMessage = "Invalid Username or Password!";
 			isValid = false;
 		}
 		errormessageLabel.setText(errorMessage);
