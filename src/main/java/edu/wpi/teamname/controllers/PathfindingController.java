@@ -7,9 +7,12 @@ import javafx.fxml.FXML;
 
 public class PathfindingController {
   @FXML MFXButton backButton;
+  @FXML MFXButton backHome;
 
   @FXML
   public void initialize() {
-    backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
+    backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.WELCOME_PAGE));
+    backHome.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
+
   }
 }
