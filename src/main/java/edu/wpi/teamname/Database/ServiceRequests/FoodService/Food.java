@@ -5,19 +5,50 @@ import lombok.Setter;
 
 public class Food {
   @Getter private int FoodID;
-  @Getter private String FoodName;
+  @Getter @Setter private String FoodName;
   @Getter private String FoodType;
-  @Getter private int FoodPrepTime;
+  @Getter @Setter private int FoodPrepTime;
   @Getter private String FoodCuisine;
   @Getter @Setter private double FoodPrice;
   @Getter @Setter private String FoodDescription;
-  @Getter private int quantity;
+  @Getter @Setter private int quantity;
   @Setter private boolean isSoldOut;
   @Getter @Setter private String image;
+  @Getter @Setter private int calories;
 
-  // FoodImage
+  @Getter @Setter private boolean isItalian;
+  @Getter @Setter private boolean isAmerican;
+  @Getter @Setter private boolean isMexican;
+  @Getter @Setter private boolean isIndian;
+  @Getter @Setter private boolean isVegetarian;
+  @Getter @Setter private boolean isHalal;
+  @Getter @Setter private boolean isVegan;
+  @Getter @Setter private boolean isGlutFree;
+  @Getter @Setter private boolean isKosher;
+  @Getter @Setter private String note;
 
-  public Food(int fid, String fn, String ft, int fpt, String fc, double fp, String fd, int q) {
+  public Food(
+      int fid,
+      String fn,
+      String ft,
+      int fpt,
+      String fc,
+      double fp,
+      String fd,
+      int q,
+      boolean so,
+      String i,
+      int c,
+      String n,
+      boolean am,
+      boolean it,
+      boolean mex,
+      boolean in,
+      boolean vege,
+      boolean veg,
+      boolean hal,
+      boolean g,
+      boolean k) {
     FoodID = fid;
     FoodName = fn;
     FoodType = ft;
@@ -26,37 +57,39 @@ public class Food {
     FoodPrice = fp;
     FoodDescription = fd;
     quantity = q;
-    isSoldOut = false;
+    isSoldOut = so;
+    image = i;
+    calories = c;
+    note = n;
+
+    isAmerican = am;
+    isItalian = it;
+    isMexican = mex;
+    isIndian = in;
+    isVegetarian = vege;
+    isVegan = veg;
+    isHalal = hal;
+    isGlutFree = g;
+    isKosher = k;
   }
 
   public boolean isSoldOut() {
     return isSoldOut;
   }
 
+  public boolean isWalletFriendly() {
+    return FoodPrice < 15;
+  }
+
+  public boolean isQuickDelivery() {
+    return (FoodPrepTime + 10) < 30;
+  }
+
   @Override
   public String toString() {
     String theFood;
 
-    theFood =
-        "ID: "
-            + FoodID
-            + "\nName: "
-            + FoodName
-            + "\nType: "
-            + FoodType
-            + "\nPrep Time: "
-            + FoodPrepTime
-            + "\nCuisine: "
-            + FoodCuisine
-            + "\nPrice: "
-            + FoodPrice
-            + "\nDescription: "
-            + FoodDescription
-            + "\nAmount in Stock: "
-            + quantity;
-
-    if (isSoldOut) theFood = theFood + "\nSOLD OUT!";
-    else theFood = theFood + "\nIN STOCK";
+    theFood = FoodName;
 
     return theFood;
   }

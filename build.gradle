@@ -145,8 +145,6 @@ compileJava.dependsOn 'spotlessApply'
 //    }
 //}
 
-
-
 tasks.withType(Jar).all {
     duplicatesStrategy 'exclude'
 }

@@ -58,6 +58,8 @@ public class HomeController {
   @FXML
   MFXButton homeToPathfindingButton;
 
+  public static int cartID = 1;
+
   @FXML
   public void initialize() {
     // Adding the menu option to exit application
@@ -92,6 +94,16 @@ public class HomeController {
     helpIcon.setImage(helpbutton);
 
 
+
+    buttonBarPathfinding.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUEST));
+    mealDeliveryButton.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
+    //  mealdeliveryButton.setOnMouseClicked(event -> incrementCart());
+
+    reserveRoomButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING));
+  }
+
+  public void incrementCart() {
+    cartID++;
   }
 
   public void goToRoomPage() {

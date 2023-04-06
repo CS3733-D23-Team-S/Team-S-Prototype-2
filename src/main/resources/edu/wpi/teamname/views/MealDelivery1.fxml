@@ -4,8 +4,6 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -31,11 +29,14 @@
     <RowConstraints minHeight="10.0" percentHeight="7.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <MFXTextField borderGap="30.0" floatMode="ABOVE" measureUnitGap="90.0" prefColumnCount="20" promptText="Search food..." GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <MFXTextField borderGap="30.0" floatMode="ABOVE" measureUnitGap="90.0" prefColumnCount="20" prefHeight="30.0" prefWidth="961.0" promptText="Search food..." GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font name="Open Sans Regular" size="24.0" />
          </font></MFXTextField>
-      <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+
+
+
+       <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cuisine">
                <font>
@@ -67,6 +68,9 @@
         <items>
           <MenuItem mnemonicParsing="false" text="Vegetarian" />
           <MenuItem mnemonicParsing="false" text="Gluten Free" />
+            <MenuItem mnemonicParsing="false" text="Halal" />
+            <MenuItem mnemonicParsing="false" text="Kosher" />
+            <MenuItem mnemonicParsing="false" text="Vegan" />
         </items>
          <font>
             <Font size="24.0" />
@@ -83,14 +87,8 @@
                   </Text>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;">
-               <children>
-                  <ImageView fx:id="mcheese" fitHeight="87.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../../../../../../Desktop/maccheese.png" />
-                     </image>
-                  </ImageView>
-               </children></HBox>
+            <HBox fx:id="qd" prefHeight="100.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: d9d9d9;" />
+
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wallet Friendly">
@@ -100,7 +98,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" />
+            <HBox fx:id="wf" prefHeight="100.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: d9d9d9;" />
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Most Popular">
@@ -110,19 +108,27 @@
                   </Text>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" />
+            <HBox fx:id="mp" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" />
          </children>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="840.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <MFXButton fx:id="backButton1"  prefHeight="73.0" prefWidth="106.0" style="-fx-border-width: 9; -fx-border-color: F8BC54;" text="&lt;">
+            <MFXButton fx:id="backButton1" prefHeight="73.0" prefWidth="106.0" style="-fx-border-width: 9; -fx-border-color: F8BC54;" text="&lt;">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="checkout" prefHeight="102.0" prefWidth="304.0" style="-fx-border-width: 9; -fx-border-color: F8BC54;" text="View Cart&gt;">
                <font>
                   <Font size="40.0" />
                </font>
             </MFXButton>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" GridPane.columnIndex="1" />
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" GridPane.columnIndex="2" />
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" />
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: d9d9d9;" GridPane.columnIndex="3" />
    </children>
 </GridPane>
