@@ -29,7 +29,7 @@ public class RoomRequestDAO implements RoomRequest_I {
         "CREATE TABLE IF NOT EXISTS "
             + roomReservationsTable
             + " "
-            + "(reservationID int UNIQUE PRIMARY KEY,"
+            + "(reservationID int,"
             + "date Date,"
             + "startTime Time,"
             + "endTime Time,"
