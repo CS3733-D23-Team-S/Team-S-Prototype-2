@@ -20,6 +20,7 @@ public class MoveDaoImpl implements MoveDAO_I {
   dbConnection connection;
 
   @Getter HashMap<String, Move> moves = new HashMap<>();
+  @Getter ArrayList<Move> listOfMoves = new ArrayList<>();
   @Getter HashMap<Integer, ArrayList<String>> nodeToLoc = new HashMap<>();
 
   private MoveDaoImpl() {
@@ -34,7 +35,7 @@ public class MoveDaoImpl implements MoveDAO_I {
 
   @Override
   public List<Move> getAllMoves() {
-    return (List<Move>) moves.values();
+    return moves.values().stream().toList();
   }
 
   @Override
@@ -49,7 +50,6 @@ public class MoveDaoImpl implements MoveDAO_I {
       Statement stmt = connection.getConnection().createStatement();
       stmt.execute(moveTable);
     } catch (SQLException e) {
-      e.getMessage();
       e.printStackTrace();
       System.out.println("Error with creating the node table");
     }
@@ -76,7 +76,8 @@ public class MoveDaoImpl implements MoveDAO_I {
       } else {
         moveResult = "Moved " + location + " to its new location";
       }
-
+      Move thisMove = new Move(newLocNodeID, location, date);
+      listOfMoves.add(thisMove);
       Move target = moves.get(location);
       nodeToLoc.get(target.getNodeID()).remove(location);
       target.setNodeID(newLocNodeID);
@@ -99,7 +100,6 @@ public class MoveDaoImpl implements MoveDAO_I {
         constructRemote(pathToCSV);
       }
     } catch (SQLException e) {
-      e.getMessage();
       e.printStackTrace();
     }
   }
@@ -117,6 +117,7 @@ public class MoveDaoImpl implements MoveDAO_I {
         LocalDate date = data.getDate("date").toLocalDate();
         Move thisMove = new Move(data.getInt("nodeID"), data.getString("location"), date);
         moves.put(thisMove.getLocation(), thisMove);
+        listOfMoves.add(thisMove);
         ArrayList<String> listOfLoc = new ArrayList<>();
         listOfLoc.add(thisMove.getLocation());
         nodeToLoc.put(thisMove.getNodeID(), listOfLoc);

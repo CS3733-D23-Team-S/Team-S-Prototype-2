@@ -31,7 +31,7 @@ public class LocationDoaImpl implements LocationDOA_I {
 
   @Override
   public List<Location> getAllLocations() {
-    return (List<Location>) this.locations.values();
+    return this.locations.values().stream().toList();
   }
 
   @Override

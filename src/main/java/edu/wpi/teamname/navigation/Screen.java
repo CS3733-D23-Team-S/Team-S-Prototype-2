@@ -17,6 +17,14 @@ public enum Screen {
   MEAL_DELIVERY1("views/MealDelivery1.fxml"),
   SERVICE_REQUEST("views/ServiceRequest.fxml");
 
+
+
+
+
+
+
+  CSV_MANAGE("views/CSVPage.fxml");
+
   private final String filename;
 
   Screen(String filename) {

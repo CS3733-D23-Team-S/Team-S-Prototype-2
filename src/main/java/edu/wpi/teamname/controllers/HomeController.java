@@ -1,52 +1,97 @@
 package edu.wpi.teamname.controllers;
 
+import static edu.wpi.teamname.navigation.Screen.CSV_MANAGE;
+import static edu.wpi.teamname.navigation.Screen.PATHFINDING;
+
+import edu.wpi.teamname.Main;
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 
 public class HomeController {
 
-  // @FXML MFXButton mealDeliveryButton;
-  // @FXML MFXButton reserveRoomButton;
-  @FXML MenuButton menuButton;
-  @FXML MenuItem exitOption;
+  @FXML
+  MFXButton mealDeliveryButton;
+  @FXML
+  MFXButton reserveRoomButton;
 
-  @FXML MFXButton helpButton;
-  @FXML MFXButton navigateButton;
-  @FXML MFXButton mealdelivery1Button;
+  @FXML
+  MFXButton logoutButton;
 
-  @FXML MFXButton homeToPathfindingButton;
-  @FXML MFXButton signageButton;
-  @FXML ImageView conferenceroom;
+  @FXML
+  ButtonBar buttonBar;
 
-  @FXML ImageView mealdelivery;
+  @FXML
+  MenuButton app;
+  @FXML
+  Button buttonBarPathfinding;
+  @FXML
+  Button buttonBarReserveRoom;
+  @FXML
+  Button buttonBarMealDelivery;
+  @FXML
+  MFXButton exportButton;
+  @FXML
+  MenuItem exitOption;
 
+  @FXML
+  ImageView helpIcon;
+
+  @FXML
+  ImageView hospitalBg;
+  @FXML
+  ImageView pathfindingIcon;
+  @FXML
+  ImageView roomreserveIcon;
+  @FXML
+  ImageView mealdeliveryIcon;
+
+  @FXML
+  MFXButton homeToPathfindingButton;
+
+  @FXML
   public void initialize() {
-    // Image mealImage = new Image(Main.class.getResource("images/Meal_Icon.jpg").toString());
-    // mealdelivery.setImage(mealImage);
-
-    // Image conferenceImage =
-    // new Image(Main.class.getResource("images/Conference_room_icon.jpg").toString());
-    // conferenceroom.setImage(conferenceImage);
-
     // Adding the menu option to exit application
 
-    // mealDeliveryButton.setOnMouseClicked(event -> goToMealPage());
-    // reserveRoomButton.setOnMouseClicked(event -> goToRoomPage());
-    // signageButton.setOnMouseClicked(event -> goToSignagePage());
-    // exitOption.setOnAction(event -> exitApplication());
-    // homeToPathfindingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.PATHFINDING));
+    mealDeliveryButton.setOnMouseClicked(event -> goToMealPage());
+    reserveRoomButton.setOnMouseClicked(event -> goToRoomPage());
+    logoutButton.setOnMouseClicked(event -> goToLoginPage());
+    helpIcon.setOnMouseClicked(event -> goToHelpPage());
+    exitOption.setOnAction(event -> exitApplication());
+    homeToPathfindingButton.setOnMouseClicked(event -> Navigation.navigate(PATHFINDING));
+    exportButton.setOnMouseClicked(event -> Navigation.navigate(CSV_MANAGE));
 
-    // event handler for exiting application
+    // Menu bar button handlers
+    buttonBarPathfinding.setOnMouseClicked(event -> Navigation.navigate(PATHFINDING));
+    buttonBarMealDelivery.setOnMouseClicked(event -> goToMealPage());
+    buttonBarReserveRoom.setOnMouseClicked(event -> goToRoomPage());
 
-    //    mealDeliveryButton.setOnMouseClicked(event ->
-    // Navigation.navigate(Screen.SERVICE_REQUEST));
-    //    reserveRoomButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUEST));
+
+    Image hospitalBackground = new Image(Main.class.getResource("./HomepageImages/BrighamandWomensHospitalImage.jpeg").toString());
+    hospitalBg.setImage(hospitalBackground);
+
+    Image pathfindIcon = new Image(Main.class.getResource("./HomepageImages/PathfindIcon.png").toString());
+    pathfindingIcon.setImage(pathfindIcon);
+
+    Image mealIcon = new Image(Main.class.getResource("./HomepageImages/Meal_Icon.jpg").toString());
+    mealdeliveryIcon.setImage(mealIcon);
+
+    Image roomIcon = new Image(Main.class.getResource("./HomepageImages/Conference_room_icon.jpg").toString());
+    roomreserveIcon.setImage(roomIcon);
+
+    Image helpbutton = new Image(Main.class.getResource("./HomepageImages/1200px-Icon-round-Question_mark.svg.png").toString());
+    helpIcon.setImage(helpbutton);
+
+
   }
 
   public void goToRoomPage() {
@@ -54,11 +99,11 @@ public class HomeController {
   }
 
   public void goToMealPage() {
-    Navigation.navigate(Screen.MEAL_DELIVERY);
+    Navigation.navigate(Screen.SERVICE_REQUEST);
   }
 
-  public void goToSignagePage() {
-    Navigation.navigate(Screen.SIGNAGE_PAGE);
+  public void goToLoginPage() {
+    Navigation.navigate(Screen.LOGIN_PAGE);
   }
 
   public void exitApplication() {
@@ -67,7 +112,11 @@ public class HomeController {
 
   public void goToHelpPage() {
     Navigation.navigate(Screen.HELP_PAGE);
-    navigateButton.setOnMouseClicked(event -> Navigation.navigate(Screen.SERVICE_REQUEST));
-    mealdelivery1Button.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
   }
+
+
+  public void goToExportPage() {
+    Navigation.navigate(Screen.CSV_MANAGE);
+  }
+
 }

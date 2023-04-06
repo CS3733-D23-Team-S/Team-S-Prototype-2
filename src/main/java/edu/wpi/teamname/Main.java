@@ -6,16 +6,13 @@ import java.sql.SQLException;
 public class Main {
 
   public static void main(String[] args) throws SQLException {
-    LoaderDAO loader = new LoaderDAO();
+    LoaderDAO loader = LoaderDAO.getInstance();
     //    loader.establishConnection();
     //    loader.resetData();
-
     loader.load();
     App.launch(App.class, args);
-    System.out.println("Loaded Class");
-    //
-    //    // Debugging stuff in order to check everything looks about right
-
+    // Debugging stuff in order to check everything looks about right
+    System.out.println("Loaded everything");
     //    for (int key : NodeDaoImpl.getInstance().getNodes().keySet())
     //      System.out.println(NodeDaoImpl.getInstance().getNodes().get(key).toString());
     //    for (String key : MoveDaoImpl.getInstance().getMoves().keySet())
@@ -25,5 +22,6 @@ public class Main {
     //      System.out.print("\t Neighbors:\t");
     //      System.out.println(EdgeDaoImpl.getInstance().getNeighbors().get(key).toString());
     //    }
+
   }
 }
