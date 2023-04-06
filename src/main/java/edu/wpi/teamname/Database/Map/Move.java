@@ -28,8 +28,7 @@ public class Move {
         + '}';
   }
 
-  public String toCSVString(){
+  public String toCSVString() {
     return nodeID + "," + location + "," + dates.get(0);
   }
-
 }
