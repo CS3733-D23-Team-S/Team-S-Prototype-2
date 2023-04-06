@@ -1,8 +1,11 @@
 package edu.wpi.teamname;
 
+import edu.wpi.teamname.Database.dbConnection;
 import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -41,7 +44,8 @@ public class App extends Application {
   }
 
   @Override
-  public void stop() {
+  public void stop() throws SQLException {
+    dbConnection.getInstance().getConnection().close();
     log.info("Shutting Down");
   }
 }

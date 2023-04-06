@@ -12,7 +12,7 @@ public enum Screen {
   ROOM_BOOKING("views/RoomBooking.fxml"),
   SERVICE_REQUEST("views/ServiceRequestPages/ServiceRequest.fxml"); // Meal Request
 
-
+  CSV_MANAGE("edu/wpi/teamname/views/CSVPage.fxml");
 
   private final String filename;
 

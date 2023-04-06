@@ -26,4 +26,8 @@ public class Edge {
         + endNode.getNodeID()
         + '}';
   }
+
+  public String toCSVString() {
+    return startNode.getNodeID() + "," + endNode.getNodeID();
+  }
 }

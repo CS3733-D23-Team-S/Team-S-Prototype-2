@@ -38,4 +38,8 @@ public class Node {
         + building
         + "}";
   }
+
+  public String toCSVString() {
+    return nodeID + "," + xCoord + "," + yCoord + "," + floor + "," + building;
+  }
 }
