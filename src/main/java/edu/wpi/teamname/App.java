@@ -40,7 +40,7 @@ public class App extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
 
-    Navigation.navigate(Screen.WELCOME_PAGE);
+    Navigation.navigate(Screen.LOGIN_PAGE);
   }
 
   @Override
