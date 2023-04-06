@@ -5,12 +5,11 @@ public enum Screen {
   WELCOME_PAGE("views/WelcomePage.fxml"),
   LOGIN_PAGE("views/LoginPage.fxml"),
   HOME("views/Home.fxml"),
-
-  HELP_PAGE("views/HelpPage.fxml"),
-
-  PATHFINDING("views/Pathfinding.fxml"),
   ROOM_BOOKING("views/RoomBooking.fxml"),
-  SERVICE_REQUEST("views/ServiceRequestPages/ServiceRequest.fxml"), // Meal Request
+  HELP_PAGE("views/HelpPage.fxml"),
+  PATHFINDING("views/Pathfinding.fxml"),
+  MEAL_DELIVERY("views/ServiceRequestPages/MealDelivery.fxml"), // Meal Request
+  SIGNAGE_PAGE("views/SignagePage.fxml"),
 
   CSV_MANAGE("views/CSVPage.fxml"),
 
