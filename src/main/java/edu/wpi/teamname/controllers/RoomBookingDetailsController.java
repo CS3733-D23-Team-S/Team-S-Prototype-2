@@ -4,6 +4,7 @@ import edu.wpi.teamname.navigation.Navigation;
 import edu.wpi.teamname.navigation.Screen;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import lombok.Getter;
@@ -35,7 +36,7 @@ public class RoomBookingDetailsController {
   }
 
   @FXML
-  public void submitDetails(ActionEvent event) {
+  public void submitDetails(ActionEvent event) throws SQLException {
     roomLocation = roomLocationText.getText();
     startTime = startTimeText.getText();
     endTime = endTimeText.getText();

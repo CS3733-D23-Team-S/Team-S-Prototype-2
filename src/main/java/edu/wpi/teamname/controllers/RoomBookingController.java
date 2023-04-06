@@ -29,7 +29,7 @@ public class RoomBookingController {
 
   @FXML
   public void initialize() throws SQLException {
-    roomRequestDAO.initTable();
+
     addMeetingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING_DETAILS));
     backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
 
@@ -48,7 +48,9 @@ public class RoomBookingController {
       String startTime,
       String endTime,
       String eventTitle,
-      String eventDescription) {
+      String eventDescription)
+      throws SQLException {
+
     System.out.println("Adding new request");
     ConfRoomRequest newRequest =
         new ConfRoomRequest(
@@ -121,8 +123,6 @@ public class RoomBookingController {
     reservationList.add(res2);
     reservationList.add(res3);
 
-    roomRequestDAO.addRequest(res1);
-    roomRequestDAO.addRequest(res2);
-    roomRequestDAO.addRequest(res3);
+
   }
 }
