@@ -90,7 +90,7 @@ class Room {
 
   public String getName() {
     return name;
-  };
+  }
 
   public String floor() {
     return floor;
@@ -114,6 +114,5 @@ class Room {
 
   public void setAvailability(String availability) {
     availability = availability;
-(event -> Navigation.navigate(Screen.HOME));
   }
 }

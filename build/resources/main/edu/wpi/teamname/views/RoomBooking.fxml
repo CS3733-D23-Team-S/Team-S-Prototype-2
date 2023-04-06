@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -129,4 +130,3 @@
       </MFXButton>
     </children>
 </GridPane>
-
