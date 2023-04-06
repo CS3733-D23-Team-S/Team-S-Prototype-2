@@ -46,7 +46,7 @@ public class ConfRoomRequest {
   }
 
   public int createReservationID() {
-    reservationIDUpdater++;
+    ++reservationIDUpdater;
     this.reservationID = reservationIDUpdater;
     return reservationID;
   }

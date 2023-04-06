@@ -62,7 +62,7 @@ public class RoomBookingController {
             "TestReserve",
             eventTitle,
             eventDescription,
-            "Assignee",
+            staffMember,
             Status.Received,
             "No notes");
     roomRequestDAO.addRequest(newRequest); // TODO need this?
