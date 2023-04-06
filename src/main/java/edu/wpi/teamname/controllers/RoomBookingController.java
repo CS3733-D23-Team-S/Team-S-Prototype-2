@@ -34,13 +34,13 @@ public class RoomBookingController {
     backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
 
     createDummyRooms(); // create dummy rooms
-    createDummyRoomRequests(); // create dummy reservations
-    rb.setRoomList(roomList); // later -- read from DB
-    rb.setRoomRequestList(reservationList);
+    // create dummy reservations
+    //    rb.setRoomList(roomList); // later -- read from DB
+    //    rb.setRoomRequestList(reservationList);
 
     // read room requests from DB
 
-    rb.createRoomsUI(conferenceRoomsHBox);
+    //    rb.createRoomsUI(conferenceRoomsHBox);
   }
 
   public static void addNewRequest(
@@ -48,7 +48,8 @@ public class RoomBookingController {
       String startTime,
       String endTime,
       String eventTitle,
-      String eventDescription)
+      String eventDescription,
+      String staffMember)
       throws SQLException {
 
     System.out.println("Adding new request");
@@ -78,7 +79,7 @@ public class RoomBookingController {
     roomList.add(r4);
   }
 
-  public void createDummyRoomRequests() {
+  public void createDummyRoomRequests() throws SQLException {
     ConfRoomRequest res1 =
         new ConfRoomRequest(
             LocalDate.now(),
@@ -116,13 +117,11 @@ public class RoomBookingController {
             Status.InProgress,
             "");
     roomRequestDAO.addRequest(res1);
-    roomRequestDAO.addRequest(res2);
-    roomRequestDAO.addRequest(res3);
+    //        roomRequestDAO.addRequest(res2);
+    //        roomRequestDAO.addRequest(res3);
 
     reservationList.add(res1);
     reservationList.add(res2);
     reservationList.add(res3);
-
-
   }
 }

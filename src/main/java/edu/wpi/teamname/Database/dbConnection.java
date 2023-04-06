@@ -7,7 +7,7 @@ import lombok.Getter;
 public class dbConnection {
   private static dbConnection single_instance;
 
-  Connection c;
+  @Getter Connection c;
   private static final String url = "jdbc:postgresql://database.cs.wpi.edu:5432/teamsdb";
   private static final String user = "teams";
   private static final String password = "teams160";

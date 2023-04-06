@@ -62,7 +62,9 @@ public class RoomRequestDAO implements RoomRequest_I {
 
   @Override
   public void addRequest(ConfRoomRequest request) {
+
     requests.put(request.getReservationID(), request);
+
     try {
       PreparedStatement preparedStatement =
           connection
@@ -83,8 +85,9 @@ public class RoomRequestDAO implements RoomRequest_I {
       preparedStatement.setString(9, request.getAssignedTo());
       preparedStatement.setString(10, request.getOrderStatus().name()); // TODO fix
       preparedStatement.setString(11, request.getNotes());
-
       preparedStatement.executeUpdate();
+
+      //      preparedStatement.executeUpdate();
     } catch (SQLException ex) {
       throw new RuntimeException(ex);
     }
