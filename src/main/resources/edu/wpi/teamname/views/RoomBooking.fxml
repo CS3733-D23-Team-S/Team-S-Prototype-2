@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -123,11 +122,11 @@
             <font>
                 <Font size="16.0" />
             </font>
-      </MFXButton>
-      <MFXButton fx:id="backButton" alignment="CENTER" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #F8BC54; -fx-border-width: 5px;" text="&lt;" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <font>
-            <Font name="Open Sans Regular" size="24.0" />
-         </font>
-      </MFXButton>
+        </MFXButton>
+        <MFXButton fx:id="backButton" alignment="CENTER" prefHeight="65.0" prefWidth="65.0" style="-fx-border-color: #F8BC54; -fx-border-width: 5px;" text="&lt;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+                <Font name="Open Sans Regular" size="24.0" />
+            </font>
+        </MFXButton>
     </children>
 </GridPane>

@@ -40,7 +40,13 @@ public class RoomBookingController {
     addMeetingButton.setOnMouseClicked(event -> Navigation.navigate(Screen.ROOM_BOOKING_DETAILS));
     backButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
 
-    createDummyRooms(); // create dummy rooms
+    createDummyRooms();
+
+    for(ConfRoomRequest i : RoomRequestDAO.getInstance().getAllRequests()){
+      //  public void addToUI(String roomLocation, String startTime, String endTime, String eventTitle, String eventDescription, String staffMember) {
+      this.addToUI(i.getRoomId(), String.valueOf(i.getStartTime()), String.valueOf(i.getEndTime().getHour()), i.getEventName(), i.getEventDescription(), i.getAssignedTo());
+    }
+    // create dummy rooms
     // create dummy reservations
     //    rb.setRoomList(roomList); // later -- read from DB
     //    rb.setRoomRequestList(reservationList)
@@ -103,7 +109,7 @@ public class RoomBookingController {
     Text title = new Text(); // create text
     title.setText(eventTitle);
     title.setFont(Font.font("Open Sans", 15));
-    title.setStyle("Bold");
+    //title.setStyle("Bold");
     title.setFill(Color.BLACK);
 
     Text creator = new Text(); // create creator line
@@ -126,7 +132,7 @@ public class RoomBookingController {
 
     resGroup.getChildren().add(eventVBox);
 
-    conferenceRoomsHBox.getChildren().add(resGroup);
+     conferenceRoomsHBox.getChildren().add(resGroup);
 
   }
 

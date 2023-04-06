@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class LoaderDAO implements LoaderDAOI {
-room_booking_development
+
   static LoaderDAO single_instance = null;
   final String schemaName = "hospitaldb";
   final String nodeTable = schemaName + "." + "nodes";
