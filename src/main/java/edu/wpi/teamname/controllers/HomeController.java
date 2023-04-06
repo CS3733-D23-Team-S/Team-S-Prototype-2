@@ -99,7 +99,7 @@ public class HomeController {
   }
 
   public void goToMealPage() {
-    Navigation.navigate(Screen.SERVICE_REQUEST);
+    Navigation.navigate(Screen.MEAL_DELIVERY);
   }
 
   public void goToLoginPage() {
@@ -112,11 +112,6 @@ public class HomeController {
 
   public void goToHelpPage() {
     Navigation.navigate(Screen.HELP_PAGE);
-  }
-
-
-  public void goToExportPage() {
-    Navigation.navigate(Screen.CSV_MANAGE);
   }
 
 }

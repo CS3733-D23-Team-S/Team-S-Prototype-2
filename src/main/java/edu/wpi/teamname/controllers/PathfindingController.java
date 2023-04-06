@@ -91,7 +91,7 @@ public class PathfindingController {
   }
 
   public void initialize() {
-    pathfindingToHomeButton.setOnMouseClicked(event -> Navigation.navigate(Screen.HOME));
+    pathfindingToHomeButton.setOnMouseClicked(event -> Navigation.navigate(Screen.WELCOME_PAGE));
 
     clearFieldsButton.setOnMouseClicked(event -> clearFields());
 

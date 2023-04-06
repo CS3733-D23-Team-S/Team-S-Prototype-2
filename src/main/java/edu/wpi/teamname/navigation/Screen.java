@@ -8,15 +8,13 @@ public enum Screen {
   ROOM_BOOKING("views/RoomBooking.fxml"),
   HELP_PAGE("views/HelpPage.fxml"),
   PATHFINDING("views/Pathfinding.fxml"),
-  SIGNAGE_PAGE("views/Signage.fxml"),
+  MEAL_DELIVERY("views/ServiceRequestPages/MealDelivery.fxml"), // Meal Request
+  SIGNAGE_PAGE("views/SignagePage.fxml"),
+
 
   KITCHEN_STAFF("views/KitchenStaff.fxml"),
   FACILITIES_STAFF("views/FacilitiesStaff.fxml"),
   MAP_EDITOR("views/MapEditor.fxml"),
-  MEAL_DELIVERY("views/MealDelivery.fxml"),
-  MEAL_DELIVERY1("views/MealDelivery1.fxml"),
-  SERVICE_REQUEST("views/ServiceRequest.fxml"),
-
   CSV_MANAGE("views/CSVPage.fxml");
 
   private final String filename;
