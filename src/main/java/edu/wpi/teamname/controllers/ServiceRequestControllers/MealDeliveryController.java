@@ -1,6 +1,6 @@
 package edu.wpi.teamname.controllers.ServiceRequestControllers;
 
-import edu.wpi.teamname.Database.DAOManager;
+
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.Food;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDAOImpl;
 import edu.wpi.teamname.Database.ServiceRequests.FoodService.FoodDeliveryDAOImp;
@@ -25,9 +25,7 @@ public class MealDeliveryController {
   @FXML
   public void initialize() {
 
-    DAOManager dbManager = new DAOManager();
-    // Establish connection to database
-    dbManager.establishConnection();
+
     // Create Empty Table
 
     foodDAO.initFood();

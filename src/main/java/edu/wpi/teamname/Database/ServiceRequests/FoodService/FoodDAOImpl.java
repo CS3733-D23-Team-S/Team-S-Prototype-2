@@ -29,8 +29,7 @@ public class FoodDAOImpl implements FoodDAO_I {
   public void addFood(Food thisFood) {
     try {
       PreparedStatement preparedStatement =
-          connection
-              .getC()
+          connection.getConnection()
               .prepareStatement(
                   "INSERT INTO "
                       + foodsTable
@@ -73,7 +72,7 @@ public class FoodDAOImpl implements FoodDAO_I {
 
   public void deleteFood(int target) throws SQLException {
     PreparedStatement deleteFood =
-        connection.getC().prepareStatement("DELETE FROM " + foodsTable + " WHERE FoodID = ?");
+        connection.getConnection().prepareStatement("DELETE FROM " + foodsTable + " WHERE FoodID = ?");
     try {
       deleteFood.setInt(1, target);
       deleteFood.execute();
@@ -96,7 +95,7 @@ public class FoodDAOImpl implements FoodDAO_I {
     try {
       PreparedStatement preparedStatement =
           connection
-              .getC()
+              .getConnection()
               .prepareStatement(
                   "Update "
                       + foodsTable
@@ -172,7 +171,7 @@ public class FoodDAOImpl implements FoodDAO_I {
   public void loadToRemote() {
 
     try {
-      Statement st = connection.getC().createStatement();
+      Statement st = connection.getConnection().createStatement();
       ResultSet rs = st.executeQuery("SELECT * FROM " + foodsTable);
 
       while (rs.next()) {
@@ -232,7 +231,7 @@ public class FoodDAOImpl implements FoodDAO_I {
 
   public void initFood() {
     try {
-      Statement st = connection.getC().createStatement();
+      Statement st = connection.getConnection().createStatement();
       String dropFoodTable = "DROP TABLE IF EXISTS " + foodsTable + " CASCADE";
 
       String foodTableConstruct =

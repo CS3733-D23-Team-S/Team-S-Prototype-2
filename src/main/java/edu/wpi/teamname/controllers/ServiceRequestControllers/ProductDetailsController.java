@@ -34,7 +34,7 @@ public class ProductDetailsController {
   public void initialize() {
 
     back3.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
-    addCart.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
+
 
     Food currentFood = foodDAO.retrieveFood(clickedFoodID);
     cart.addFoodItem(currentFood);
@@ -63,6 +63,7 @@ public class ProductDetailsController {
     foodNamer();
     foodDescription();
     foodPrice();
+    addCart.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
   }
 
   public void count(String x) {

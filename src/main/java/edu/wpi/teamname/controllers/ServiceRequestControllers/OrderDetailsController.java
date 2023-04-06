@@ -23,20 +23,46 @@ public class OrderDetailsController {
   public void initialize() {
     System.out.println(ProductDetailsController.cart.toString());
 
+
     clearFields2();
     addedOrder();
     multSelectedFood();
     back2.setOnMouseClicked(event -> Navigation.navigate(Screen.MEAL_DELIVERY1));
     submit.setOnMouseClicked(event -> Navigation.navigate(Screen.ORDER_CONFIRMATION));
+
+    java.sql.Date d = new java.sql.Date(2023, 4,6);
+    java.sql.Time t = new java.sql.Time(11,35,45);
+
+    //FoodDelivery currentFoodDev;
+
+
+
+    submit.setOnMouseClicked(event -> {
+
+      try
+      {
+        String Emp = empNum.getText();
+
+        FoodDelivery currentFoodDev = new FoodDelivery(1, ProductDetailsController.cart,
+              d, t, 5, "John Doe", Emp, "In Progress"
+                , "These are not the notes you are looking for");
+      }
+      catch(Exception e)
+      {
+        e.printStackTrace();
+      }
+            }
+
+
+
+
+
+    );
     clear2.setOnMouseClicked(event -> clearFields2());
 
     // foodNamer1();
   }
 
-  public Food multSelectedFood() {
-
-    return null;
-  }
 
   public void clearFields2() {
     roomNum.clear();

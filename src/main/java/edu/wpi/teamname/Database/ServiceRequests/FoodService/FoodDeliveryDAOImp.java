@@ -28,7 +28,7 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
     try {
       PreparedStatement preparedStatement =
           connection
-              .getC()
+              .getConnection()
               .prepareStatement(
                   "INSERT INTO "
                       + foodRequestsTable
@@ -74,7 +74,7 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
     try {
       PreparedStatement deleteFood =
           connection
-              .getC()
+              .getConnection()
               .prepareStatement("DELETE FROM " + foodRequestsTable + " WHERE deliveryId = ?");
 
       deleteFood.setInt(1, target);
@@ -93,7 +93,7 @@ public class FoodDeliveryDAOImp implements FoodDeliveryDAO_I {
 
   public void initFoodRequests() {
     try {
-      Statement st = connection.getC().createStatement();
+      Statement st = connection.getConnection().createStatement();
       String dropFoodRequestsTable = "DROP TABLE IF EXISTS " + foodRequestsTable + " CASCADE";
 
       String foodRequestsTableConstruct =
